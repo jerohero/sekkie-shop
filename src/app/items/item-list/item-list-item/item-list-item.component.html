@@ -1,0 +1,31 @@
+<!--<a-->
+<!--  style="cursor: pointer;"-->
+<!--  [routerLink]="[index]"-->
+<!--  routerLinkActive="active"-->
+<!--  class="list-group-item clearfix">-->
+<!--  <div class="pull-left">-->
+<!--    <h4 class="list-group-item-heading">{{ item.name }}</h4>-->
+<!--    <p class="list-group-item-text">{{ item.description }}</p>-->
+<!--  </div>-->
+<!--  <span class="pull-right">-->
+<!--        <img-->
+<!--          [src]="item.primaryImagePath"-->
+<!--          alt="{{ item.name }}"-->
+<!--          class="img-responsive"-->
+<!--          style="max-height: 50px;">-->
+<!--      </span>-->
+<!--</a>-->
+
+<div class="itemCard"
+     [routerLink]="[index]"
+     routerLinkActive="active">
+
+  <div class="imgWrapper">
+    <img [src]="item.primaryImagePath" alt="{{ item.name }}">
+  </div>
+  <div class="infoWrapper">
+    <h4>{{ item.name }}</h4>
+    <p>{{ item.description }}</p>
+  </div>
+
+</div>

@@ -1,0 +1,22 @@
+h1 {
+  text-align: center;
+}
+
+#layout{
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    position: absolute;
+    color: #FDEB37;
+    font-size: 70px;
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  img {
+    width: 100%;
+    pointer-events: none;
+  }
+}

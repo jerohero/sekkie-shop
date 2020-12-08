@@ -24,12 +24,13 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
           },
           "configurations": {
-            "production": {
+            "itemion": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -64,8 +65,8 @@
             "browserTarget": "sekkie:build"
           },
           "configurations": {
-            "production": {
-              "browserTarget": "sekkie:build:production"
+            "itemion": {
+              "browserTarget": "sekkie:build:itemion"
             }
           }
         },
@@ -112,13 +113,18 @@
             "devServerTarget": "sekkie:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "sekkie:serve:production"
+            "itemion": {
+              "devServerTarget": "sekkie:serve:itemion"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "sekkie"
+  "defaultProject": "sekkie",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

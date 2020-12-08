@@ -1,0 +1,22 @@
+.itemCard {
+  //background-color: #d2d2d2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 90%;
+
+
+  &:focus {
+    outline: none;
+  }
+
+  .imgWrapper {
+    img {
+      max-height: 350px;
+    }
+  }
+  .infoWrapper {
+    text-align: center;
+  }
+}
