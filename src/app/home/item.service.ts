@@ -9,188 +9,50 @@ export class ItemService {
 
   private items: Item[] = [
     new Item(
-      'Turtleneck',
+      'Loose cropped jeans',
       'Vet mooi',
-      'https://gd4.alicdn.com/imgextra/i4/0/O1CN01yJZ4rs1nK6gQjQfz5_!!0-item_pic.jpg',
+      'https://i.imgur.com/zSsxvNb.png',
       [
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01QqiotT1nK6gGHuAwQ_!!2106485070.jpg',
-        'https://gd2.alicdn.com/imgextra/i2/2106485070/O1CN01rOoawj1nK6gE3G4dJ_!!2106485070.jpg',
-        'https://gd1.alicdn.com/imgextra/i1/2106485070/O1CN01tbD2ig1nK6gJfPbmQ_!!2106485070.jpg'
-      ]),
-    new Item('Pants',
-      'Zieke pant',
-      'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01oGB7yw1nK6fXpXorb_!!2106485070-0-lubanu-s.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01CoTBID1nK6fTlad51_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01QSY3361nK6fWJIEFh_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01ckL75t1nK6hAVL5yw_!!0-item_pic.jpg'
+        'https://i.imgur.com/xYE8aaT.png',
+        'https://i.imgur.com/w7osQSw.png',
+        'https://i.imgur.com/5XHQ2md.png'
       ]),
     new Item(
-      'Turtleneck',
+      'Loose cropped jeans',
       'Vet mooi',
-      'https://gd4.alicdn.com/imgextra/i4/0/O1CN01yJZ4rs1nK6gQjQfz5_!!0-item_pic.jpg',
+      'https://i.imgur.com/DZXT8r1.png',
       [
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01QqiotT1nK6gGHuAwQ_!!2106485070.jpg',
-        'https://gd2.alicdn.com/imgextra/i2/2106485070/O1CN01rOoawj1nK6gE3G4dJ_!!2106485070.jpg',
-        'https://gd1.alicdn.com/imgextra/i1/2106485070/O1CN01tbD2ig1nK6gJfPbmQ_!!2106485070.jpg'
-      ]),
-    new Item('Pants',
-      'Zieke pant',
-      'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01oGB7yw1nK6fXpXorb_!!2106485070-0-lubanu-s.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01CoTBID1nK6fTlad51_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01QSY3361nK6fWJIEFh_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01ckL75t1nK6hAVL5yw_!!0-item_pic.jpg'
+        'https://i.imgur.com/aoWATqo.png',
+        'https://i.imgur.com/SlCrJzY.png',
+        'https://i.imgur.com/VoZr7lb.png'
       ]),
     new Item(
-      'Turtleneck',
+      'Long sleeve',
       'Vet mooi',
-      'https://gd4.alicdn.com/imgextra/i4/0/O1CN01yJZ4rs1nK6gQjQfz5_!!0-item_pic.jpg',
+      'https://i.imgur.com/hKgdfR1.png',
       [
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01QqiotT1nK6gGHuAwQ_!!2106485070.jpg',
-        'https://gd2.alicdn.com/imgextra/i2/2106485070/O1CN01rOoawj1nK6gE3G4dJ_!!2106485070.jpg',
-        'https://gd1.alicdn.com/imgextra/i1/2106485070/O1CN01tbD2ig1nK6gJfPbmQ_!!2106485070.jpg'
-      ]),
-    new Item('Pants',
-      'Zieke pant',
-      'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01oGB7yw1nK6fXpXorb_!!2106485070-0-lubanu-s.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01CoTBID1nK6fTlad51_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01QSY3361nK6fWJIEFh_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01ckL75t1nK6hAVL5yw_!!0-item_pic.jpg'
-      ]),    new Item(
-      'Turtleneck',
-      'Vet mooi',
-      'https://gd4.alicdn.com/imgextra/i4/0/O1CN01yJZ4rs1nK6gQjQfz5_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01QqiotT1nK6gGHuAwQ_!!2106485070.jpg',
-        'https://gd2.alicdn.com/imgextra/i2/2106485070/O1CN01rOoawj1nK6gE3G4dJ_!!2106485070.jpg',
-        'https://gd1.alicdn.com/imgextra/i1/2106485070/O1CN01tbD2ig1nK6gJfPbmQ_!!2106485070.jpg'
-      ]),
-    new Item('Pants',
-      'Zieke pant',
-      'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01oGB7yw1nK6fXpXorb_!!2106485070-0-lubanu-s.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01CoTBID1nK6fTlad51_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01QSY3361nK6fWJIEFh_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01ckL75t1nK6hAVL5yw_!!0-item_pic.jpg'
-      ]),    new Item(
-      'Turtleneck',
-      'Vet mooi',
-      'https://gd4.alicdn.com/imgextra/i4/0/O1CN01yJZ4rs1nK6gQjQfz5_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01QqiotT1nK6gGHuAwQ_!!2106485070.jpg',
-        'https://gd2.alicdn.com/imgextra/i2/2106485070/O1CN01rOoawj1nK6gE3G4dJ_!!2106485070.jpg',
-        'https://gd1.alicdn.com/imgextra/i1/2106485070/O1CN01tbD2ig1nK6gJfPbmQ_!!2106485070.jpg'
-      ]),
-    new Item('Pants',
-      'Zieke pant',
-      'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01oGB7yw1nK6fXpXorb_!!2106485070-0-lubanu-s.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01CoTBID1nK6fTlad51_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01QSY3361nK6fWJIEFh_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01ckL75t1nK6hAVL5yw_!!0-item_pic.jpg'
-      ]),    new Item(
-      'Turtleneck',
-      'Vet mooi',
-      'https://gd4.alicdn.com/imgextra/i4/0/O1CN01yJZ4rs1nK6gQjQfz5_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01QqiotT1nK6gGHuAwQ_!!2106485070.jpg',
-        'https://gd2.alicdn.com/imgextra/i2/2106485070/O1CN01rOoawj1nK6gE3G4dJ_!!2106485070.jpg',
-        'https://gd1.alicdn.com/imgextra/i1/2106485070/O1CN01tbD2ig1nK6gJfPbmQ_!!2106485070.jpg'
-      ]),
-    new Item('Pants',
-      'Zieke pant',
-      'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01oGB7yw1nK6fXpXorb_!!2106485070-0-lubanu-s.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01CoTBID1nK6fTlad51_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01QSY3361nK6fWJIEFh_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01ckL75t1nK6hAVL5yw_!!0-item_pic.jpg'
-      ]),    new Item(
-      'Turtleneck',
-      'Vet mooi',
-      'https://gd4.alicdn.com/imgextra/i4/0/O1CN01yJZ4rs1nK6gQjQfz5_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01QqiotT1nK6gGHuAwQ_!!2106485070.jpg',
-        'https://gd2.alicdn.com/imgextra/i2/2106485070/O1CN01rOoawj1nK6gE3G4dJ_!!2106485070.jpg',
-        'https://gd1.alicdn.com/imgextra/i1/2106485070/O1CN01tbD2ig1nK6gJfPbmQ_!!2106485070.jpg'
-      ]),
-    new Item('Pants',
-      'Zieke pant',
-      'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01oGB7yw1nK6fXpXorb_!!2106485070-0-lubanu-s.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01CoTBID1nK6fTlad51_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01QSY3361nK6fWJIEFh_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01ckL75t1nK6hAVL5yw_!!0-item_pic.jpg'
-      ]),    new Item(
-      'Turtleneck',
-      'Vet mooi',
-      'https://gd4.alicdn.com/imgextra/i4/0/O1CN01yJZ4rs1nK6gQjQfz5_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01QqiotT1nK6gGHuAwQ_!!2106485070.jpg',
-        'https://gd2.alicdn.com/imgextra/i2/2106485070/O1CN01rOoawj1nK6gE3G4dJ_!!2106485070.jpg',
-        'https://gd1.alicdn.com/imgextra/i1/2106485070/O1CN01tbD2ig1nK6gJfPbmQ_!!2106485070.jpg'
-      ]),
-    new Item('Pants',
-      'Zieke pant',
-      'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01oGB7yw1nK6fXpXorb_!!2106485070-0-lubanu-s.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01CoTBID1nK6fTlad51_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01QSY3361nK6fWJIEFh_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01ckL75t1nK6hAVL5yw_!!0-item_pic.jpg'
-      ]),    new Item(
-      'Turtleneck',
-      'Vet mooi',
-      'https://gd4.alicdn.com/imgextra/i4/0/O1CN01yJZ4rs1nK6gQjQfz5_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01QqiotT1nK6gGHuAwQ_!!2106485070.jpg',
-        'https://gd2.alicdn.com/imgextra/i2/2106485070/O1CN01rOoawj1nK6gE3G4dJ_!!2106485070.jpg',
-        'https://gd1.alicdn.com/imgextra/i1/2106485070/O1CN01tbD2ig1nK6gJfPbmQ_!!2106485070.jpg'
-      ]),
-    new Item('Pants',
-      'Zieke pant',
-      'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-      [
-        'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01oGB7yw1nK6fXpXorb_!!2106485070-0-lubanu-s.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01CoTBID1nK6fTlad51_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01QSY3361nK6fWJIEFh_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01ckL75t1nK6hAVL5yw_!!0-item_pic.jpg'
+        'https://i.imgur.com/QxOOevb.png',
+        'https://i.imgur.com/retBEOO.png',
+        'https://i.imgur.com/FTZEQhm.png'
       ]),
     new Item(
-      'Turtleneck',
+      'Knitted beanie',
       'Vet mooi',
-      'https://gd4.alicdn.com/imgextra/i4/0/O1CN01yJZ4rs1nK6gQjQfz5_!!0-item_pic.jpg',
+      'https://i.imgur.com/Qzi0nOU.png',
       [
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01QqiotT1nK6gGHuAwQ_!!2106485070.jpg',
-        'https://gd2.alicdn.com/imgextra/i2/2106485070/O1CN01rOoawj1nK6gE3G4dJ_!!2106485070.jpg',
-        'https://gd1.alicdn.com/imgextra/i1/2106485070/O1CN01tbD2ig1nK6gJfPbmQ_!!2106485070.jpg'
+        'https://i.imgur.com/0YLynyp.png',
+        'https://i.imgur.com/17FJAQU.png',
+        'https://i.imgur.com/Xs5NSrg.png',
+        'https://i.imgur.com/dHt8PxN.png'
       ]),
-    new Item('Pants',
-      'Zieke pant',
-      'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
+    new Item(
+      'Mock turtleneck',
+      'Vet mooi',
+      'https://i.imgur.com/ebtBcZp.png',
       [
-        'https://gd3.alicdn.com/imgextra/i3/0/O1CN01M0qMGU1nK6feBsDXl_!!0-item_pic.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01oGB7yw1nK6fXpXorb_!!2106485070-0-lubanu-s.jpg',
-        'https://gd3.alicdn.com/imgextra/i3/2106485070/O1CN01CoTBID1nK6fTlad51_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01QSY3361nK6fWJIEFh_!!2106485070-0-lubanu-s.jpg',
-        'https://gd4.alicdn.com/imgextra/i4/2106485070/O1CN01ckL75t1nK6hAVL5yw_!!0-item_pic.jpg'
+        'https://i.imgur.com/FZiDMQo.png',
+        'https://i.imgur.com/MoH8mpy.png',
+        'https://i.imgur.com/dYTjPyK.png'
       ]),
   ];
 
