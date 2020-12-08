@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { Item } from '../item.model';
-import { ItemService } from '../item.service';
+import { ItemService } from '../home/item.service';
+import { Item } from '../home/item.model';
+
 
 @Component({
-  selector: 'app-item-detail',
-  templateUrl: './item-detail.component.html',
-  styleUrls: ['./item-detail.component.css']
+  selector: 'app-item-details',
+  templateUrl: './item-details.component.html',
+  styleUrls: ['./item-details.component.css']
 })
-export class ItemDetailComponent implements OnInit {
+export class ItemDetailsComponent implements OnInit {
   item: Item;
   id: number;
 
@@ -24,6 +25,9 @@ export class ItemDetailComponent implements OnInit {
         (params: Params) => {
           this.id = +params['id'];
           this.item = this.itemService.getItem(this.id);
+          if (this.item === undefined) {
+            this.router.navigate(['404']);
+          }
         }
       );
   }

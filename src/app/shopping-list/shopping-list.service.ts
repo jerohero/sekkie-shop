@@ -1,5 +1,5 @@
 import { EventEmitter } from '@angular/core';
-import {Item} from '../items/item.model';
+import {Item} from '../home/item.model';
 
 export class ShoppingListService {
   itemsChanged = new EventEmitter<Item[]>();

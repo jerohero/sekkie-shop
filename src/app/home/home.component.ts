@@ -5,12 +5,14 @@ import { ItemService } from './item.service';
 
 @Component({
   selector: 'app-items',
-  templateUrl: './items.component.html',
-  styleUrls: ['./items.component.scss'],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
   providers: [ItemService]
 })
-export class ItemsComponent implements OnInit {
+export class HomeComponent implements OnInit {
   selectedItem: Item;
+  public spt: any;
+  public spl: any;
 
   constructor(private itemService: ItemService) { }
 

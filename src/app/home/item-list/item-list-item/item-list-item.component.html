@@ -16,10 +16,7 @@
 <!--      </span>-->
 <!--</a>-->
 
-<div class="itemCard"
-     [routerLink]="[index]"
-     routerLinkActive="active">
-
+<a class="itemCard" [routerLink]="['../' + index]">
   <div class="imgWrapper">
     <img [src]="item.primaryImagePath" alt="{{ item.name }}">
   </div>
@@ -27,5 +24,4 @@
     <h4>{{ item.name }}</h4>
     <p>{{ item.description }}</p>
   </div>
-
-</div>
+</a>

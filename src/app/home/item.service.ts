@@ -3,7 +3,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Item } from './item.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class ItemService {
   itemSelected = new EventEmitter<Item>();
 
