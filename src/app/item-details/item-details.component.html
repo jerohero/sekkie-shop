@@ -51,13 +51,16 @@
   <div id="images">
     <div id="secondary">
       <ul>
-        <li *ngFor="let secondaryImage of item.secondaryImagePaths">
+        <li (mouseover)="showPrimaryImage()">
+          <img src="{{ item.primaryImagePath }}" alt="Primary image">
+        </li>
+        <li *ngFor="let secondaryImage of item.secondaryImagePaths" (mouseover)="showSecondaryImage(secondaryImage)">
           <img src="{{ secondaryImage }}" alt="Secondary image">
         </li>
       </ul>
     </div>
     <div id="primary">
-      <img [src]="item.primaryImagePath" alt="{{item.name}} image">
+      <img [src]="[showcasedImg]" alt="{{item.name}} image">
     </div>
   </div>
 </div>

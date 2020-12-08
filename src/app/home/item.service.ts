@@ -24,7 +24,7 @@ export class ItemService {
       [
         'https://i.imgur.com/aoWATqo.png',
         'https://i.imgur.com/SlCrJzY.png',
-        'https://i.imgur.com/VoZr7lb.png'
+        'https://i.imgur.com/frDiEDN.png'
       ]),
     new Item(
       'Long sleeve',

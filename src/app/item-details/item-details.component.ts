@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ItemService } from '../home/item.service';
@@ -13,6 +13,7 @@ import { Item } from '../home/item.model';
 export class ItemDetailsComponent implements OnInit {
   item: Item;
   id: number;
+  showcasedImg: string;
 
   constructor(private itemService: ItemService,
               private route: ActivatedRoute,
@@ -28,10 +29,18 @@ export class ItemDetailsComponent implements OnInit {
           if (this.item === undefined) {
             this.router.navigate(['404']);
           } else {
-            // this.initializeItem();
+            this.showcasedImg = this.item.primaryImagePath;
           }
         }
       );
+  }
+
+  showSecondaryImage(secondaryImage: string) {
+    this.showcasedImg = secondaryImage;
+  }
+
+  showPrimaryImage() {
+    this.showcasedImg = this.item.primaryImagePath;
   }
 
   // initializeItem() {
