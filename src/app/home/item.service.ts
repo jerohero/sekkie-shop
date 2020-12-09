@@ -16,16 +16,20 @@ export class ItemService {
         'https://i.imgur.com/xYE8aaT.png',
         'https://i.imgur.com/w7osQSw.png',
         'https://i.imgur.com/5XHQ2md.png'
-      ]),
+      ],
+      ['S', 'M', 'L'],
+      []),
     new Item(
-      'Loose cropped jeans',
+      'Jeans',
       'Vet mooi',
       'https://i.imgur.com/DZXT8r1.png',
       [
         'https://i.imgur.com/aoWATqo.png',
         'https://i.imgur.com/SlCrJzY.png',
         'https://i.imgur.com/frDiEDN.png'
-      ]),
+      ],
+      ['S', 'M', 'L'],
+      []),
     new Item(
       'Long sleeve',
       'Vet mooi',
@@ -34,7 +38,9 @@ export class ItemService {
         'https://i.imgur.com/QxOOevb.png',
         'https://i.imgur.com/retBEOO.png',
         'https://i.imgur.com/FTZEQhm.png'
-      ]),
+      ],
+      ['S', 'M', 'L'],
+      []),
     new Item(
       'Knitted beanie',
       'Vet mooi',
@@ -44,7 +50,9 @@ export class ItemService {
         'https://i.imgur.com/17FJAQU.png',
         'https://i.imgur.com/Xs5NSrg.png',
         'https://i.imgur.com/dHt8PxN.png'
-      ]),
+      ],
+      ['S', 'M', 'L'],
+      []),
     new Item(
       'Mock turtleneck',
       'Vet mooi',
@@ -53,7 +61,9 @@ export class ItemService {
         'https://i.imgur.com/FZiDMQo.png',
         'https://i.imgur.com/MoH8mpy.png',
         'https://i.imgur.com/dYTjPyK.png'
-      ]),
+      ],
+      ['S', 'M', 'L'],
+      ['Caramel', 'Black', 'White', 'Dark gray']),
   ];
 
   constructor(private slService: ShoppingListService) {}

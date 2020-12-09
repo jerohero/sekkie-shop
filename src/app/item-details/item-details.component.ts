@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ItemService } from '../home/item.service';
@@ -14,6 +14,9 @@ export class ItemDetailsComponent implements OnInit {
   item: Item;
   id: number;
   showcasedImg: string;
+  selectedSize: string;
+  selectedColor: string;
+  selectedAmount = 0;
 
   constructor(private itemService: ItemService,
               private route: ActivatedRoute,
@@ -43,12 +46,33 @@ export class ItemDetailsComponent implements OnInit {
     this.showcasedImg = this.item.primaryImagePath;
   }
 
-  // initializeItem() {
-  //   this.
-  // }
+  onColorClicked(color) {
+    if (this.selectedColor === color) {
+      this.selectedColor = null;
+    } else {
+      this.selectedColor = color;
+    }
+  }
+
+  onSizeClicked(size) {
+    if (this.selectedSize === size) {
+      this.selectedSize = null;
+    } else {
+      this.selectedSize = size;
+    }
+  }
 
   onAddToShoppingList() {
     this.itemService.addItemToShoppingList(this.item);
+  }
+
+  onMinusAmountClicked() {
+    if (this.selectedAmount <= 0) { return; }
+    this.selectedAmount--;
+  }
+
+  onPlusAmountClicked() {
+    this.selectedAmount++;
   }
 
   onEditItem() {

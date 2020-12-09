@@ -7,6 +7,8 @@
 <!--      style="max-height: 300px;">-->
 <!--  </div>-->
 <!--</div>-->
+
+
 <!--<div class="row">-->
 <!--  <div class="col-xs-12">-->
 <!--    <h1>{{ item.name }}</h1>-->
@@ -62,5 +64,37 @@
     <div id="primary">
       <img [src]="[showcasedImg]" alt="{{item.name}} image">
     </div>
+  </div>
+  <div id="content">
+    <h1>{{ item.name }}</h1>
+    <p>{{ item.description }}</p>
+
+    <div id="specific">
+      <div id="size">
+        <p>Size</p>
+        <div id="sizes">
+          <button *ngFor="let size of item.sizes" (click)="onSizeClicked(size)" class="{{ size === selectedSize ? 'selectedSize' : '' }}">
+            {{ size }} </button>
+        </div>
+      </div>
+      <div id="color">
+        <p>Color</p>
+        <div id="colors">
+          <button *ngFor="let color of item.colors" (click)="onColorClicked(color)" class="{{ color === selectedColor ? 'selectedColor' : '' }}">
+            {{ color }} </button>
+        </div>
+      </div>
+      <div id="amount">
+        <p>Amount</p>
+        <div id="selector">
+          <button (click)="onMinusAmountClicked()">-</button>
+          <span>{{ selectedAmount }}</span>
+          <button (click)="onPlusAmountClicked()">+</button>
+        </div>
+      </div>
+
+    </div>
+
+    <button (click)="onAddToShoppingList()">Shopping list</button>
   </div>
 </div>
