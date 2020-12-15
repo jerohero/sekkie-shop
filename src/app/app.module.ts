@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ItemEditComponent } from './home/item-edit/item-edit.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { UnknownPageComponent } from './unknown-page/unknown-page.component';
+import { ShoppingCartItemComponent } from './shopping-list/shopping-cart-item/shopping-cart-item.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UnknownPageComponent } from './unknown-page/unknown-page.component';
     DropdownDirective,
     ItemEditComponent,
     ItemDetailsComponent,
-    UnknownPageComponent
+    UnknownPageComponent,
+    ShoppingCartItemComponent
   ],
   imports: [
     BrowserModule,

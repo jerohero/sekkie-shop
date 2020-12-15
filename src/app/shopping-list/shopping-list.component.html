@@ -1,15 +1,9 @@
-<div class="row">
+<div class="row" style="padding: 100px">
   <div class="col-xs-10">
     <app-shopping-edit></app-shopping-edit>
     <hr>
     <ul class="list-group">
-      <a
-        class="list-group-item"
-        style="cursor: pointer"
-        *ngFor="let item of items"
-      >
-        {{ item.name }} ()
-      </a>
+      <app-shopping-cart-item [item]="item" *ngFor="let item of items"></app-shopping-cart-item>
     </ul>
   </div>
 </div>
