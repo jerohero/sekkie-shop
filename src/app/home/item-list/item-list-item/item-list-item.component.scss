@@ -19,7 +19,16 @@
       max-height: 350px;
     }
   }
+
   .infoWrapper {
     text-align: center;
+
+    h4 {
+      margin-bottom: 2px;
+    }
+
+    h4, p {
+      font-size: 1em;
+    }
   }
 }

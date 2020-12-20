@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, Output} from '@angular/core';
 
 import { Item } from '../../item.model';
 
@@ -10,7 +10,14 @@ import { Item } from '../../item.model';
 export class ItemListItemComponent implements OnInit {
   @Input() item: Item;
   @Input() index: number;
+  @Output() shownImagePath: string;
 
   ngOnInit() {
+    this.shownImagePath = this.item.primaryImagePath;
+  }
+
+  toggleImage() {
+    this.shownImagePath =
+      this.shownImagePath === this.item.primaryImagePath ? this.item.secondaryImagePaths[1] : this.item.primaryImagePath;
   }
 }

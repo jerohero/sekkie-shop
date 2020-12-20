@@ -16,12 +16,12 @@
 <!--      </span>-->
 <!--</a>-->
 
-<a class="itemCard" [routerLink]="['../' + index]">
+<a class="itemCard" [routerLink]="['../' + index]" (mouseover)="toggleImage()" (mouseout)="toggleImage()">
   <div class="imgWrapper">
-    <img [src]="item.primaryImagePath" alt="{{ item.name }}">
+    <img [src]="shownImagePath" alt="{{ item.name }}">
   </div>
   <div class="infoWrapper">
     <h4>{{ item.name }}</h4>
-    <p>{{ item.description }}</p>
+    <p>€{{ item.price }}</p>
   </div>
 </a>

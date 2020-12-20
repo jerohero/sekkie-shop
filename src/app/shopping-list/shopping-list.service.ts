@@ -8,6 +8,7 @@ export class ShoppingListService {
   private items: Item[] = [
     new Item(
       'Long sleeve',
+      20,
       'Vet mooi',
       'https://i.imgur.com/hKgdfR1.png',
       [
@@ -19,6 +20,7 @@ export class ShoppingListService {
       []),
     new Item(
       'Knitted beanie',
+      20,
       'Vet mooi',
       'https://i.imgur.com/Qzi0nOU.png',
       [
@@ -31,6 +33,7 @@ export class ShoppingListService {
       []),
     new Item(
       'Mock turtleneck',
+      20,
       'Vet mooi',
       'https://i.imgur.com/ebtBcZp.png',
       [

@@ -10,6 +10,7 @@ export class ItemService {
   private items: Item[] = [
     new Item(
       'Loose cropped jeans',
+      20,
       'Vet mooi',
       'https://i.imgur.com/zSsxvNb.png',
       [
@@ -21,6 +22,7 @@ export class ItemService {
       []),
     new Item(
       'Jeans',
+      20,
       'Vet mooi',
       'https://i.imgur.com/DZXT8r1.png',
       [
@@ -32,6 +34,7 @@ export class ItemService {
       []),
     new Item(
       'Long sleeve',
+      20,
       'Vet mooi',
       'https://i.imgur.com/hKgdfR1.png',
       [
@@ -43,6 +46,7 @@ export class ItemService {
       []),
     new Item(
       'Knitted beanie',
+      20,
       'Vet mooi',
       'https://i.imgur.com/Qzi0nOU.png',
       [
@@ -55,6 +59,7 @@ export class ItemService {
       []),
     new Item(
       'Mock turtleneck',
+      20,
       'Vet mooi',
       'https://i.imgur.com/ebtBcZp.png',
       [
