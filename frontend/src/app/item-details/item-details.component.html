@@ -1,0 +1,49 @@
+<div id="details">
+  <div id="images">
+    <div id="secondary">
+      <ul>
+        <li (mouseover)="showPrimaryImage()">
+          <img src="{{ item.primaryImagePath }}" alt="Primary image">
+        </li>
+        <li *ngFor="let secondaryImage of item.secondaryImagePaths" (mouseover)="showSecondaryImage(secondaryImage)">
+          <img src="{{ secondaryImage }}" alt="Secondary image">
+        </li>
+      </ul>
+    </div>
+    <div id="primary">
+      <img [src]="[showcasedImg]" alt="{{item.name}} image">
+    </div>
+  </div>
+  <div id="content">
+    <h1>{{ item.name }}</h1>
+    <p>{{ item.description }}</p>
+
+    <div id="specific">
+      <div id="size">
+        <p>Size</p>
+        <div id="sizes">
+          <button *ngFor="let size of item.sizes" (click)="onSizeClicked(size)" class="{{ size === selectedSize ? 'selectedSize' : '' }}">
+            {{ size }} </button>
+        </div>
+      </div>
+      <div id="color">
+        <p>Color</p>
+        <div id="colors">
+          <button *ngFor="let color of item.colors" (click)="onColorClicked(color)" class="{{ color === selectedColor ? 'selectedColor' : '' }}">
+            {{ color }} </button>
+        </div>
+      </div>
+      <div id="amount">
+        <p>Amount</p>
+        <div id="selector">
+          <button (click)="onMinusAmountClicked()">-</button>
+          <span>{{ selectedAmount }}</span>
+          <button (click)="onPlusAmountClicked()">+</button>
+        </div>
+      </div>
+
+    </div>
+
+    <button id="buyBtn" (click)="onBuy()">Buy now</button>
+  </div>
+</div>
