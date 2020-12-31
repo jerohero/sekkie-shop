@@ -25,5 +25,13 @@ const itemSchema = new Schema({
         required: false },
 }, { timestamps: true });
 
+itemSchema.virtual('id').get(function () {
+    return this._id.toHexString();
+})
+
+itemSchema.set('toJSON', {
+    virtuals: true
+})
+
 const Item = mongoose.model('Item', itemSchema);
 module.exports = Item;

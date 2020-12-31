@@ -10,4 +10,9 @@ export class DataAccessService {
     return this.http
       .get<Item[]>('http://localhost:3000/items');
   }
+
+  fetchItem(id: string) {
+    return this.http
+      .get<Item>('http://localhost:3000/items/' + id);
+  }
 }

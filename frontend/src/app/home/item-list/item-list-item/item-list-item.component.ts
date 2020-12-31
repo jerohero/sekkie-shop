@@ -9,7 +9,6 @@ import { Item } from '../../../shared/item.model';
 })
 export class ItemListItemComponent implements OnInit {
   @Input() item: Item;
-  @Input() index: number;
   @Output() shownImagePath: string;
 
   ngOnInit() {

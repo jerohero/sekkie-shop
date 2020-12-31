@@ -16,7 +16,7 @@
 <!--      </span>-->
 <!--</a>-->
 
-<a class="itemCard" [routerLink]="['../' + index]" (mouseover)="toggleImage()" (mouseout)="toggleImage()">
+<a class="itemCard" [routerLink]="['../' + item.id]" (mouseover)="toggleImage()" (mouseout)="toggleImage()">
   <div class="imgWrapper">
     <img [src]="shownImagePath" alt="{{ item.name }}">
   </div>

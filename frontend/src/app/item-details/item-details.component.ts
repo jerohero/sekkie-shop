@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ItemService } from '../shared/item.service';
 import { Item } from '../shared/item.model';
+import {DataAccessService} from '../shared/data-access.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Item } from '../shared/item.model';
 })
 export class ItemDetailsComponent implements OnInit {
   item: Item;
-  id: number;
+  id: string;
   showcasedImg: string;
   selectedSize: string;
   selectedColor: string;
@@ -20,25 +21,23 @@ export class ItemDetailsComponent implements OnInit {
 
   constructor(private itemService: ItemService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private dataAccessService: DataAccessService) {
   }
 
   ngOnInit() {
-    this.itemService.itemsChanged
-      .subscribe((items) => {
-        console.log(items);
-      });
-
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.id = +params['id'];
-          this.item = this.itemService.getItem(this.id);
-          if (this.item === undefined) {
-            this.router.navigate(['404']);
-          } else {
-            this.showcasedImg = this.item.primaryImagePath;
-          }
+          this.id = params['id'];
+          this.dataAccessService.fetchItem(this.id).subscribe(item => {
+            this.item = item;
+            if (this.item === undefined) {
+              this.router.navigate(['404']);
+            } else {
+              this.showcasedImg = this.item.primaryImagePath;
+            }
+          });
         }
       );
   }

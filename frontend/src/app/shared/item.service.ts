@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { Item } from './item.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
@@ -85,8 +85,9 @@ export class ItemService {
     return this.items.slice();
   }
 
-  getItem(index: number) {
-    return this.items[index];
+  getItem(id: string) {
+    console.log(this.items);
+    return this.items.find(i => i.id === id);
   }
 
   addItemToShoppingList(item: Item) {
