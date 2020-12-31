@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { ItemService } from '../home/item.service';
-import { Item } from '../home/item.model';
+import { ItemService } from '../shared/item.service';
+import { Item } from '../shared/item.model';
 
 
 @Component({
@@ -24,6 +24,11 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.itemService.itemsChanged
+      .subscribe((items) => {
+        console.log(items);
+      });
+
     this.route.params
       .subscribe(
         (params: Params) => {

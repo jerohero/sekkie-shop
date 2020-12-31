@@ -17,4 +17,7 @@ export class HeaderComponent implements OnInit {
       this.shoppingCartSize = data.length;
     });
   }
+
+  search() {
+  }
 }

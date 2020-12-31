@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Item} from '../../shared/item.model';
+import {ItemService} from '../../shared/item.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {DataAccessService} from '../../shared/data-access.service';
 
-import { Item } from '../item.model';
-import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-item-list',
@@ -14,10 +15,20 @@ export class ItemListComponent implements OnInit {
 
   constructor(private itemService: ItemService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private dataAccessService: DataAccessService) {
   }
 
   ngOnInit() {
+    this.dataAccessService.fetchItems().subscribe(items => {
+      this.itemService.setItems(items);
+    });
+
+    this.itemService.itemsChanged
+      .subscribe((items) => {
+        this.items = items;
+      });
+
     this.items = this.itemService.getItems();
   }
 
