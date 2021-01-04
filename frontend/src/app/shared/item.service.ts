@@ -90,7 +90,7 @@ export class ItemService {
     return this.items.find(i => i.id === id);
   }
 
-  addItemToShoppingList(item: Item) {
-    this.slService.addItem(item);
+  addItemToShoppingList(item: Item, {selectedSize, selectedColor}) {
+    this.slService.addItem(item, {selectedSize, selectedColor});
   }
 }

@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.shoppingCartSize = this.slService.getItems().length;
-    this.slService.itemsChanged.subscribe(data =>  {
+    this.slService.shoppingCartChanged.subscribe(data =>  {
       this.shoppingCartSize = data.length;
     });
   }

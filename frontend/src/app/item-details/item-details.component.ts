@@ -83,12 +83,8 @@ export class ItemDetailsComponent implements OnInit {
     this.showNoColorSelectedError = !this.selectedColor;
     if (this.showNoColorSelectedError) { return; }
 
-    console.log(this.selectedSize);
-    console.log(this.selectedColor);
-
-
-    // this.itemService.addItemToShoppingList(this.item);
-    // this.router.navigate(['shopping-list']);
+    this.itemService.addItemToShoppingList(this.item, {selectedSize: this.selectedSize, selectedColor: this.selectedColor});
+    this.router.navigate(['shopping-list']);
   }
 
   onEditItem() {
