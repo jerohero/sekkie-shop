@@ -17,10 +17,8 @@ export class ItemDetailsComponent implements OnInit {
   showcasedImg: string;
   selectedSize: string;
   selectedColor: string;
-  selectedAmount = 0;
   showNoSizeSelectedError: boolean;
   showNoColorSelectedError: boolean;
-  showNoAmountSelectedError: boolean;
 
   constructor(private itemService: ItemService,
               private route: ActivatedRoute,
@@ -84,25 +82,13 @@ export class ItemDetailsComponent implements OnInit {
     if (this.showNoSizeSelectedError) { return; }
     this.showNoColorSelectedError = !this.selectedColor;
     if (this.showNoColorSelectedError) { return; }
-    this.showNoAmountSelectedError = this.selectedAmount <= 0;
-    if (this.showNoAmountSelectedError) { return; }
 
     console.log(this.selectedSize);
     console.log(this.selectedColor);
-    console.log(this.selectedAmount);
 
 
     // this.itemService.addItemToShoppingList(this.item);
     // this.router.navigate(['shopping-list']);
-  }
-
-  onMinusAmountClicked() {
-    if (this.selectedAmount <= 0) { return; }
-    this.selectedAmount--;
-  }
-
-  onPlusAmountClicked() {
-    this.selectedAmount++;
   }
 
   onEditItem() {
