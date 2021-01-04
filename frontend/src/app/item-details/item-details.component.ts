@@ -18,6 +18,9 @@ export class ItemDetailsComponent implements OnInit {
   selectedSize: string;
   selectedColor: string;
   selectedAmount = 0;
+  showNoSizeSelectedError: boolean;
+  showNoColorSelectedError: boolean;
+  showNoAmountSelectedError: boolean;
 
   constructor(private itemService: ItemService,
               private route: ActivatedRoute,
@@ -77,8 +80,20 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   onBuy() {
-    this.itemService.addItemToShoppingList(this.item);
-    this.router.navigate(['shopping-list']);
+    this.showNoSizeSelectedError = !this.selectedSize;
+    if (this.showNoSizeSelectedError) { return; }
+    this.showNoColorSelectedError = !this.selectedColor;
+    if (this.showNoColorSelectedError) { return; }
+    this.showNoAmountSelectedError = this.selectedAmount <= 0;
+    if (this.showNoAmountSelectedError) { return; }
+
+    console.log(this.selectedSize);
+    console.log(this.selectedColor);
+    console.log(this.selectedAmount);
+
+
+    // this.itemService.addItemToShoppingList(this.item);
+    // this.router.navigate(['shopping-list']);
   }
 
   onMinusAmountClicked() {

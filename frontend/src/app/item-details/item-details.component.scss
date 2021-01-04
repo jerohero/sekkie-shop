@@ -51,9 +51,13 @@ $selectedSize: #636F7A;
       color: black;
     }
 
-    #specific {
+    #options {
       margin-top: 50px;
       margin-bottom: 100px;
+
+      .redText {
+        color: red;
+      }
 
       #color, #size, #amount {
         display: flex;
@@ -90,7 +94,11 @@ $selectedSize: #636F7A;
             }
           }
 
-          .selectedSize, .selectedColor {
+          .noOptionSelected {
+            color: red;
+          }
+
+          .selectedOptionBox {
             color: $selectedSize;
             border-color: $selectedSize;
           }

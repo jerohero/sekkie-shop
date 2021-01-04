@@ -18,23 +18,25 @@
     <h1>{{ item.name }}</h1>
     <p>{{ item.description }}</p>
 
-    <div id="specific">
+    <div id="options">
       <div id="size">
-        <p>Size</p>
+        <p class="{{ showNoSizeSelectedError && !selectedSize ? 'redText' : '' }}">Size</p>
         <div id="sizes">
-          <button *ngFor="let size of item.sizes" (click)="onSizeClicked(size)" class="{{ size === selectedSize ? 'selectedSize' : '' }}">
+          <button *ngFor="let size of item.sizes" (click)="onSizeClicked(size)"
+                  class="{{ size === selectedSize ? 'selectedOptionBox' : '' }} {{ showNoSizeSelectedError && !selectedSize ? 'noOptionSelected' : '' }}">
             {{ size }} </button>
         </div>
       </div>
       <div id="color">
-        <p>Color</p>
+        <p class="{{ showNoColorSelectedError && !selectedColor ? 'redText' : '' }}">Color</p>
         <div id="colors">
-          <button *ngFor="let color of item.colors" (click)="onColorClicked(color)" class="{{ color === selectedColor ? 'selectedColor' : '' }}">
+          <button *ngFor="let color of item.colors" (click)="onColorClicked(color)"
+                  class="{{ color === selectedColor ? 'selectedOptionBox' : '' }} {{ showNoColorSelectedError && !selectedColor ? 'noOptionSelected' : '' }}">
             {{ color }} </button>
         </div>
       </div>
       <div id="amount">
-        <p>Amount</p>
+        <p class="{{ showNoAmountSelectedError && !selectedAmount ? 'redText' : '' }}">Amount</p>
         <div id="selector">
           <button (click)="onMinusAmountClicked()">-</button>
           <span>{{ selectedAmount }}</span>
