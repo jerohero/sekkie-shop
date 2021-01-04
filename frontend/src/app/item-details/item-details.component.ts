@@ -30,16 +30,26 @@ export class ItemDetailsComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = params['id'];
-          this.dataAccessService.fetchItem(this.id).subscribe(item => {
-            this.item = item;
-            if (this.item === undefined) {
-              this.router.navigate(['404']);
-            } else {
-              this.showcasedImg = this.item.primaryImagePath;
-            }
-          });
+          this.loadItem();
         }
       );
+  }
+
+  loadItem() {
+    const preloadedItem = this.itemService.getItems().find(i => i.id === this.id);
+    if (preloadedItem) {
+      this.item = preloadedItem;
+    } else {
+      this.dataAccessService.fetchItem(this.id).subscribe(item => {
+        this.item = item;
+        if (this.item === undefined) {
+          this.router.navigate(['404']);
+        }
+      });
+    }
+    if (this.item) {
+      this.showcasedImg = this.item.primaryImagePath;
+    }
   }
 
   showSecondaryImage(secondaryImage: string) {

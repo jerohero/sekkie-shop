@@ -4,7 +4,6 @@ import {Injectable} from '@angular/core';
 
 @Injectable({providedIn: 'root'})
 export class ShoppingListService {
-  // itemsChanged = new EventEmitter<Item[]>();
   itemsChanged = new Subject<Item[]>();
 
   // private items: Item[] = [

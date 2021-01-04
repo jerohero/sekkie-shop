@@ -3,7 +3,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ShoppingListService } from './shopping-list.service';
 import {Item} from '../shared/item.model';
 import {Subscription} from 'rxjs';
-import {DataAccessService} from '../shared/data-access.service';
 
 @Component({
   selector: 'app-shopping-list',
