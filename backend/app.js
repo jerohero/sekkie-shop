@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const itemsRouter = require('./routes/ItemRoutes');
+const userRouter = require('./routes/UserRoutes');
 const PORT = 3000;
 require('dotenv').config()
 
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/items', itemsRouter);
+app.use('/auth', userRouter);
 
 module.exports = app;
 

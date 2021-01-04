@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const itemSchema = new Schema({
+const ItemSchema = new Schema({
     name: {
         type: String,
         required: true },
@@ -25,13 +25,13 @@ const itemSchema = new Schema({
         required: false },
 }, { timestamps: true });
 
-itemSchema.virtual('id').get(function () {
+ItemSchema.virtual('id').get(function () {
     return this._id.toHexString();
 })
 
-itemSchema.set('toJSON', {
+ItemSchema.set('toJSON', {
     virtuals: true
 })
 
-const Item = mongoose.model('Item', itemSchema);
+const Item = mongoose.model('Item', ItemSchema);
 module.exports = Item;
