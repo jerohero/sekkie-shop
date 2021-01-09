@@ -32,6 +32,10 @@ exports.getUserByEmail = async (req, res) => {
     }
 }
 
+exports.getProfile = async (req, res) => {
+    res.json({user: req.user});
+}
+
 exports.authenticateUser = async (req, res) => {
     const password = req.body.password;
     const user = res.user;
