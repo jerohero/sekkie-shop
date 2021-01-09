@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const itemsRouter = require('./routes/ItemRoutes');
 const userRouter = require('./routes/UserRoutes');
+const passport = require('passport');
 const PORT = 3000;
 require('dotenv').config()
 
@@ -16,6 +17,12 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedT
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
 
 // External access (CORS)
 app.use((req, res, next) => {
