@@ -6,10 +6,10 @@ import {DataAccessService} from '../shared/data-access.service';
 
 @Component({
   selector: 'app-items',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './shop.component.html',
+  styleUrls: ['./shop.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class ShopComponent implements OnInit {
   public spt: any;
   public spl: any;
 
