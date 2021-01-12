@@ -1,17 +1,12 @@
 <nav>
-    <div id="nav-logo">
-      <a [routerLink]="['/']">sekkie</a>
-    </div>
-    <div id="nav-primary">
-      <label>
-        <input type="text">
-        <button (click)="search()">Search</button>
-      </label>
-    </div>
-    <div id="nav-secondary-right">
-      <ul>
-        <li id="login"><a [routerLink]="['../login']">Login</a></li>
-        <li id="shopping-cart"><a routerLink="/shopping-list">Cart ({{ shoppingCartSize }})</a></li>
-      </ul>
-    </div>
+  <div id="background"></div>
+  <div id="nav-logo">
+    <a [routerLink]="['/']"><img src="../../assets/images/logo.svg" alt="Sekkie"></a>
+  </div>
+  <div id="nav-right">
+    <ul>
+      <li id="shopping-cart"><a [routerLink]="['../shopping-list']"><img src="../../assets/images/shoppingcart.svg" alt="cart">cart ({{ shoppingCartSize }})</a></li>
+      <li id="login"><a [routerLink]="['../login']">login/register</a></li>
+    </ul>
+  </div>
 </nav>
