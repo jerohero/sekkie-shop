@@ -1,4 +1,4 @@
-$selectedSize: #636F7A;
+$selected-size: #636F7A;
 
 * {
   font-family: 'Arial', sans-serif;
@@ -86,7 +86,7 @@ $selectedSize: #636F7A;
             transition: border-color 0.2s ease;
 
             &:hover {
-              border-color: $selectedSize;
+              border-color: $selected-size;
             }
 
             &:focus {
@@ -99,8 +99,8 @@ $selectedSize: #636F7A;
           }
 
           .selectedOptionBox {
-            color: $selectedSize;
-            border-color: $selectedSize;
+            color: $selected-size;
+            border-color: $selected-size;
           }
         }
 

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ShoppingListService} from '../shopping-list/shopping-list.service';
 
 @Component({
@@ -8,6 +8,7 @@ import {ShoppingListService} from '../shopping-list/shopping-list.service';
 })
 export class HeaderComponent implements OnInit {
   shoppingCartSize: number;
+  @Output() loginClick = new EventEmitter<void>();
 
   constructor(private slService: ShoppingListService) {}
 
@@ -18,6 +19,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  search() {
+  onLoginClicked(): void {
+    this.loginClick.emit();
   }
 }
