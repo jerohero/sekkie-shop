@@ -1,3 +1,5 @@
+@import "/src/utilities/variables";
+
 * {
   margin: 0;
 }
@@ -12,11 +14,20 @@ p, a {
   overflow-y: scroll;
   position: relative;
 
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+    background-color: #eaeaea;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    background-color: #aaaaaa;
+  }
+
   #shop-wrapper {
     padding: 0 60px;
     margin-top: 132px;
     margin-bottom: 50px;
-    //background-color: orange;
     position: relative;
     display: flex;
 
@@ -111,7 +122,6 @@ p, a {
     }
 
     #shop-content-wrapper {
-      //background-color: lightblue;
       width: 100%;
       max-width: 75%;
       height: inherit;
