@@ -1,5 +1,7 @@
-#itemsWrapper {
+#items-wrapper {
+  height: inherit;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-row-gap: 2em;
+  grid-row-gap: 17px;
+  grid-column-gap: 20px;
 }

@@ -16,12 +16,20 @@
 <!--      </span>-->
 <!--</a>-->
 
-<a class="itemCard" [routerLink]="['../' + item.id]" (mouseover)="toggleImage()" (mouseout)="toggleImage()">
-  <div class="imgWrapper">
-    <img [src]="shownImagePath" alt="{{ item.name }}">
-  </div>
-  <div class="infoWrapper">
-    <h4>{{ item.name }}</h4>
-    <p>€{{ item.price }}</p>
+<!--<a class="item" [routerLink]="['../' + item.id]" (mouseover)="toggleImage()" (mouseout)="toggleImage()">-->
+<!--  <div class="img-wrapper">-->
+<!--    <img [src]="shownImagePath" alt="{{ item.name }}">-->
+<!--  </div>-->
+<!--  <div class="infoWrapper">-->
+<!--    <h4>{{ item.name }}</h4>-->
+<!--    <p>€{{ item.price }}</p>-->
+<!--  </div>-->
+<!--</a>-->
+
+<a class="item" [routerLink]="['../' + item.id]" (mouseover)="toggleImage()" (mouseout)="toggleImage()">
+  <img [src]="shownImagePath" alt="{{ item.name }}">
+  <div class="item-details">
+    <h4 class="item-title">{{ item.name }}</h4>
+    <p class="item-price">${{ item.price }}</p>
   </div>
 </a>
