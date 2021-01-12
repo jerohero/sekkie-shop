@@ -1,5 +1,5 @@
 <div id="content-wrapper">
   <app-header id="header" (loginClick)="onLoginClicked()"></app-header>
-  <app-login></app-login>
+  <app-login *ngIf="showLogin" (loginClose)="onLoginClosed()"></app-login>
   <router-outlet></router-outlet>
 </div>

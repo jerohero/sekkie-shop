@@ -16,4 +16,8 @@ export class AppComponent {
   onLoginClicked(): void {
     this.showLogin = true;
   }
+
+  onLoginClosed(): void {
+    this.showLogin = false;
+  }
 }
