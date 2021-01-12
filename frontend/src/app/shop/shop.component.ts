@@ -18,9 +18,9 @@ export class ShopComponent implements OnInit {
   ngOnInit() {
   }
 
-  @HostListener('contextmenu', ['$event'])
-  onRightClick(event) {
-    event.preventDefault();
-  }
+  // @HostListener('contextmenu', ['$event'])
+  // onRightClick(event) {
+  //   event.preventDefault();
+  // }
 
 }
