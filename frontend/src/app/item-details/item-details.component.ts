@@ -15,10 +15,13 @@ export class ItemDetailsComponent implements OnInit {
   item: Item;
   id: string;
   showcasedImg: string;
+  fadeImg: string;
+  playFadeAnimation: boolean;
   selectedSize: string;
   selectedColor: string;
   showNoSizeSelectedError: boolean;
   showNoColorSelectedError: boolean;
+  fadeAnimationInterval: number;
 
   constructor(private itemService: ItemService,
               private route: ActivatedRoute,
@@ -26,7 +29,7 @@ export class ItemDetailsComponent implements OnInit {
               private dataAccessService: DataAccessService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.params
       .subscribe(
         (params: Params) => {
@@ -36,32 +39,45 @@ export class ItemDetailsComponent implements OnInit {
       );
   }
 
-  loadItem() {
+  loadItem(): void {
     const preloadedItem = this.itemService.getItems().find(i => i.id === this.id);
     if (preloadedItem) {
       this.item = preloadedItem;
+      this.showcaseImage(this.item.primaryImagePath);
     } else {
       this.dataAccessService.fetchItem(this.id).subscribe(item => {
         this.item = item;
         if (this.item === undefined) {
           this.router.navigate(['404']);
+        } else {
+          this.showcaseImage(this.item.primaryImagePath);
         }
       });
     }
-    if (this.item) {
-      this.showcasedImg = this.item.primaryImagePath;
+  }
+
+  showcaseImage(secondaryImage: string): void {
+    this.fadeInShowcasedImage(secondaryImage);
+  }
+
+  fadeInShowcasedImage(newImage): void {
+    if (this.playFadeAnimation) {
+      this.fadeImg = newImage;
+      this.showcasedImg = newImage;
+      clearInterval(this.fadeAnimationInterval);
+      this.playFadeAnimation = false;
+    } else {
+      this.playFadeAnimation = true;
+      this.fadeImg = newImage;
+      this.fadeAnimationInterval = setInterval(() => {
+        this.playFadeAnimation = false;
+        this.showcasedImg = newImage;
+        clearInterval(this.fadeAnimationInterval);
+      }, 200);
     }
   }
 
-  showSecondaryImage(secondaryImage: string) {
-    this.showcasedImg = secondaryImage;
-  }
-
-  showPrimaryImage() {
-    this.showcasedImg = this.item.primaryImagePath;
-  }
-
-  onColorClicked(color) {
+  onColorClicked(color): void {
     if (this.selectedColor === color) {
       this.selectedColor = null;
     } else {

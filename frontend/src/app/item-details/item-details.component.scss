@@ -11,6 +11,7 @@ $selected-size: #636F7A;
 
   #images {
     width: 845px;
+    height: 807px;
     display: flex;
     flex-direction: row;
     margin-left: 51px;
@@ -18,16 +19,34 @@ $selected-size: #636F7A;
     #showcase-image {
       display: flex;
       justify-content: center;
+      position: relative;
 
       img {
-        width: 719px;
-        animation: ease-in-out 0.2s;
+        max-width: 719px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity 0.2s;
+      }
+
+      #fade-img {
+        opacity: 0;
       }
     }
     #side-images {
       width: 126px;
       height: auto;
       overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 3px;
+        background-color: #ffffff;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #c4c4c4;
+      }
 
       ul {
         padding: 0;
@@ -76,7 +95,6 @@ $selected-size: #636F7A;
 
         p {
           font-size: 30px;
-          //margin: 0 20px 0 0;
           width: 126px;
         }
 
