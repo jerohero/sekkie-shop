@@ -25,35 +25,6 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 30px;
     row-gap: 47px;
-
-    .shopping-cart-item {
-      width: 387px;
-
-      &:hover {
-        text-decoration: none;
-      }
-
-      img {
-        width: 100%;
-      }
-
-      .item-info {
-        .item-info-row {
-          display: flex;
-          font-size: 20px;
-          margin-bottom: -8px;
-
-          .left {
-            font-weight: bold;
-          }
-
-          .right {
-            margin-left: auto;
-            font-weight: 300;
-          }
-        }
-      }
-    }
   }
 
   #bottom-bar {

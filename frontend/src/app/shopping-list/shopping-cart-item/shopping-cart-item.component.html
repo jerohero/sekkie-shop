@@ -1,11 +1,17 @@
-<a class="itemCard">
-  <div class="img-wrapper">
-    <img [src]="item.primaryImagePath" alt="{{ item.name }}">
-  </div>
-  <div class="infoWrapper">
-    <h4>{{ item.name }}</h4>
-    <p>{{ item.price }}</p>
-    <p>Size: {{ item.selectedSize }}</p>
-    <p>Color: {{ item.selectedColor }}</p>
+<a class="shopping-cart-item" [routerLink]="['../' + item.id]">
+  <img [src]="item.primaryImagePath" alt="{{ item.name }}">
+  <div class="item-info">
+    <div class="item-info-row">
+      <p class="left">{{ item.name }}</p>
+      <p class="right">${{ item.price }}</p>
+    </div>
+    <div class="item-info-row">
+      <p class="left">{{ item.selectedSize }}</p>
+      <p class="right">{{ item.selectedColor }}</p>
+    </div>
+    <div class="item-info-row">
+      <p class="left">amount</p>
+      <p class="right">{{ item.selectedAmount }}</p>
+    </div>
   </div>
 </a>
