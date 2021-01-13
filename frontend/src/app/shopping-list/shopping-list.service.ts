@@ -25,6 +25,12 @@ export class ShoppingListService {
     this.shoppingCartChanged.next(this.shoppingCartItems.slice());
   }
 
+  removeItem(item): void {
+    this.shoppingCartItems.splice(this.shoppingCartItems.indexOf(item), 1);
+    this.shoppingCartChanged.next(this.shoppingCartItems.slice());
+    localStorage.setItem('cart', JSON.stringify(this.shoppingCartItems));
+  }
+
   addItem(item: Item, {selectedSize, selectedColor}) {
     const shoppingCartItem = new ShoppingCartItem(
       item.id,

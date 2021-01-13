@@ -1,10 +1,16 @@
 <div class="shopping-cart-item">
-  <a [routerLink]="['../' + item.id]">
-    <img [src]="item.primaryImagePath" alt="{{ item.name }}">
-  </a>
+  <div class="image-wrapper" (mouseleave)="showRemove = false">
+    <div *ngIf="showRemove" class="remove-item" (click)="removeItem()">
+      <p>remove</p>
+    </div>
+    <a (mouseenter)="showRemove = true"
+       [routerLink]="['../' + item.id]">
+      <img [src]="item.primaryImagePath" alt="{{ item.name }}">
+    </a>
+  </div>
   <div class="item-info">
     <div class="item-info-row">
-      <p class="left">{{ item.name }}</p>
+      <a [routerLink]="['../' + item.id]" class="left">{{ item.name }}</a>
       <p class="right">${{ item.price }}</p>
     </div>
     <div class="item-info-row">

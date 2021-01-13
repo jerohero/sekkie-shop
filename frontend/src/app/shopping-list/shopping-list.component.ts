@@ -25,6 +25,14 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
       );
   }
 
+  calculateTotalPrice(): number {
+    let total = 0;
+    this.slService.getItems().forEach((item) => {
+      total = total + item.price * item.selectedAmount;
+    });
+    return total;
+  }
+
   ngOnDestroy(): void {
     this.itemsChangedSub.unsubscribe();
   }
