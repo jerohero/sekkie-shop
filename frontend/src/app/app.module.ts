@@ -17,6 +17,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 import { ItemListComponent } from './shop/item-list/item-list.component';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './shop/sidebar/sidebar.component';
+import { SearchComponent } from './shop/sidebar/search/search.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SidebarComponent } from './shop/sidebar/sidebar.component';
     ShoppingCartItemComponent,
     LoginComponent,
     SidebarComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

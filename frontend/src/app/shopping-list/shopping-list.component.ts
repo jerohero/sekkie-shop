@@ -3,6 +3,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ShoppingListService } from './shopping-list.service';
 import { Subscription } from 'rxjs';
 import { ShoppingCartItem } from './shopping-cart-item.model';
+import {ShopService} from '../shop/shop.service';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-shopping-list',

@@ -3,6 +3,8 @@ import {Item} from '../../shared/item.model';
 import {ItemService} from '../../shared/item.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataAccessService} from '../../shared/data-access.service';
+import {ShopService} from '../shop.service';
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -12,11 +14,13 @@ import {DataAccessService} from '../../shared/data-access.service';
 })
 export class ItemListComponent implements OnInit {
   items: Item[];
+  private itemsFilteredSub: Subscription;
 
   constructor(private itemService: ItemService,
               private router: Router,
               private route: ActivatedRoute,
-              private dataAccessService: DataAccessService) {
+              private dataAccessService: DataAccessService,
+              private shopService: ShopService) {
   }
 
   ngOnInit() {
@@ -26,8 +30,12 @@ export class ItemListComponent implements OnInit {
       .subscribe((items) => {
         this.items = items;
       });
-
     this.items = this.itemService.getItems();
+
+    this.itemsFilteredSub = this.shopService.itemsFiltered
+      .subscribe((filteredItems) => {
+        this.items = filteredItems;
+      });
   }
 
   onNewItem() {
