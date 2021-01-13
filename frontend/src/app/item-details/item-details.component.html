@@ -1,6 +1,6 @@
 <div id="details" *ngIf="item">
   <div id="images">
-    <div id="secondary">
+    <div id="side-images">
       <ul>
         <li (mouseover)="showPrimaryImage()">
           <img src="{{ item.primaryImagePath }}" alt="Primary image">
@@ -10,28 +10,30 @@
         </li>
       </ul>
     </div>
-    <div id="primary">
+    <div id="showcase-image">
       <img [src]="[showcasedImg]" alt="{{item.name}} image">
     </div>
   </div>
   <div id="content">
-    <h1>{{ item.name }}</h1>
-    <p>{{ item.description }}</p>
+    <header>
+      <h1 id="title">{{ item.name }}</h1>
+      <p id="price">${{ item.price }}</p>
+    </header>
 
     <div id="options">
       <div id="size">
-        <p class="{{ showNoSizeSelectedError && !selectedSize ? 'redText' : '' }}">Size</p>
+        <p class="{{ showNoSizeSelectedError && !selectedSize ? 'red-text' : '' }}">size</p>
         <div id="sizes">
           <button *ngFor="let size of item.sizes" (click)="onSizeClicked(size)"
-                  class="{{ size === selectedSize ? 'selectedOptionBox' : '' }} {{ showNoSizeSelectedError && !selectedSize ? 'noOptionSelected' : '' }}">
+                  class="{{ size === selectedSize ? 'selected-option-box' : '' }} {{ showNoSizeSelectedError && !selectedSize ? 'no-option-selected' : '' }}">
             {{ size }} </button>
         </div>
       </div>
       <div id="color">
-        <p class="{{ showNoColorSelectedError && !selectedColor ? 'redText' : '' }}">Color</p>
+        <p class="{{ showNoColorSelectedError && !selectedColor ? 'red-text' : '' }}">color</p>
         <div id="colors">
           <button *ngFor="let color of item.colors" (click)="onColorClicked(color)"
-                  class="{{ color === selectedColor ? 'selectedOptionBox' : '' }} {{ showNoColorSelectedError && !selectedColor ? 'noOptionSelected' : '' }}">
+                  class="{{ color === selectedColor ? 'selected-option-box' : '' }} {{ showNoColorSelectedError && !selectedColor ? 'no-option-selected' : '' }}">
             {{ color }} </button>
         </div>
       </div>
@@ -43,9 +45,7 @@
 <!--          <button (click)="onPlusAmountClicked()">+</button>-->
 <!--        </div>-->
 <!--      </div>-->
-
+      <button id="buy" (click)="onBuy()">add to cart</button>
     </div>
-
-    <button id="buyBtn" (click)="onBuy()">Buy now</button>
   </div>
 </div>

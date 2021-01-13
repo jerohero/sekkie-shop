@@ -1,30 +1,31 @@
 $selected-size: #636F7A;
 
 * {
-  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 #details {
-  padding-top: 80px;
-  width: 100%;
+  padding-top: 87px;
   display: flex;
 
   #images {
-    width: 55%;
-    display: grid;
-    grid-template-columns: 15% 85%;
+    width: 845px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 51px;
 
-    #primary {
+    #showcase-image {
       display: flex;
-      align-items: center;
       justify-content: center;
 
       img {
-        width: 100%;
+        width: 719px;
         animation: ease-in-out 0.2s;
       }
     }
-    #secondary {
+    #side-images {
+      width: 126px;
       height: auto;
       overflow-y: auto;
 
@@ -43,50 +44,58 @@ $selected-size: #636F7A;
   }
 
   #content {
-    width: 45%;
-    padding: 50px 100px;
+    padding: 70px 65px;
 
-    h1 {
-      font-size: 40px;
-      color: black;
+    header {
+      #title {
+        max-width: 600px;
+        text-align: center;
+        font-size: 50px;
+        font-weight: 600;
+        color: #222222;
+      }
+
+      #price {
+        margin-top: -6px;
+        font-size: 30px;
+        text-align: center;
+      }
     }
 
     #options {
-      margin-top: 50px;
+      margin-top: 38px;
       margin-bottom: 100px;
 
-      .redText {
-        color: red;
+      .red-text {
+        color: #ff4949;
       }
 
-      #color, #size, #amount {
+      #color, #size {
         display: flex;
-        grid-template-rows: 1fr;
-        margin-bottom: 15px;
+        margin-bottom: 28px;
 
         p {
-          display: flex;
-          align-items: center;
-          font-size: 18px;
-          margin: 0 20px 0 0;
+          font-size: 30px;
+          //margin: 0 20px 0 0;
+          width: 126px;
         }
 
         #colors, #sizes {
           display: flex;
 
           button {
+            height: 100%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            height: 35px;
             min-width: 30px;
-            background-color: #EFEFEF;
-            border: #EFEFEF 2px solid;
-            margin-right: 3px;
+            background: none;
+            border: none;
             transition: border-color 0.2s ease;
+            font-size: 30px;
+            font-weight: 300;
 
             &:hover {
-              border-color: $selected-size;
+              font-weight: 400;
             }
 
             &:focus {
@@ -94,13 +103,25 @@ $selected-size: #636F7A;
             }
           }
 
-          .noOptionSelected {
-            color: red;
+          .no-option-selected {
+            color: #ff2727;
           }
 
-          .selectedOptionBox {
-            color: $selected-size;
-            border-color: $selected-size;
+          .selected-option-box {
+            font-weight: 600;
+          }
+        }
+
+        #sizes {
+          button {
+            margin-right: 21px;
+          }
+        }
+
+        #colors {
+          flex-direction: column;
+          button {
+            margin-bottom: 5px;
           }
         }
 
@@ -131,12 +152,15 @@ $selected-size: #636F7A;
       }
     }
 
-    #buyBtn {
+    #buy {
+      margin-top: 35px;
+      width: 100%;
+      text-align: left;
       background-color: black;
       color: white;
       border: none;
-      padding: 10px 10px 10px 50px;
-      font-size: 18px;
+      padding: 10px 10px 10px 15px;
+      font-size: 22px;
     }
   }
 }
