@@ -1,7 +1,126 @@
-<div class="row" style="padding: 100px">
-  <div class="col-xs-10">
-    <ul class="list-group">
-      <app-shopping-cart-item [item]="item" *ngFor="let item of shoppingCartItems"></app-shopping-cart-item>
-    </ul>
+<div id="shopping-cart-wrapper">
+  <header>
+    <h1>shopping cart</h1>
+    <h4>8 items</h4>
+  </header>
+  <div id="shopping-cart-items">
+    <a class="shopping-cart-item">
+      <img src="https://i.imgur.com/QxOOevb.png" alt="item">
+      <div class="item-info">
+        <div class="item-info-row">
+          <p class="left">warm jacket</p>
+          <p class="right">$60</p>
+        </div>
+        <div class="item-info-row">
+          <p class="left">XL</p>
+          <p class="right">olive</p>
+        </div>
+        <div class="item-info-row">
+          <p class="left">amount</p>
+          <p class="right">3</p>
+        </div>
+      </div>
+    </a>
+    <a class="shopping-cart-item">
+      <img src="https://i.imgur.com/QxOOevb.png" alt="item">
+      <div class="item-info">
+        <div class="item-info-row">
+          <p class="left">warm jacket</p>
+          <p class="right">$60</p>
+        </div>
+        <div class="item-info-row">
+          <p class="left">XL</p>
+          <p class="right">olive</p>
+        </div>
+        <div class="item-info-row">
+          <p class="left">amount</p>
+          <p class="right">3</p>
+        </div>
+      </div>
+    </a>
+    <a class="shopping-cart-item">
+      <img src="https://i.imgur.com/QxOOevb.png" alt="item">
+      <div class="item-info">
+        <div class="item-info-row">
+          <p class="left">warm jacket</p>
+          <p class="right">$60</p>
+        </div>
+        <div class="item-info-row">
+          <p class="left">XL</p>
+          <p class="right">olive</p>
+        </div>
+        <div class="item-info-row">
+          <p class="left">amount</p>
+          <p class="right">3</p>
+        </div>
+      </div>
+    </a>
+    <a class="shopping-cart-item">
+      <img src="https://i.imgur.com/QxOOevb.png" alt="item">
+      <div class="item-info">
+        <div class="item-info-row">
+          <p class="left">warm jacket</p>
+          <p class="right">$60</p>
+        </div>
+        <div class="item-info-row">
+          <p class="left">XL</p>
+          <p class="right">olive</p>
+        </div>
+        <div class="item-info-row">
+          <p class="left">amount</p>
+          <p class="right">3</p>
+        </div>
+      </div>
+    </a>
+    <a class="shopping-cart-item">
+      <img src="https://i.imgur.com/QxOOevb.png" alt="item">
+      <div class="item-info">
+        <div class="item-info-row">
+          <p class="left">warm jacket</p>
+          <p class="right">$60</p>
+        </div>
+        <div class="item-info-row">
+          <p class="left">XL</p>
+          <p class="right">olive</p>
+        </div>
+        <div class="item-info-row">
+          <p class="left">amount</p>
+          <p class="right">3</p>
+        </div>
+      </div>
+    </a>
+    <a class="shopping-cart-item">
+      <img src="https://i.imgur.com/QxOOevb.png" alt="item">
+      <div class="item-info">
+        <div class="item-info-row">
+          <p class="left">warm jacket</p>
+          <p class="right">$60</p>
+        </div>
+        <div class="item-info-row">
+          <p class="left">XL</p>
+          <p class="right">olive</p>
+        </div>
+        <div class="item-info-row">
+          <p class="left">amount</p>
+          <p class="right">3</p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div id="bottom-bar">
+    <div class="bottom-bar-column">
+      <button id="back">go back</button>
+    </div>
+    <div class="bottom-bar-column">
+      <div id="bottom-bar-middle">
+        <p id="total-shipping">total 325 USD</p>
+        <p id="total-disclaimer">* excluding shipping</p>
+      </div>
+    </div>
+    <div class="bottom-bar-column">
+      <button id="checkout">checkout</button>
+    </div>
   </div>
 </div>
+
+<!--<app-shopping-cart-item [item]="item" *ngFor="let item of shoppingCartItems"></app-shopping-cart-item>-->
