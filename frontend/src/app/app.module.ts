@@ -16,6 +16,7 @@ import { ShoppingCartItemComponent } from './shopping-list/shopping-cart-item/sh
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { ItemListComponent } from './shop/item-list/item-list.component';
 import { LoginComponent } from './login/login.component';
+import { SidebarComponent } from './shop/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LoginComponent } from './login/login.component';
     UnknownPageComponent,
     ShoppingCartItemComponent,
     LoginComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
