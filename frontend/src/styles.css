@@ -8,7 +8,7 @@
   padding: 0;
 }
 
-p, a, h1, h2, h3, h4, button, label {
+p, a, h1, h2, h3, h4, button, label, span {
   text-transform: uppercase;
   font-family: 'Roboto Condensed', sans-serif;
   line-height: 1.6;

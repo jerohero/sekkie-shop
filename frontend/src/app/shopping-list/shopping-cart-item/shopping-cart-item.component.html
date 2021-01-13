@@ -19,7 +19,10 @@
     </div>
     <div class="item-info-row">
       <p class="left">amount</p>
-      <p class="right">{{ item.selectedAmount }}</p>
+      <div class="right amount-selector">
+        <button (click)="minusAmount()">-</button>
+        <p>{{ item.selectedAmount }}</p>
+        <button (click)="plusAmount()">+</button>
     </div>
   </div>
 </div>

@@ -16,6 +16,10 @@ export class ShoppingListService {
     }
   }
 
+  updateLocalStorageCart(): void {
+    localStorage.setItem('cart', JSON.stringify(this.shoppingCartItems));
+  }
+
   getItems() {
     return this.shoppingCartItems.slice();
   }
@@ -28,7 +32,7 @@ export class ShoppingListService {
   removeItem(item): void {
     this.shoppingCartItems.splice(this.shoppingCartItems.indexOf(item), 1);
     this.shoppingCartChanged.next(this.shoppingCartItems.slice());
-    localStorage.setItem('cart', JSON.stringify(this.shoppingCartItems));
+    this.updateLocalStorageCart();
   }
 
   addItem(item: Item, {selectedSize, selectedColor}) {
@@ -43,6 +47,6 @@ export class ShoppingListService {
       1);
     this.shoppingCartItems.push(shoppingCartItem);
     this.shoppingCartChanged.next(this.shoppingCartItems.slice());
-    localStorage.setItem('cart', JSON.stringify(this.shoppingCartItems));
+    this.updateLocalStorageCart();
   }
 }

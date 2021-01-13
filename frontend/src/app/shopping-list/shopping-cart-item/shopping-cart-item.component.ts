@@ -21,4 +21,16 @@ export class ShoppingCartItemComponent implements OnInit {
     this.shoppingListService.removeItem(this.item);
   }
 
+  plusAmount(): void {
+    this.item.selectedAmount++;
+    this.shoppingListService.updateLocalStorageCart();
+  }
+
+  minusAmount(): void {
+    if (this.item.selectedAmount >= 2) {
+      this.item.selectedAmount--;
+      this.shoppingListService.updateLocalStorageCart();
+    }
+  }
+
 }
