@@ -1,7 +1,7 @@
 <div id="shopping-cart-wrapper">
   <header>
     <h1>shopping cart</h1>
-    <h4>8 items</h4>
+    <h4>{{shoppingCartItems.length}} item{{shoppingCartItems.length === 1 ? '' : 's'}}</h4>
   </header>
   <div id="shopping-cart-items">
     <app-shopping-cart-item *ngFor="let item of shoppingCartItems" [item]="item"></app-shopping-cart-item>

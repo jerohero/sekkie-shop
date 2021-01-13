@@ -1,5 +1,7 @@
-<a class="shopping-cart-item" [routerLink]="['../' + item.id]">
-  <img [src]="item.primaryImagePath" alt="{{ item.name }}">
+<div class="shopping-cart-item">
+  <a [routerLink]="['../' + item.id]">
+    <img [src]="item.primaryImagePath" alt="{{ item.name }}">
+  </a>
   <div class="item-info">
     <div class="item-info-row">
       <p class="left">{{ item.name }}</p>
@@ -14,4 +16,4 @@
       <p class="right">{{ item.selectedAmount }}</p>
     </div>
   </div>
-</a>
+</div>
