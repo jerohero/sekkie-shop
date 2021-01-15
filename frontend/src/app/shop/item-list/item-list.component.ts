@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Item} from '../../shared/item.model';
 import {ItemService} from '../../shared/item.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {DataAccessService} from '../../shared/data-access.service';
+import {ItemAccessService} from '../../shared/item-access.service';
 import {ShopService} from '../shop.service';
 import {Subscription} from 'rxjs';
 
@@ -19,7 +19,7 @@ export class ItemListComponent implements OnInit {
   constructor(private itemService: ItemService,
               private router: Router,
               private route: ActivatedRoute,
-              private dataAccessService: DataAccessService,
+              private dataAccessService: ItemAccessService,
               private shopService: ShopService) {
   }
 

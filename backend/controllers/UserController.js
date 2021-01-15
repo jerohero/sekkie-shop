@@ -61,7 +61,7 @@ exports.authenticateUser = async (req, res) => {
                }
             });
         } else {
-            return res.status(401).json({ success: false, message: 'Wrong password' })
+            return res.status(401).json({ success: false, message: 'WRONG_CREDENTIALS' })
         }
 
     });
@@ -70,15 +70,15 @@ exports.authenticateUser = async (req, res) => {
 // Create one user
 exports.createUser = async (req, res) => {
     if (!req.body.email || req.body.email.length <= 0) {
-        res.status(400).json({ message: 'An email is required.' });
+        res.status(400).json({ message: 'NO_EMAIL' });
         return;
     } else if (!req.body.password || req.body.password.length <= 0) {
-        res.status(400).json({ message: 'A password is required.' });
+        res.status(400).json({ message: 'NO_PASSWORD' });
         return;
     }
     // middleware found an account with same email address
     if (res.user) {
-        res.status(409).json({ message: 'This email address is already in use. Please try another email address.' });
+        res.status(409).json({ message: 'EMAIL_IN_USE' });
         return;
     }
 

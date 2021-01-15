@@ -3,7 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ItemService } from '../shared/item.service';
 import { Item } from '../shared/item.model';
-import {DataAccessService} from '../shared/data-access.service';
+import {ItemAccessService} from '../shared/item-access.service';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class ItemDetailsComponent implements OnInit {
   constructor(private itemService: ItemService,
               private route: ActivatedRoute,
               private router: Router,
-              private dataAccessService: DataAccessService) {
+              private dataAccessService: ItemAccessService) {
   }
 
   ngOnInit(): void {

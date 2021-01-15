@@ -1,25 +1,26 @@
 <div id="overlay" #overlay>
   <div id="login-container">
+    <p *ngIf="error">{{ error }}</p>
     <div id="login">
       <h3>login</h3>
-      <div class="login-form">
-        <label for="login-email">email address *</label>
-        <input class="login-input" type="email" id="login-email">
-        <label for="login-password">password *</label>
-        <input class="login-input" type="password" id="login-password">
-        <button>log in</button>
-      </div>
+      <form #loginForm="ngForm" class="login-form" (ngSubmit)="onLogin(loginForm)">
+        <label for="loginEmail">email address *</label>
+        <input class="login-input form-control" type="email" id="loginEmail" name="loginEmail" ngModel required email>
+        <label for="loginPassword">password *</label>
+        <input class="login-input form-control" type="password" id="loginPassword" name="loginPassword" ngModel required>
+        <button [disabled]="!loginForm.valid">log in</button>
+      </form>
     </div>
     <span class="vertical-line"></span>
     <div id="register">
       <h3>register</h3>
-      <div class="login-form">
-        <label for="register-email">email address *</label>
-        <input class="login-input" type="email" id="register-email">
-        <label for="register-password">password *</label>
-        <input class="login-input" type="password" id="register-password">
-        <button>register</button>
-      </div>
+      <form #registerForm="ngForm" class="login-form" (ngSubmit)="onRegister(registerForm)">
+        <label for="registerEmail">email address *</label>
+        <input class="form-control" type="email" id="registerEmail" name="registerEmail" ngModel required email>
+        <label for="registerPassword">password *</label>
+        <input class="form-control" type="password" id="registerPassword" name="registerPassword" ngModel required  minlength="4">
+        <button [disabled]="!registerForm.valid">register</button>
+      </form>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import {DataAccessService} from '../../shared/data-access.service';
+import {ItemAccessService} from '../../shared/item-access.service';
 import {ItemService} from '../../shared/item.service';
 
 @Component({

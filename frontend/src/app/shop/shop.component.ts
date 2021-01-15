@@ -2,7 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 
 import { Item } from '../shared/item.model';
 import { ItemService } from '../shared/item.service';
-import {DataAccessService} from '../shared/data-access.service';
+import {ItemAccessService} from '../shared/item-access.service';
 
 @Component({
   selector: 'app-items',

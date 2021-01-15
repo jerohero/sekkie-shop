@@ -4,7 +4,7 @@ import { Item } from './item.model';
 import {ItemService} from './item.service';
 
 @Injectable({providedIn: 'root'})
-export class DataAccessService {
+export class ItemAccessService {
   constructor(private http: HttpClient, private itemService: ItemService) { }
 
   fetchItems() {
