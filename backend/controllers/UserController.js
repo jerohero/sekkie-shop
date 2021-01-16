@@ -41,7 +41,7 @@ exports.authenticateUser = async (req, res) => {
     const user = res.user;
 
     if (!user) {
-        return res.status(404).json({ message: 'Cannot find user' });
+        return res.status(404).json({ success: false, message: 'NO_MATCH' });
     }
 
     bcrypt.compare(password, res.user.password, (err, isMatch) => {
@@ -69,6 +69,7 @@ exports.authenticateUser = async (req, res) => {
 
 // Create one user
 exports.createUser = async (req, res) => {
+    console.log(req.body);
     if (!req.body.email || req.body.email.length <= 0) {
         res.status(400).json({ message: 'NO_EMAIL' });
         return;
@@ -89,9 +90,17 @@ exports.createUser = async (req, res) => {
             // if (err) throw err;
             user.password = hash;
 
+            const token = jwt.sign({data:user}, process.env.SECRET, {
+                expiresIn: 604800 // 1 week
+            });
+
             try {
                 user.save();
-                res.status(201).json({ newUser: user });
+                res.status(201).json({
+                    success: true,
+                    token: 'JWT ' + token,
+                    user: user
+                });
             } catch (err) {
                 res.status(400).json({ message: err.message });
             }

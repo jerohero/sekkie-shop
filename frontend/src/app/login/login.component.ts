@@ -2,6 +2,7 @@ import {Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, ViewChil
 import {NgForm} from '@angular/forms';
 import {AuthService} from './auth.service';
 import {UserAccessService} from '../shared/user-access.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   @Output() loginClose = new EventEmitter<void>();
   error: string;
 
-  constructor(private renderer: Renderer2, private userAccessService: UserAccessService, private authService: AuthService) { }
+  constructor(private renderer: Renderer2, private userAccessService: UserAccessService,
+              private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.initOutsideClickListener();
@@ -27,17 +29,24 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onRegister(form: NgForm): void {
+  validateForm(form: NgForm): boolean {
     if (!form.valid) {
       console.log('Form not valid');
-      return;
+      return false;
     }
+    return true;
+  }
+
+  onRegister(form: NgForm): void {
+    const formValid = this.validateForm(form);
+    if (!formValid) { return; }
     const email = form.value.registerEmail;
     const password = form.value.registerPassword;
 
     this.authService.signup(email, password)
-      .subscribe((newUser) => {
-        console.log(newUser);
+      .subscribe((user) => {
+        console.log(user);
+        // this.router.navigate(['/account']);
       }, errorMsg => {
         console.log(errorMsg);
         this.error = errorMsg;
@@ -47,6 +56,20 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form: NgForm): void {
+    const formValid = this.validateForm(form);
+    if (!formValid) { return; }
+    const email = form.value.loginEmail;
+    const password = form.value.loginPassword;
+
+    this.authService.login(email, password)
+      .subscribe((user) => {
+        this.loginClose.emit();
+      }, errorMsg => {
+        console.log(errorMsg);
+        this.error = errorMsg;
+      });
+
+    form.reset();
   }
 
 }
