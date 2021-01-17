@@ -1,4 +1,4 @@
-<div id="account-wrapper">
+<div *ngIf="user" id="account-wrapper">
   <h1>my account</h1>
   <div id="account-info-container">
     <div class="account-info">
@@ -10,11 +10,11 @@
           <div class="account-info-row">
             <div class="account-info-column">
               <p class="info-header">email</p>
-              <p class="info-value">johndoe@gmail.com</p>
+              <p class="info-value">{{ user.email }}</p>
             </div>
             <div class="account-info-column column-right">
               <p class="info-header">role</p>
-              <p class="info-value">admin</p>
+              <p class="info-value">{{ user.role | role }}</p>
             </div>
           </div>
         </div>

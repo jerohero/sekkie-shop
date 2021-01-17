@@ -56,8 +56,10 @@ exports.authenticateUser = async (req, res) => {
                token: 'JWT ' + token,
                user: {
                    id: user._id,
-                   name: user.name,
-                   email: user.email
+                   email: user.email,
+                   role: user.role,
+                   firstName: user.firstName,
+                   lastName: user.lastName
                }
             });
         } else {
@@ -82,7 +84,6 @@ exports.createUser = async (req, res) => {
         res.status(409).json({ message: 'EMAIL_IN_USE' });
         return;
     }
-
     const user = new User(req.body);
 
     bcrypt.genSalt(10, (err, salt) => {

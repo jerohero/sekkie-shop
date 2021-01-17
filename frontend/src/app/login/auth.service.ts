@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {BehaviorSubject, Observable, Subject, throwError} from 'rxjs';
-import {User} from '../shared/user.model';
+import {User, UserAddress} from '../shared/user.model';
 import {AuthResponseData, UserAccessService} from '../shared/user-access.service';
 import {catchError, tap} from 'rxjs/operators';
 
@@ -15,25 +15,35 @@ export class AuthService {
   signup(email: string, password: string): Observable<AuthResponseData> {
     return this.userAccessService.registerUser(email, password)
       .pipe(catchError(this.handleError), tap((resData) => {
-        this.handleAuthentication(resData.user.email, resData.user.id, resData.token.id);
+        this.handleAuthentication(
+          resData.user.email, resData.user.id, resData.user.firstName,
+          resData.user.lastName, resData.user.role, resData.user.address, resData.token.id);
       }));
   }
 
   login(email: string, password: string): Observable<AuthResponseData> {
     return this.userAccessService.loginUser(email, password)
       .pipe(catchError(this.handleError), tap((resData) => {
-        this.handleAuthentication(resData.user.email, resData.user.id, resData.token.id);
+        console.log(resData);
+        this.handleAuthentication(
+          resData.user.email, resData.user.id, resData.user.firstName,
+          resData.user.lastName, resData.user.role, resData.user.address, resData.token.id);
       }));
   }
 
-  handleAuthentication(email: string, userId: string, token: string) {
+  handleAuthentication(
+    email: string, userId: string, firstName: string, lastName: string, role: string, address: UserAddress, token: string
+  ) {
     // const expirationDate = new Date(
     //   new Date().getTime() + +expiresIn * 1000
     // );
     const user = new User(
       userId,
       email,
-      name,
+      firstName,
+      lastName,
+      role,
+      address,
       token,
       // expirationDate
     );

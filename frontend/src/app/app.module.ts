@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './shop/sidebar/sidebar.component';
 import { SearchComponent } from './shop/sidebar/search/search.component';
 import { AccountComponent } from './account/account.component';
+import {RolePipe} from './shared/pipes/role.pipe';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AccountComponent } from './account/account.component';
     SidebarComponent,
     SearchComponent,
     AccountComponent,
+    RolePipe,
   ],
   imports: [
     BrowserModule,

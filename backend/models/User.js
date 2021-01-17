@@ -10,8 +10,30 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    name: {
+    role: {
+        type: String,
+        default: 'ROLE_USER',
+        required: true
+    },
+    firstName: {
         type: String
+    },
+    lastName: {
+        type: String
+    },
+    address: {
+        streetAndHouseNumber: {
+            type: String
+        },
+        postalCode: {
+            type: String
+        },
+        city: {
+            type: String
+        },
+        country: {
+            type: String
+        }
     }
 });
 
