@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ItemService} from '../../../shared/item.service';
+import {ItemService} from '../../../shared/services/item.service';
 import {ShopService} from '../../shop.service';
-import {Item} from '../../../shared/item.model';
+import {Item} from '../../../shared/models/item.model';
 
 @Component({
   selector: 'app-search',

@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, Output} from '@angular/core';
 
-import { Item } from '../../../shared/item.model';
+import { Item } from '../../../shared/models/item.model';
 
 @Component({
   selector: 'app-item-list-item',

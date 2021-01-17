@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {BehaviorSubject, Observable, Subject, throwError} from 'rxjs';
-import {User, UserAddress} from '../shared/user.model';
+import {User, UserAddress} from '../shared/models/user.model';
 import {AuthResponseData, UserAccessService} from '../shared/user-access.service';
 import {catchError, tap} from 'rxjs/operators';
 

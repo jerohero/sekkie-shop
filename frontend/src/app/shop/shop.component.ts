@@ -1,7 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 
-import { Item } from '../shared/item.model';
-import { ItemService } from '../shared/item.service';
+import { Item } from '../shared/models/item.model';
+import { ItemService } from '../shared/services/item.service';
 import {ItemAccessService} from '../shared/item-access.service';
 
 @Component({

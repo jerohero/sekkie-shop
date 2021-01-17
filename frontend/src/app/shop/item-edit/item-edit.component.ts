@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import {ItemAccessService} from '../../shared/item-access.service';
-import {ItemService} from '../../shared/item.service';
+import {ItemService} from '../../shared/services/item.service';
 
 @Component({
   selector: 'app-item-edit',

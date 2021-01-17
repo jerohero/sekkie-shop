@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import { Item } from './item.model';
-import {ItemService} from './item.service';
+import { Item } from './models/item.model';
+import {ItemService} from './services/item.service';
 import {Observable, pipe, throwError} from 'rxjs';
-import {User} from './user.model';
+import {User} from './models/user.model';
 import {catchError, tap} from 'rxjs/operators';
 
 export interface AuthResponseData {
@@ -24,4 +24,8 @@ export class UserAccessService {
     const body = { email, password };
     return this.http.post<AuthResponseData>('http://localhost:3000/auth/authenticate', body);
   }
+
+  // updateUser(user: User): Observable<boolean> {
+  //
+  // }
 }

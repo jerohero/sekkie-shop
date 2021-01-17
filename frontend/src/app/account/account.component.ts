@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../login/auth.service';
 import {skipWhile, take} from 'rxjs/operators';
-import {User, UserAddress} from '../shared/user.model';
+import {User, UserAddress} from '../shared/models/user.model';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -35,7 +35,6 @@ export class AccountComponent implements OnInit {
     this.user.address = this.address;
     this.user.firstName = firstName;
     this.user.lastName = lastName;
-
     console.log(this.user);
   }
 

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { ItemService } from '../shared/item.service';
-import { Item } from '../shared/item.model';
+import { ItemService } from '../shared/services/item.service';
+import { Item } from '../shared/models/item.model';
 import {ItemAccessService} from '../shared/item-access.service';
 
 

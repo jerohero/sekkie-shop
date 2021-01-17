@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core'
 import {ShoppingListService} from '../shopping-list/shopping-list.service';
 import {AuthService} from '../login/auth.service';
 import {Subscription} from 'rxjs';
-import {User} from '../shared/user.model';
+import {User} from '../shared/models/user.model';
 
 @Component({
   selector: 'app-header',
