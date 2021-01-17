@@ -59,7 +59,8 @@ exports.authenticateUser = async (req, res) => {
                    email: user.email,
                    role: user.role,
                    firstName: user.firstName,
-                   lastName: user.lastName
+                   lastName: user.lastName,
+                   address: user.address
                }
             });
         } else {

@@ -20,6 +20,7 @@
     display: flex;
 
     .account-info {
+      width: 100%;
       background-color: #F3F3F3;
 
       header {
@@ -33,7 +34,7 @@
         }
       }
 
-      .account-info-content {
+      .account-info-form {
         padding: 30px 63px 42px 63px;
 
         #static-details {

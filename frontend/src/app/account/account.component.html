@@ -5,7 +5,7 @@
       <header>
         <h2>details</h2>
       </header>
-      <div class="account-info-content">
+      <form #accountInfoForm="ngForm" class="account-info-form" (ngSubmit)="onUpdateAccountInfo(accountInfoForm)">
         <div id="static-details">
           <div class="account-info-row">
             <div class="account-info-column">
@@ -23,22 +23,22 @@
           <div class="account-info-column half-column">
             <label class="info-label" for="firstName">
               first name
-              <input type="text" id="firstName" >
+              <input type="text" id="firstName" name="firstName" class="form-control" [(ngModel)]="user.firstName">
             </label>
           </div>
           <div class="account-info-column column-right half-column">
             <label class="info-label" for="lastName">
               last name
-              <input type="text" id="lastName">
+              <input type="text" id="lastName" name="lastName" class="form-control" [(ngModel)]="user.lastName">
             </label>
           </div>
         </div>
 
         <div class="account-info-row">
           <div class="account-info-column full-column">
-            <label class="info-label" for="street">
+            <label class="info-label" for="streetAndHouseNumber">
               street and house number
-              <input type="text" id="street" >
+              <input type="text" id="streetAndHouseNumber" name="streetAndHouseNumber" class="form-control" [(ngModel)]="user.address.streetAndHouseNumber">
             </label>
           </div>
         </div>
@@ -47,13 +47,13 @@
           <div class="account-info-column half-column">
             <label class="info-label" for="postalCode">
               postal code
-              <input type="text" id="postalCode" >
+              <input type="text" id="postalCode" name="postalCode" class="form-control" [(ngModel)]="user.address.postalCode">
             </label>
           </div>
           <div class="account-info-column column-right half-column">
             <label class="info-label" for="city">
               city
-              <input type="text" id="city">
+              <input type="text" id="city" name="city" class="form-control" [(ngModel)]="user.address.city">
             </label>
           </div>
         </div>
@@ -62,7 +62,7 @@
           <div class="account-info-column full-column">
             <label class="info-label" for="country">
               country
-              <input type="text" id="country" >
+              <input type="text" id="country" name="country" class="form-control" [(ngModel)]="user.address.country">
             </label>
           </div>
         </div>
@@ -70,7 +70,7 @@
         <div id="submit-update">
           <button>update</button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
