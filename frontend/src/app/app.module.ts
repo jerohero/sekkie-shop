@@ -18,6 +18,7 @@ import { ItemListComponent } from './shop/item-list/item-list.component';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './shop/sidebar/sidebar.component';
 import { SearchComponent } from './shop/sidebar/search/search.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { SearchComponent } from './shop/sidebar/search/search.component';
     LoginComponent,
     SidebarComponent,
     SearchComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,

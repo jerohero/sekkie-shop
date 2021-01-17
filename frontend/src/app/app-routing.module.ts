@@ -7,6 +7,7 @@ import { ItemEditComponent } from './shop/item-edit/item-edit.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { UnknownPageComponent } from './unknown-page/unknown-page.component';
 import { LoginComponent } from './login/login.component';
+import {AccountComponent} from './account/account.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/shop', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
   ] },
   { path: 'shopping-list', component: ShoppingListComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'account', component: AccountComponent },
   { path: '404', component: UnknownPageComponent },
   { path: ':id', component: ItemDetailsComponent },
   { path: '**', redirectTo: '/shop' }
