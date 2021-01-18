@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {UserAccessService} from '../shared/user-access.service';
-import {User} from '../shared/models/user.model';
+import {UserAccessService} from '../user-access.service';
+import {User} from '../models/user.model';
 
 @Injectable({providedIn: 'root'})
-export class AccountService {
+export class UserService {
 
   constructor(private userAccessService: UserAccessService) {}
 

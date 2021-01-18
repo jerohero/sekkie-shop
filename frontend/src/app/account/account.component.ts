@@ -3,7 +3,8 @@ import {AuthService} from '../login/auth.service';
 import {skipWhile, take} from 'rxjs/operators';
 import {User, UserAddress} from '../shared/models/user.model';
 import {NgForm} from '@angular/forms';
-import {AccountService} from './account.service';
+import {UserService} from '../shared/services/user.service';
+import {DataStorageService} from '../shared/services/data-storage.service';
 
 @Component({
   selector: 'app-account',
@@ -14,10 +15,10 @@ export class AccountComponent implements OnInit {
   user: User;
   address: UserAddress;
 
-  constructor(private authService: AuthService, private accountService: AccountService) { }
+  constructor(private accountService: UserService, private dataStorageService: DataStorageService) { }
 
   ngOnInit(): void {
-    this.authService.user.pipe(skipWhile(user => !user), take(1))
+    this.dataStorageService.user.pipe(skipWhile(user => !user), take(1))
       .subscribe(user => {
         console.log(user);
         this.user = user;

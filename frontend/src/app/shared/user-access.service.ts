@@ -5,6 +5,7 @@ import {ItemService} from './services/item.service';
 import {Observable, pipe, throwError} from 'rxjs';
 import {User} from './models/user.model';
 import {catchError, tap} from 'rxjs/operators';
+import {GenericAccessService} from './generic-access.service';
 
 export interface AuthResponseData {
   token: string;
@@ -13,16 +14,16 @@ export interface AuthResponseData {
 
 @Injectable({providedIn: 'root'})
 export class UserAccessService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private genericAccessService: GenericAccessService) { }
 
   registerUser(email: string, password: string): Observable<AuthResponseData> {
     const body = { email, password };
-    return this.http.post<AuthResponseData>('http://localhost:3000/auth/register', body);
+    return this.genericAccessService.sendPOST<AuthResponseData>('auth/register', body, false);
   }
 
   loginUser(email: string, password: string): Observable<AuthResponseData> {
     const body = { email, password };
-    return this.http.post<AuthResponseData>('http://localhost:3000/auth/authenticate', body);
+    return this.genericAccessService.sendPOST<AuthResponseData>('auth/authenticate', body, false);
   }
 
   updateUser(user: User) {

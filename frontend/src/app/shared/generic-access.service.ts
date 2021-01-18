@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {AuthService} from '../login/auth.service';
+import {DataStorageService} from './services/data-storage.service';
 
 @Injectable({providedIn: 'root'})
 export class GenericAccessService {
   API_URL = 'http://localhost:3000/';
 
-  constructor(private http: HttpClient, private authService: AuthService) {
+  constructor(private http: HttpClient, private dataStorageService: DataStorageService) {
   }
 
   sendGET<T>(requestPath: string, tokenRequired: boolean): Observable<T> {
@@ -32,7 +33,7 @@ export class GenericAccessService {
     let authHeader = null;
     const headers = new HttpHeaders();
     const options = { headers };
-    if (tokenRequired && this.authService.user.value.token !== null) {
+    if (tokenRequired && this.dataStorageService.user.value.token !== null) {
       authHeader = 'Bearer ' + this.fetchToken();
       options.headers = options.headers.set('Authorization', authHeader);
     }
@@ -40,7 +41,7 @@ export class GenericAccessService {
   }
 
   private fetchToken(): string {
-    return this.authService.user.getValue().token; // todo to data storage
+    return this.dataStorageService.user.getValue().token;
   }
 
 }

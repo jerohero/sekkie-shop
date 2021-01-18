@@ -4,12 +4,11 @@ import {BehaviorSubject, Observable, Subject, throwError} from 'rxjs';
 import {User, UserAddress} from '../shared/models/user.model';
 import {AuthResponseData, UserAccessService} from '../shared/user-access.service';
 import {catchError, tap} from 'rxjs/operators';
+import {DataStorageService} from '../shared/services/data-storage.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  user = new BehaviorSubject<User>(null);
-
-  constructor(private http: HttpClient, private userAccessService: UserAccessService) {
+  constructor(private http: HttpClient, private userAccessService: UserAccessService, private dataStorageService: DataStorageService) {
   }
 
   signup(email: string, password: string): Observable<AuthResponseData> {
@@ -47,7 +46,7 @@ export class AuthService {
       token,
       // expirationDate
     );
-    this.user.next(user);
+    this.dataStorageService.user.next(user);
   }
 
   handleError(errorRes: HttpErrorResponse): Observable<any> {

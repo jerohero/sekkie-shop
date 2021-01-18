@@ -3,6 +3,7 @@ import {ShoppingListService} from '../shopping-list/shopping-list.service';
 import {AuthService} from '../login/auth.service';
 import {Subscription} from 'rxjs';
 import {User} from '../shared/models/user.model';
+import {DataStorageService} from '../shared/services/data-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userSub = new Subscription();
   user: User;
 
-  constructor(private slService: ShoppingListService, private authService: AuthService) {}
+  constructor(private slService: ShoppingListService, private dataStorageService: DataStorageService) {}
 
   ngOnInit(): void {
     this.shoppingCartSize = this.slService.getItems().length;
@@ -24,7 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.shoppingCartSize = data.length;
     });
 
-    this.userSub = this.authService.user
+    this.userSub = this.dataStorageService.user
       .subscribe((user) => {
         this.user = user;
       });
