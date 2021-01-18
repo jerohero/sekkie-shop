@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ShoppingListService} from './shopping-list/shopping-list.service';
 import {AuthService} from './login/auth.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,10 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.shoppingListService.fetchLocalStorageCart();
     this.authService.autoLogin();
+    this.authService.showLogin
+      .subscribe((showLogin) => {
+        this.showLogin = showLogin;
+      });
   }
 
   onNavigate(feature: string): void {

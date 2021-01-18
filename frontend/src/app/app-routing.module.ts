@@ -8,6 +8,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 import { UnknownPageComponent } from './unknown-page/unknown-page.component';
 import { LoginComponent } from './login/login.component';
 import {AccountComponent} from './account/account.component';
+import {AuthGuard} from './shared/guard/auth.guard';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/shop', pathMatch: 'full' },
@@ -17,7 +18,7 @@ const appRoutes: Routes = [
   ] },
   { path: 'shopping-list', component: ShoppingListComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'account', component: AccountComponent },
+  { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
   { path: '404', component: UnknownPageComponent },
   { path: ':id', component: ItemDetailsComponent },
   { path: '**', redirectTo: '/shop' }

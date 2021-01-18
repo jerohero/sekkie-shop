@@ -11,7 +11,6 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   @ViewChild('overlay') overlay: ElementRef;
-  @Output() loginClose = new EventEmitter<void>();
   error: string;
 
   constructor(private renderer: Renderer2, private userAccessService: UserAccessService,
@@ -24,7 +23,7 @@ export class LoginComponent implements OnInit {
   initOutsideClickListener(): void {
     this.renderer.listen('window', 'mousedown', (e: Event) => {
       if (e.target === this.overlay.nativeElement) {
-        this.loginClose.emit();
+        this.authService.showLogin.next(false);
       }
     });
   }
@@ -63,7 +62,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, password)
       .subscribe((user) => {
-        this.loginClose.emit();
+        this.authService.showLogin.next(false);
       }, errorMsg => {
         console.log(errorMsg);
         this.error = errorMsg;

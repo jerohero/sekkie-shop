@@ -13,7 +13,6 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   shoppingCartSize: number;
-  @Output() loginClick = new EventEmitter<void>();
   userSub = new Subscription();
   user: User;
 
@@ -33,7 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onLoginClicked(): void {
-    this.loginClick.emit();
+    this.authService.showLogin.next(true);
   }
 
   onLogoutClicked(): void {

@@ -8,6 +8,8 @@ import {DataStorageService} from '../shared/services/data-storage.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
+  showLogin = new Subject<boolean>();
+
   constructor(private http: HttpClient, private userAccessService: UserAccessService, private dataStorageService: DataStorageService) {
   }
 
