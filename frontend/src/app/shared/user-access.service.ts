@@ -37,6 +37,6 @@ export class UserAccessService {
       token: user.token
     };
     console.log(body);
-    return this.http.put('http://localhost:3000/auth/profile', body);
+    return this.genericAccessService.sendPUT<any>('auth/profile', body, true);
   }
 }

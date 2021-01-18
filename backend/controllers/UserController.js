@@ -37,7 +37,13 @@ exports.getProfile = async (req, res) => {
 }
 
 exports.updateProfile = async (req, res) => {
-    console.log(req);
+    try {
+        const updatedUser = await res.user.set(req.body);
+        const result = await updatedUser.save();
+        res.json(result);
+    } catch (err) {
+        res.status(400).json({ message: err });
+    }
 }
 
 exports.authenticateUser = async (req, res) => {
@@ -57,7 +63,7 @@ exports.authenticateUser = async (req, res) => {
 
             res.json({
                success: true,
-               token: 'JWT ' + token,
+               token: token,
                user: {
                    id: user._id,
                    email: user.email,
@@ -104,7 +110,7 @@ exports.createUser = async (req, res) => {
                 user.save();
                 res.status(201).json({
                     success: true,
-                    token: 'JWT ' + token,
+                    token: token,
                     user: user
                 });
             } catch (err) {
