@@ -17,7 +17,7 @@ export class AuthService {
       .pipe(catchError(this.handleError), tap((resData) => {
         this.handleAuthentication(
           resData.user.email, resData.user.id, resData.user.firstName,
-          resData.user.lastName, resData.user.role, resData.user.address, resData.token.id);
+          resData.user.lastName, resData.user.role, resData.user.address, resData.token);
       }));
   }
 
@@ -27,7 +27,7 @@ export class AuthService {
         console.log(resData);
         this.handleAuthentication(
           resData.user.email, resData.user.id, resData.user.firstName,
-          resData.user.lastName, resData.user.role, resData.user.address, resData.token.id);
+          resData.user.lastName, resData.user.role, resData.user.address, resData.token);
       }));
   }
 

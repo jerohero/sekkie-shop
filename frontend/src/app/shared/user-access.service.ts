@@ -25,7 +25,17 @@ export class UserAccessService {
     return this.http.post<AuthResponseData>('http://localhost:3000/auth/authenticate', body);
   }
 
-  // updateUser(user: User): Observable<boolean> {
-  //
-  // }
+  updateUser(user: User) {
+    const body = {
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      id: user.id,
+      role: user.role,
+      address: user.address,
+      token: user.token
+    };
+    console.log(body);
+    return this.http.put('http://localhost:3000/auth/profile', body);
+  }
 }

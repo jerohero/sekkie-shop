@@ -36,6 +36,10 @@ exports.getProfile = async (req, res) => {
     res.json({user: req.user});
 }
 
+exports.updateProfile = async (req, res) => {
+    console.log(req);
+}
+
 exports.authenticateUser = async (req, res) => {
     const password = req.body.password;
     const user = res.user;
