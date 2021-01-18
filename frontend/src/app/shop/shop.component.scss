@@ -1,4 +1,5 @@
 @import "/src/utilities/variables";
+@import "/src/utilities/mixin";
 
 * {
   margin: 0;
@@ -7,18 +8,9 @@
 #main {
   width: 100%;
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: relative;
-
-  &::-webkit-scrollbar {
-    width: $scrollbar-width;
-    background-color: #eaeaea;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 7px;
-    background-color: #aaaaaa;
-  }
+  @include scrollbar;
 
   #shop-wrapper {
     padding: 0 60px;

@@ -1,0 +1,13 @@
+@import "/src/utilities/variables";
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+    background-color: #eaeaea;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    background-color: #aaaaaa;
+  }
+}
