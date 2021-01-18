@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {BehaviorSubject, Observable, Subject, throwError} from 'rxjs';
-import {User, UserAddress} from '../shared/models/user.model';
+import {User, UserAddress, UserName} from '../shared/models/user.model';
 import {AuthResponseData, UserAccessService} from '../shared/user-access.service';
 import {catchError, tap} from 'rxjs/operators';
 import {DataStorageService} from '../shared/services/data-storage.service';
@@ -15,8 +15,8 @@ export class AuthService {
     return this.userAccessService.registerUser(email, password)
       .pipe(catchError(this.handleError), tap((resData) => {
         this.handleAuthentication(
-          resData.user.email, resData.user.id, resData.user.firstName,
-          resData.user.lastName, resData.user.role, resData.user.address, resData.token);
+          resData.user.email, resData.user.id, resData.user.name, resData.user.role, resData.user.address, resData.token);
+
       }));
   }
 
@@ -25,13 +25,12 @@ export class AuthService {
       .pipe(catchError(this.handleError), tap((resData) => {
         console.log(resData);
         this.handleAuthentication(
-          resData.user.email, resData.user.id, resData.user.firstName,
-          resData.user.lastName, resData.user.role, resData.user.address, resData.token);
+          resData.user.email, resData.user.id, resData.user.name, resData.user.role, resData.user.address, resData.token);
       }));
   }
 
   handleAuthentication(
-    email: string, userId: string, firstName: string, lastName: string, role: string, address: UserAddress, token: string
+    email: string, userId: string, name: UserName, role: string, address: UserAddress, token: string
   ) {
     // const expirationDate = new Date(
     //   new Date().getTime() + +expiresIn * 1000
@@ -39,8 +38,7 @@ export class AuthService {
     const user = new User(
       userId,
       email,
-      firstName,
-      lastName,
+      name,
       role,
       address,
       token,

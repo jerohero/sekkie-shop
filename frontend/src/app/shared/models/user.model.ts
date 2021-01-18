@@ -5,12 +5,16 @@ export interface UserAddress {
   country: string;
 }
 
+export interface UserName {
+  firstName: string;
+  lastName: string;
+}
+
 export class User {
   constructor(
     public id: string,
     public email: string,
-    public firstName: string,
-    public lastName: string,
+    public name: UserName,
     public role: string,
     public address: UserAddress,
     private _token: string,

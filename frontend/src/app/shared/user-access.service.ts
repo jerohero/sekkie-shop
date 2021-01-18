@@ -29,8 +29,7 @@ export class UserAccessService {
   updateUser(user: User) {
     const body = {
       email: user.email,
-      firstName: user.firstName,
-      lastName: user.lastName,
+      name: user.name,
       id: user.id,
       role: user.role,
       address: user.address,

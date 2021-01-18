@@ -15,11 +15,13 @@ const UserSchema = new Schema({
         default: 'ROLE_USER',
         required: true
     },
-    firstName: {
-        type: String
-    },
-    lastName: {
-        type: String
+    name: {
+        firstName: {
+            type: String
+        },
+        lastName: {
+            type: String
+        },
     },
     address: {
         streetAndHouseNumber: {
