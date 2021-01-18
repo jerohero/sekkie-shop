@@ -35,7 +35,6 @@ export class UserAccessService {
       address: user.address,
       token: user.token
     };
-    console.log(body);
     return this.genericAccessService.sendPUT<any>('auth/profile', body, true);
   }
 }

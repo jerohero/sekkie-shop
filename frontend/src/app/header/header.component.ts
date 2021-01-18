@@ -4,6 +4,7 @@ import {AuthService} from '../login/auth.service';
 import {Subscription} from 'rxjs';
 import {User} from '../shared/models/user.model';
 import {DataStorageService} from '../shared/services/data-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,11 +14,11 @@ import {DataStorageService} from '../shared/services/data-storage.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   shoppingCartSize: number;
   @Output() loginClick = new EventEmitter<void>();
-  @Output() logoutClick = new EventEmitter<void>();
   userSub = new Subscription();
   user: User;
 
-  constructor(private slService: ShoppingListService, private dataStorageService: DataStorageService) {}
+  constructor(private slService: ShoppingListService, private dataStorageService: DataStorageService,
+              private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.shoppingCartSize = this.slService.getItems().length;
@@ -36,7 +37,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onLogoutClicked(): void {
-    this.logoutClick.emit();
+    this.router.navigate(['/']).then(() => {
+      this.authService.logout();
+    });
   }
 
   ngOnDestroy() {

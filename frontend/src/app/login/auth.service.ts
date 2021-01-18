@@ -29,6 +29,30 @@ export class AuthService {
       }));
   }
 
+  autoLogin() {
+    const user: {
+      id: string,
+      email: string,
+      name: UserName,
+      role: string,
+      address: UserAddress,
+      _token: string
+    } = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+      return;
+    }
+    const loadedUser = new User(user.id, user.email, user.name, user.role, user.address, user._token);
+
+    if (loadedUser.token) {
+      this.dataStorageService.user.next(loadedUser);
+    }
+  }
+
+  logout(): void {
+    this.dataStorageService.user.next(null);
+    localStorage.removeItem('user');
+  }
+
   handleAuthentication(
     email: string, userId: string, name: UserName, role: string, address: UserAddress, token: string
   ) {
@@ -45,6 +69,7 @@ export class AuthService {
       // expirationDate
     );
     this.dataStorageService.user.next(user);
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   handleError(errorRes: HttpErrorResponse): Observable<any> {
