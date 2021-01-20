@@ -1,4 +1,14 @@
+@import "/src/utilities/variables";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #shop-sidebar {
+  display: flex;
+  flex-direction: column;
+
   .sidebar-section {
     margin-bottom: 25px;
     > p {
@@ -41,5 +51,21 @@
         }
       }
     }
+  }
+
+  @media only screen and (max-width: $tablet) {
+    flex-direction: row;
+    padding-left: 25px;
+
+    .sidebar-section {
+      margin-right: 50px;
+      margin-bottom: 0;
+    }
+  }
+
+  @media only screen and (max-width: $mobile-large) {
+    display: grid;
+    grid-template-columns: 130px 65%;
+    grid-row-gap: 10px;
   }
 }

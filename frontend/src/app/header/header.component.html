@@ -3,7 +3,7 @@
   <div id="nav-logo">
     <a [routerLink]="['/']"><img src="../../assets/images/logo.svg" alt="Sekkie"></a>
   </div>
-  <div id="nav-right">
+  <div id="nav-links">
     <ul>
       <li id="shopping-cart"><a [routerLink]="['../shopping-list']"><img src="../../assets/images/shoppingcart.svg" alt="cart">cart ({{ shoppingCartSize }})</a></li>
       <li id="login" *ngIf="!user"><a (click)="onLoginClicked()">login/register</a></li>

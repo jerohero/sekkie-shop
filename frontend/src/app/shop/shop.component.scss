@@ -3,6 +3,7 @@
 
 * {
   margin: 0;
+  padding: 0;
 }
 
 #main {
@@ -10,7 +11,10 @@
   height: 100vh;
   overflow-y: auto;
   position: relative;
-  @include scrollbar;
+
+  @media only screen and (min-width: $tablet) {
+    @include scrollbar;
+  }
 
   #shop-wrapper {
     padding: 0 60px;
@@ -33,6 +37,29 @@
       max-width: 75%;
       height: inherit;
       padding: 0 25px 30px;
+    }
+
+    @media only screen and (max-width: $desktop) {
+      padding: 0;
+    }
+
+    @media only screen and (max-width: $tablet) {
+      padding: 0;
+      flex-direction: column;
+      margin-bottom: 20px;
+      margin-top: 65px;
+
+      #shop-sidebar-wrapper {
+        padding-bottom: 15px;
+        padding-top: 30px;
+        max-width: 100%;
+        margin-right: 0;
+      }
+
+      #shop-content-wrapper {
+        padding: 0 10px 15px;
+        max-width: 100%;
+      }
     }
   }
 }
