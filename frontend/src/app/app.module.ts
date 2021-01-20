@@ -20,6 +20,7 @@ import { SidebarComponent } from './shop/sidebar/sidebar.component';
 import { SearchComponent } from './shop/sidebar/search/search.component';
 import { AccountComponent } from './account/account.component';
 import {RolePipe} from './shared/pipes/role.pipe';
+import { OrderPageComponent } from './shopping-list/order-page/order-page.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {RolePipe} from './shared/pipes/role.pipe';
     SearchComponent,
     AccountComponent,
     RolePipe,
+    OrderPageComponent,
   ],
   imports: [
     BrowserModule,

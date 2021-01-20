@@ -3,8 +3,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ShoppingListService } from './shopping-list.service';
 import { Subscription } from 'rxjs';
 import { ShoppingCartItem } from './shopping-cart-item.model';
-import {ShopService} from '../shop/shop.service';
-import {filter} from 'rxjs/operators';
+import {OrderService} from './order-page/order.service';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-shopping-list',
@@ -15,7 +15,8 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   shoppingCartItems: ShoppingCartItem[];
   private itemsChangedSub: Subscription;
 
-  constructor(private slService: ShoppingListService) { }
+  constructor(private slService: ShoppingListService, private orderService: OrderService,
+              private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.shoppingCartItems = this.slService.getItems();
@@ -25,6 +26,14 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
           this.shoppingCartItems = items;
         }
       );
+  }
+
+  checkout() {
+    if (this.shoppingCartItems.length < 1) {
+      return;
+    }
+    this.orderService.shoppingCartItems = this.shoppingCartItems;
+    this.router.navigate(['/order']);
   }
 
   calculateTotalPrice(): number {
