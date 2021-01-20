@@ -23,14 +23,6 @@ nav {
     z-index: -1;
   }
 
-  #nav-logo {
-    //text-align: center;
-    //
-    //@media only screen and (max-width: $desktop) {
-    //  text-align: left;
-    //}
-  }
-
   #nav-links {
     position: absolute;
     right: 7.3%;
@@ -63,7 +55,7 @@ nav {
     justify-content: left;
 
     #nav-logo {
-      margin-left: 25px;
+      margin-left: 7.3%;
     }
   }
 
