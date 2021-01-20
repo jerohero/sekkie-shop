@@ -13,7 +13,6 @@ $selected-size: #636F7A;
   display: flex;
   height: 100vh;
   overflow: auto;
-  @include scrollbar;
 
   #images {
     width: 845px;
@@ -195,6 +194,10 @@ $selected-size: #636F7A;
     }
   }
 
+  @media only screen and (min-width: $tablet) {
+    @include scrollbar;
+  }
+
   @media only screen and (max-width: 1400px) {
     flex-direction: column;
     align-items: center;
@@ -210,6 +213,7 @@ $selected-size: #636F7A;
 
       #options {
         margin-bottom: 0;
+        padding: 0 30px;
       }
 
       #buy {
