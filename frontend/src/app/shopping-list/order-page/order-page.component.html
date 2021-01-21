@@ -1,4 +1,4 @@
-<div id="shipping-wrapper">
+<div id="shipping-wrapper" *ngIf="orderItems">
   <header>
     <h1>checkout</h1>
     <p><span>information ></span> shipping > payment</p>
@@ -10,7 +10,7 @@
           <div class="shipping-info-column full-column">
             <label class="info-label" for="email">
               email <span>have an account? <a (click)="showLogin()">log in</a></span>
-              <input type="email" id="email" name="email" class="form-control" [ngModel]="user?.email">
+              <input type="email" id="email" name="email" class="form-control" [ngModel]="user?.email" required>
             </label>
           </div>
         </div>
@@ -19,13 +19,13 @@
           <div class="shipping-info-column half-column">
             <label class="info-label" for="firstName">
               first name
-              <input type="text" id="firstName" name="firstName" class="form-control" [ngModel]="user?.name.firstName">
+              <input type="text" id="firstName" name="firstName" class="form-control" [ngModel]="user?.name.firstName" required>
             </label>
           </div>
           <div class="shipping-info-column column-right half-column">
             <label class="info-label" for="lastName">
               last name
-              <input type="text" id="lastName" name="lastName" class="form-control" [ngModel]="user?.name.lastName">
+              <input type="text" id="lastName" name="lastName" class="form-control" [ngModel]="user?.name.lastName" required>
             </label>
           </div>
         </div>
@@ -34,7 +34,7 @@
           <div class="shipping-info-column full-column">
             <label class="info-label" for="streetAndHouseNumber">
               street and house number
-              <input type="text" id="streetAndHouseNumber" name="streetAndHouseNumber" class="form-control" [ngModel]="user?.address.streetAndHouseNumber">
+              <input type="text" id="streetAndHouseNumber" name="streetAndHouseNumber" class="form-control" [ngModel]="user?.address.streetAndHouseNumber" required>
             </label>
           </div>
         </div>
@@ -43,13 +43,13 @@
           <div class="shipping-info-column half-column">
             <label class="info-label" for="postalCode">
               postal code
-              <input type="text" id="postalCode" name="postalCode" class="form-control" [ngModel]="user?.address.postalCode">
+              <input type="text" id="postalCode" name="postalCode" class="form-control" [ngModel]="user?.address.postalCode" required>
             </label>
           </div>
           <div class="shipping-info-column column-right half-column">
             <label class="info-label" for="city">
               city
-              <input type="text" id="city" name="city" class="form-control" [ngModel]="user?.address.city">
+              <input type="text" id="city" name="city" class="form-control" [ngModel]="user?.address.city" required>
             </label>
           </div>
         </div>
@@ -58,13 +58,13 @@
           <div class="shipping-info-column full-column">
             <label class="info-label" for="country">
               country
-              <input type="text" id="country" name="country" class="form-control" [ngModel]="user?.address.country">
+              <input type="text" id="country" name="country" class="form-control" [ngModel]="user?.address.country" required>
             </label>
           </div>
         </div>
 
         <div id="continue">
-          <button>continue</button>
+          <button [disabled]="!shippingInfoForm.valid">continue</button>
         </div>
       </form>
     </div>

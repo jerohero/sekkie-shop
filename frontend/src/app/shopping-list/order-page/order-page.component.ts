@@ -4,17 +4,25 @@ import {User} from '../../shared/models/user.model';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../../login/auth.service';
 import {Subscription} from 'rxjs';
+import {ShoppingCartItem} from '../shopping-cart-item.model';
+import {OrderService} from './order.service';
+import {Order} from '../../shared/models/order.model';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-order-page',
   templateUrl: './order-page.component.html',
-  styleUrls: ['./order-page.component.scss']
+  styleUrls: ['./order-page.component.scss'],
+  providers: [DatePipe]
 })
 export class OrderPageComponent implements OnInit, OnDestroy {
   user: User;
   userSub: Subscription = new Subscription();
+  orderItems: ShoppingCartItem[];
+  order: Order;
 
-  constructor(private dataStorageService: DataStorageService, private authService: AuthService) { }
+  constructor(private dataStorageService: DataStorageService, private authService: AuthService,
+              private orderService: OrderService, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     if (this.dataStorageService.user.getValue()) {
@@ -29,10 +37,29 @@ export class OrderPageComponent implements OnInit, OnDestroy {
           this.user = user;
         });
     }
+    this.orderItems = this.orderService.shoppingCartItems;
   }
 
   onContinue(accountInfoForm: NgForm) {
+    if (!accountInfoForm.valid) {
+      alert('Not valid');
+      return;
+    }
 
+    this.createOrder();
+  }
+
+  createOrder(): void {
+    let totalPrice = 0;
+    this.orderItems.forEach((item) => {
+      totalPrice = totalPrice + item.price;
+    });
+
+    this.order = new Order(
+      null, this.user.id, this.orderItems, this.user.name, this.user.email, this.user.address, totalPrice, Date.now(), 'On Hold'
+    );
+
+    console.log(this.order);
   }
 
   showLogin() {
