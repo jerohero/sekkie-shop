@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const itemsRouter = require('./routes/ItemRoutes');
 const userRouter = require('./routes/UserRoutes');
+const orderRouter = require('./routes/OrderRoutes');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const PORT = 3000;
@@ -39,6 +40,7 @@ app.use((req, res, next) => {
 
 app.use('/items', itemsRouter);
 app.use('/auth', userRouter);
+app.use('/orders', orderRouter);
 
 module.exports = app;
 

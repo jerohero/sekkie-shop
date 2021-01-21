@@ -80,13 +80,13 @@ const OrderSchema = new Schema({
     }
 }, { timestamps: true });
 
-ItemSchema.virtual('id').get(function () {
+OrderSchema.virtual('id').get(function () {
     return this._id.toHexString();
 });
 
-ItemSchema.set('toJSON', {
+OrderSchema.set('toJSON', {
     virtuals: true
 });
 
-const Item = mongoose.model('Item', ItemSchema);
-module.exports = Item;
+const Order = mongoose.model('Order', OrderSchema);
+module.exports = Order;

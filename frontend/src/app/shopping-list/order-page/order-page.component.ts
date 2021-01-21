@@ -8,6 +8,7 @@ import {ShoppingCartItem} from '../shopping-cart-item.model';
 import {OrderService} from './order.service';
 import {Order} from '../../shared/models/order.model';
 import {DatePipe} from '@angular/common';
+import {OrderAccessService} from '../../shared/order-access.service';
 
 @Component({
   selector: 'app-order-page',
@@ -22,7 +23,7 @@ export class OrderPageComponent implements OnInit, OnDestroy {
   order: Order;
 
   constructor(private dataStorageService: DataStorageService, private authService: AuthService,
-              private orderService: OrderService, private datePipe: DatePipe) { }
+              private orderService: OrderService, private datePipe: DatePipe, private orderAccessService: OrderAccessService) { }
 
   ngOnInit(): void {
     if (this.dataStorageService.user.getValue()) {
@@ -60,6 +61,10 @@ export class OrderPageComponent implements OnInit, OnDestroy {
     );
 
     console.log(this.order);
+    this.orderAccessService.createOrder(this.order)
+      .subscribe((newOrder) => {
+        console.log(newOrder);
+      });
   }
 
   showLogin() {
