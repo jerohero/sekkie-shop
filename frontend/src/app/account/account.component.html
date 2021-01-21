@@ -1,32 +1,32 @@
 <div *ngIf="user" id="account-wrapper">
   <h1>my account</h1>
-  <div id="account-info-container">
-    <div class="account-info">
+  <div id="shipping-info-container">
+    <div class="shipping-info">
       <header>
         <h2>details</h2>
       </header>
-      <form #accountInfoForm="ngForm" class="account-info-form" (ngSubmit)="onUpdateAccountInfo(accountInfoForm)">
+      <form #accountInfoForm="ngForm" class="shipping-info-form" (ngSubmit)="onUpdateAccountInfo(accountInfoForm)">
         <div id="static-details">
-          <div class="account-info-row">
-            <div class="account-info-column">
+          <div class="shipping-info-row">
+            <div class="shipping-info-column">
               <p class="info-header">email</p>
               <p class="info-value">{{ user.email }}</p>
             </div>
-            <div class="account-info-column column-right">
+            <div class="shipping-info-column column-right">
               <p class="info-header">role</p>
               <p class="info-value">{{ user.role | role }}</p>
             </div>
           </div>
         </div>
 
-        <div class="account-info-row">
-          <div class="account-info-column half-column">
+        <div class="shipping-info-row">
+          <div class="shipping-info-column half-column">
             <label class="info-label" for="firstName">
               first name
               <input type="text" id="firstName" name="firstName" class="form-control" [(ngModel)]="user.name.firstName">
             </label>
           </div>
-          <div class="account-info-column column-right half-column">
+          <div class="shipping-info-column column-right half-column">
             <label class="info-label" for="lastName">
               last name
               <input type="text" id="lastName" name="lastName" class="form-control" [(ngModel)]="user.name.lastName">
@@ -34,8 +34,8 @@
           </div>
         </div>
 
-        <div class="account-info-row">
-          <div class="account-info-column full-column">
+        <div class="shipping-info-row">
+          <div class="shipping-info-column full-column">
             <label class="info-label" for="streetAndHouseNumber">
               street and house number
               <input type="text" id="streetAndHouseNumber" name="streetAndHouseNumber" class="form-control" [(ngModel)]="user.address.streetAndHouseNumber">
@@ -43,14 +43,14 @@
           </div>
         </div>
 
-        <div class="account-info-row">
-          <div class="account-info-column half-column">
+        <div class="shipping-info-row">
+          <div class="shipping-info-column half-column">
             <label class="info-label" for="postalCode">
               postal code
               <input type="text" id="postalCode" name="postalCode" class="form-control" [(ngModel)]="user.address.postalCode">
             </label>
           </div>
-          <div class="account-info-column column-right half-column">
+          <div class="shipping-info-column column-right half-column">
             <label class="info-label" for="city">
               city
               <input type="text" id="city" name="city" class="form-control" [(ngModel)]="user.address.city">
@@ -58,8 +58,8 @@
           </div>
         </div>
 
-        <div class="account-info-row">
-          <div class="account-info-column full-column">
+        <div class="shipping-info-row">
+          <div class="shipping-info-column full-column">
             <label class="info-label" for="country">
               country
               <input type="text" id="country" name="country" class="form-control" [(ngModel)]="user.address.country">
@@ -67,7 +67,7 @@
           </div>
         </div>
 
-        <div id="submit-update">
+        <div id="continue">
           <button>update</button>
         </div>
       </form>

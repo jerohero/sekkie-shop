@@ -21,3 +21,159 @@
   padding-left: 13px;
   font-weight: 400;
 }
+
+@mixin shipping-info-page {
+  padding-top: 113px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  position: relative;
+
+  @media only screen and (min-width: $tablet) {
+    @include scrollbar;
+  }
+
+  h1 {
+    font-size: 50px;
+    margin-bottom: 35px;
+  }
+
+  #shipping-info-container {
+    width: 618px;
+    display: flex;
+    margin-bottom: 70px;
+
+    .shipping-info {
+      width: 100%;
+
+      header {
+        background-color: black;
+        height: 53px;
+        h2 {
+          text-align: center;
+          font-size: 36px;
+          color: white;
+          font-family: 'Anton', sans-serif;
+        }
+      }
+
+      .shipping-info-form {
+        padding: 30px 63px 42px 63px;
+
+        .shipping-info-row {
+          display: flex;
+          flex-direction: row;
+          margin-bottom: 18px;
+
+          #static-details {
+            margin-bottom: 25px;
+          }
+
+          .shipping-info-column {
+            .info-label, .info-header {
+              font-weight: bold;
+              font-size: 17px;
+            }
+
+            .info-header {
+              margin-bottom: 3px;
+            }
+
+            .info-label {
+              input {
+                @include input;
+              }
+
+              span {
+                color: #757575;
+                font-weight: 300;
+                margin-left: 7px;
+
+                a {
+                  color: #5d5d5d;
+                  font-weight: bold;
+                }
+              }
+            }
+
+            .info-value {
+              font-size: 17px;
+            }
+          }
+
+          .full-column {
+            width: 100%;
+
+            .info-label {
+              width: 100%;
+            }
+          }
+
+          .half-column {
+            width: 100%;
+
+            &:first-child {
+              margin-right: 9px;
+            }
+
+            .info-label {
+              width: 100%;
+            }
+          }
+
+          .column-right {
+            margin-left: auto;
+          }
+        }
+      }
+
+      #continue {
+        width: 100%;
+        text-align: center;
+        margin-top: 25px;
+
+        button {
+          background-color: white;
+          border: none;
+          color: black;
+          font-family: 'Anton', sans-serif;
+          font-size: 30px;
+          padding: 0 40px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: $tablet) {
+    #shipping-info-container {
+      width: 98%;
+    }
+
+    @media only screen and (max-width: $mobile) {
+      #shipping-info-container {
+        width: 98%;
+
+        .shipping-info {
+          .shipping-info-form {
+            padding: 30px 35px 42px;
+
+            #static-details {
+              .shipping-info-row {
+                display: flex;
+                flex-direction: column;
+
+                .column-right {
+                  margin-top: 10px;
+                  margin-left: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
