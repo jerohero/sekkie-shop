@@ -52,7 +52,7 @@ export class OrderPageComponent implements OnInit, OnDestroy {
   createOrder(): void {
     let totalPrice = 0;
     this.orderItems.forEach((item) => {
-      totalPrice = totalPrice + item.price;
+      totalPrice = totalPrice + item.totalPrice;
     });
 
     this.order = new Order(
