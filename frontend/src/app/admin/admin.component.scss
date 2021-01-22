@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+ul {
+  list-style: none;
+}
+
 #admin {
   padding-top: 90px;
   display: flex;
@@ -44,26 +48,16 @@
         margin-right: 17px;
       }
 
-      .left-orders {
-        width: 36.4%;
-      }
-
       .right {
         width: 63.6%;
-        //width: 600px;
-      }
-
-      .right-orders {
-
       }
 
       .box-content {
         height: 655px;
         background-color: #F3F3F3;
 
-        #left-top {
+        .box-top {
           padding-top: 12px;
-          list-style: none;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
           text-align: center;
@@ -79,6 +73,159 @@
 
         .left-items-container {
 
+          .item {
+            ul {
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+              text-align: center;
+              font-size: 15px;
+              li {
+
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .orders-box {
+      .left {
+        width: 36.4%;
+
+        .box-content {
+          .box-top {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+          }
+
+          .left-items-container {
+            .item {
+              padding: 19px 0;
+              background-color: white;
+              border-top: #ABABAB 1px solid;
+              border-bottom: #ABABAB 1px solid;
+              margin-bottom: 7px;
+
+              &:hover {
+                background-color: #fafafa;
+                cursor: pointer;
+              }
+
+              ul {
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                li {
+                  p {
+                    font-size: 16px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .right {
+        .box-content {
+          #order-items-container {
+            height: 326px;
+            max-height: 326px;
+            background-color: #DADADA;
+            overflow-y: auto;
+            @include scrollbar;
+
+            #order-items-list {
+              .order-items-list-item {
+                padding: 19px 0;
+                background-color: white;
+                margin-bottom: 7px;
+                margin-top: 8px;
+
+                ul {
+                  display: grid;
+                  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                  text-align: center;
+                  font-size: 15px;
+
+                  li {
+                    p {
+                      font-size: 16px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          #order-details {
+            padding-left: 78px;
+            padding-top: 10px;
+            height: 287px;
+            position: relative;
+
+            #top-details, #bottom-details-left, #bottom-details-right {
+              display: flex;
+              li {
+                margin-right: 20px;
+                p {
+                  font-size: 17px;
+                  font-weight: 300;
+                  span {
+                    font-weight: bold;
+                  }
+                }
+              }
+            }
+
+            #bottom-details {
+              margin-top: 30px;
+              width: 68%;
+              display: flex;
+
+              #bottom-details-left, #bottom-details-right {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                li {
+                  margin-bottom: 11px;
+                  width: 100%;
+                  p {
+                    display: grid;
+                    grid-template-columns: 50% 50%;
+                    span {
+                    }
+                  }
+                }
+              }
+
+              #bottom-details-left {
+                margin-right: 20px;
+              }
+            }
+
+            #order-buttons {
+              display: flex;
+              flex-direction: column;
+              position: absolute;
+              margin-right: 32px;
+              margin-bottom: 23px;
+              right: 0;
+              bottom: 0;
+
+              button {
+                margin-top: 20px;
+                background-color: black;
+                color: white;
+                border: none;
+                padding: 1px 37px;
+                font-family: 'Anton', sans-serif;
+                font-size: 36px;
+              }
+
+              #delete {
+                color: black;
+                background-color: white;
+              }
+            }
+          }
         }
       }
     }
