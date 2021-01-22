@@ -34,7 +34,7 @@ require('./config/passport')(passport);
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');                              // Allow client to send requests from given origin, * serving as a wildcard
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE'); // Allow client to use given request methods
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');   // Allow client to send request headers
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, User');   // Allow client to send request headers
   next();
 });
 

@@ -1,4 +1,5 @@
 // Create one item
+const User = require('../models/User')
 const Order = require('../models/Order');
 
 
@@ -20,6 +21,18 @@ exports.createOrder = async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(400).json({ message: err.message });
+    }
+}
+
+exports.getOrders = async (req, res) => {
+    if (res.user.role !== 'ROLE_ADMIN') {
+        res.status(401).json({ message: 'UNAUTHORIZED' });
+    }
+    try {
+        const orders = await Order.find();
+        res.json(orders);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
 }
 

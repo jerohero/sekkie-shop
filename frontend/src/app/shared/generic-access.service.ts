@@ -17,6 +17,12 @@ export class GenericAccessService {
     return this.http.get<T>(this.API_URL + requestPath, options);
   }
 
+  sendUserSpecificGET<T>(requestPath: string): Observable<T> {
+    const options = this.generateUserSpecificOptions();
+
+    return this.http.get<T>(this.API_URL + requestPath, options);
+  }
+
   sendPOST<T>(requestPath: string, body: unknown, tokenRequired: boolean): Observable<T> {
     const options = this.generateOptions(tokenRequired);
 
@@ -36,6 +42,19 @@ export class GenericAccessService {
     if (tokenRequired && this.dataStorageService.user.value.token !== null) {
       authHeader = 'Bearer ' + this.fetchToken();
       options.headers = options.headers.set('Authorization', authHeader);
+    }
+    return options;
+  }
+
+  private generateUserSpecificOptions(): { headers: HttpHeaders } {
+    let authHeader = null;
+    const headers = new HttpHeaders();
+    const options = { headers };
+    if (this.dataStorageService.user.value.token !== null) {
+      authHeader = 'Bearer ' + this.fetchToken();
+      options.headers = options.headers
+        .set('Authorization', authHeader)
+        .set('User', this.dataStorageService.user.getValue().id);
     }
     return options;
   }

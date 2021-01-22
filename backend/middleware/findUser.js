@@ -12,3 +12,14 @@ exports.byEmail = async (req, res, next) => {
     res.user = user;
     next();
 }
+
+exports.byHeaderId = async (req, res, next) => {
+    let user;
+    try {
+        user = await User.findById(req.headers.user);
+    } catch (err) {
+        return res.status(500).json({ message: err.message });
+    }
+    res.user = user;
+    next();
+}
