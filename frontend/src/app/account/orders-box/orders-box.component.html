@@ -4,7 +4,85 @@
       <h2>orders</h2>
     </header>
     <div id="orders">
-      <div *ngFor="let order of orders;">{{order.status}}</div>
+      <ul id="orders-top">
+        <li><p>name</p></li>
+        <li><p>date</p></li>
+        <li><p>status</p></li>
+        <li><p>items</p></li>
+        <li><p>total</p></li>
+      </ul>
+      <ul id="orders-list" *ngIf="orders; else noOrders">
+        <li class="order" *ngFor="let order of orders;">
+          <ul>
+            <li><p>{{ order.name.firstName + ' ' + order.name.lastName }}</p></li>
+            <li><p>{{ order.date | date }}</p></li>
+            <li><p class="highlight">{{ order.status }}</p></li>
+            <li><p>{{ order.items.length }} items</p></li>
+            <li><p>${{ order.totalPrice }}</p></li>
+          </ul>
+        </li>
+
+        <li class="order" *ngFor="let order of orders;">
+          <ul>
+            <li><p>{{ order.name.firstName + ' ' + order.name.lastName }}</p></li>
+            <li><p>{{ order.date | date }}</p></li>
+            <li><p class="highlight">{{ order.status }}</p></li>
+            <li><p>{{ order.items.length }} items</p></li>
+            <li><p>${{ order.totalPrice }}</p></li>
+          </ul>
+        </li>
+
+        <li class="order" *ngFor="let order of orders;">
+          <ul>
+            <li><p>{{ order.name.firstName + ' ' + order.name.lastName }}</p></li>
+            <li><p>{{ order.date | date }}</p></li>
+            <li><p class="highlight">{{ order.status }}</p></li>
+            <li><p>{{ order.items.length }} items</p></li>
+            <li><p>${{ order.totalPrice }}</p></li>
+          </ul>
+        </li>
+
+        <li class="order" *ngFor="let order of orders;">
+          <ul>
+            <li><p>{{ order.name.firstName + ' ' + order.name.lastName }}</p></li>
+            <li><p>{{ order.date | date }}</p></li>
+            <li><p class="highlight">{{ order.status }}</p></li>
+            <li><p>{{ order.items.length }} items</p></li>
+            <li><p>${{ order.totalPrice }}</p></li>
+          </ul>
+        </li>
+
+        <li class="order" *ngFor="let order of orders;">
+          <ul>
+            <li><p>{{ order.name.firstName + ' ' + order.name.lastName }}</p></li>
+            <li><p>{{ order.date | date }}</p></li>
+            <li><p class="highlight">{{ order.status }}</p></li>
+            <li><p>{{ order.items.length }} items</p></li>
+            <li><p>${{ order.totalPrice }}</p></li>
+          </ul>
+        </li>
+
+        <li class="order" *ngFor="let order of orders;">
+          <ul>
+            <li><p>{{ order.name.firstName + ' ' + order.name.lastName }}</p></li>
+            <li><p>{{ order.date | date }}</p></li>
+            <li><p class="highlight">{{ order.status }}</p></li>
+            <li><p>{{ order.items.length }} items</p></li>
+            <li><p>${{ order.totalPrice }}</p></li>
+          </ul>
+        </li>
+
+        <li class="order" *ngFor="let order of orders;">
+          <ul>
+            <li><p>{{ order.name.firstName + ' ' + order.name.lastName }}</p></li>
+            <li><p>{{ order.date | date }}</p></li>
+            <li><p class="highlight">{{ order.status }}</p></li>
+            <li><p>{{ order.items.length }} items</p></li>
+            <li><p>${{ order.totalPrice }}</p></li>
+          </ul>
+        </li>
+      </ul>
+      <ng-template #noOrders><p id="no-orders">you have yet to order anything.</p></ng-template>
     </div>
   </div>
 </div>
