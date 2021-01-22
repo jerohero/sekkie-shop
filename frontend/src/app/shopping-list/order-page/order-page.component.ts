@@ -76,7 +76,7 @@ export class OrderPageComponent implements OnInit, OnDestroy {
       userId = null;
     }
     this.order = new Order(
-      null, userId, this.orderItems, this.user.name, this.user.email, this.user.address, totalPrice, Date.now(), 'On Hold'
+      null, userId, this.orderItems, this.user.name, this.user.email, this.user.address, totalPrice, Date.now(), 'ON_HOLD'
     );
 
     this.orderAccessService.createOrder(this.order)

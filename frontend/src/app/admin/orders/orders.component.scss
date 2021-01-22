@@ -37,14 +37,13 @@ ul {
             background-color: #fafafa;
             cursor: pointer;
           }
-
-          ul {
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            li {
-              p {
-                font-size: 16px;
+            ul {
+              grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+              li {
+                p {
+                  font-size: 16px;
+                }
               }
-            }
           }
         }
 
@@ -84,15 +83,25 @@ ul {
             margin-bottom: 7px;
             margin-top: 8px;
 
-            ul {
-              display: grid;
-              grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-              text-align: center;
-              font-size: 15px;
+            &:hover {
+              background-color: #fafafa;
+            }
 
-              li {
-                p {
-                  font-size: 16px;
+            a {
+              &:hover {
+                text-decoration: none;
+              }
+
+              ul {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                text-align: center;
+                font-size: 15px;
+
+                li {
+                  p {
+                    font-size: 16px;
+                  }
                 }
               }
             }

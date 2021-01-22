@@ -15,7 +15,7 @@
             <li><p>{{ order.name.firstName.substr(0, 1) + '. ' + order.name.lastName }}</p></li>
             <li><p>{{ order.address.country }}</p></li>
             <li><p>{{ order.date | date: 'dd/MM/yyyy' }}</p></li>
-            <li><p>{{ order.status }}</p></li>
+            <li><p>{{ order.status | status}}</p></li>
             <li><p>${{ order.totalPrice }}</p></li>
           </ul>
         </li>
@@ -34,14 +34,16 @@
       </ul>
       <div id="order-items-container">
         <ul id="order-items-list">
-          <li *ngFor="let item of selectedOrder.items" [routerLink]="['/' + item.id]" class="order-items-list-item">
-            <ul>
-              <li><p>{{item.name}}</p></li>
-              <li><p>{{item.selectedColor}}</p></li>
-              <li><p>{{item.selectedAmount}}</p></li>
-              <li><p>{{item.selectedSize}}</p></li>
-              <li><p>${{item.price * item.selectedAmount}}</p></li>
-            </ul>
+          <li *ngFor="let item of selectedOrder.items" class="order-items-list-item">
+            <a [routerLink]="['/' + item.id]">
+              <ul>
+                <li><p>{{item.name}}</p></li>
+                <li><p>{{item.selectedColor}}</p></li>
+                <li><p>{{item.selectedAmount}}</p></li>
+                <li><p>{{item.selectedSize}}</p></li>
+                <li><p>${{item.price * item.selectedAmount}}</p></li>
+              </ul>
+            </a>
           </li>
         </ul>
       </div>
@@ -66,8 +68,8 @@
           </ul>
         </div>
         <div id="order-buttons">
-          <button id="delete">delete</button>
-          <button>ship</button>
+          <button id="delete" (click)="deleteOrder()">delete</button>
+          <button (click)="updateOrderStatus()">{{ orderStatusButtonTxt }}</button>
         </div>
       </div>
     </div>

@@ -21,4 +21,24 @@ export class OrdersComponent implements OnInit {
   showOrder(order: Order): void {
     this.selectedOrder = order;
   }
+
+  deleteOrder(): void {
+
+  }
+
+  updateOrderStatus() {
+    if (this.orderStatusButtonTxt === 'ship') {
+      // ship
+    } else {
+      // cancel
+    }
+  }
+
+  get orderStatusButtonTxt() {
+    if (this.selectedOrder.status === 'ON_HOLD') {
+      return 'ship';
+    } else {
+      return 'cancel';
+    }
+  }
 }
