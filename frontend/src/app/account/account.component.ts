@@ -4,6 +4,8 @@ import {User, UserAddress, UserName} from '../shared/models/user.model';
 import {NgForm} from '@angular/forms';
 import {UserService} from '../shared/services/user.service';
 import {DataStorageService} from '../shared/services/data-storage.service';
+import {OrderAccessService} from '../shared/order-access.service';
+import {Order} from '../shared/models/order.model';
 
 @Component({
   selector: 'app-account',
@@ -12,14 +14,21 @@ import {DataStorageService} from '../shared/services/data-storage.service';
 })
 export class AccountComponent implements OnInit {
   user: User;
+  orders: Order[];
 
-  constructor(private accountService: UserService, private dataStorageService: DataStorageService) { }
+  constructor(
+    private accountService: UserService, private dataStorageService: DataStorageService,
+    private orderAccessService: OrderAccessService
+  ) { }
 
   ngOnInit(): void {
     this.dataStorageService.user.pipe(skipWhile(user => !user), take(1))
       .subscribe(user => {
-        console.log(user);
         this.user = user;
+        this.orderAccessService.fetchOrdersByUserId(user.id)
+          .subscribe((orders) => {
+            this.orders = orders;
+          });
       });
   }
 

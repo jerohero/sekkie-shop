@@ -1,0 +1,10 @@
+@import "/src/utilities/mixin";
+@import "/src/utilities/variables";
+
+#orders-container {
+  @include account-page-box;
+  .box-content {
+    background-color: #F3F3F3;
+    height: 400px;
+  }
+}

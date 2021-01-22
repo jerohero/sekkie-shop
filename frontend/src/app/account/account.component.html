@@ -1,7 +1,7 @@
 <div *ngIf="user" id="account-wrapper">
   <h1>my account</h1>
   <div id="shipping-info-container">
-    <div class="shipping-info">
+    <div class="box-content">
       <header>
         <h2>details</h2>
       </header>
@@ -73,4 +73,6 @@
       </form>
     </div>
   </div>
+
+  <app-orders-box [orders]="orders"></app-orders-box>
 </div>

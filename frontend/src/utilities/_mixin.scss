@@ -22,6 +22,28 @@
   font-weight: 400;
 }
 
+@mixin account-page-box {
+  width: 618px;
+  display: flex;
+  margin-bottom: 70px;
+
+  .box-content {
+    width: 100%;
+
+    header {
+      background-color: black;
+      height: 53px;
+
+      h2 {
+        text-align: center;
+        font-size: 36px;
+        color: white;
+        font-family: 'Anton', sans-serif;
+      }
+    }
+  }
+}
+
 @mixin shipping-info-page {
   padding-top: 113px;
   display: flex;
@@ -42,24 +64,9 @@
   }
 
   #shipping-info-container {
-    width: 618px;
-    display: flex;
-    margin-bottom: 70px;
+    @include account-page-box;
 
-    .shipping-info {
-      width: 100%;
-
-      header {
-        background-color: black;
-        height: 53px;
-        h2 {
-          text-align: center;
-          font-size: 36px;
-          color: white;
-          font-family: 'Anton', sans-serif;
-        }
-      }
-
+    .box-content {
       .shipping-info-form {
         padding: 30px 63px 42px 63px;
 

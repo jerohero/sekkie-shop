@@ -60,7 +60,6 @@ export class OrderPageComponent implements OnInit, OnDestroy {
       null, this.user.id, this.orderItems, this.user.name, this.user.email, this.user.address, totalPrice, Date.now(), 'On Hold'
     );
 
-    console.log(this.order);
     this.orderAccessService.createOrder(this.order)
       .subscribe((newOrder) => {
         console.log(newOrder);

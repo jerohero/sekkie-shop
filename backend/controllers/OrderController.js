@@ -21,3 +21,16 @@ exports.createOrder = async (req, res) => {
         res.status(400).json({ message: err.message });
     }
 }
+
+exports.getOrdersByUserId = async (req, res) => {
+    let orders;
+    try {
+        orders = await Order.find({ userId: req.params.id });
+        if (orders == null) {
+            return res.status(404).json({ message: 'Cannot find Order' });
+        }
+    } catch (err) {
+        return res.status(500).json({ message: err.message });
+    }
+    res.json(orders);
+}
