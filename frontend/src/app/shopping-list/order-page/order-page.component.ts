@@ -9,6 +9,7 @@ import {OrderService} from './order.service';
 import {Order} from '../../shared/models/order.model';
 import {DatePipe} from '@angular/common';
 import {OrderAccessService} from '../../shared/order-access.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-order-page',
@@ -23,7 +24,8 @@ export class OrderPageComponent implements OnInit, OnDestroy {
   order: Order;
 
   constructor(private dataStorageService: DataStorageService, private authService: AuthService,
-              private orderService: OrderService, private datePipe: DatePipe, private orderAccessService: OrderAccessService) { }
+              private orderService: OrderService, private datePipe: DatePipe, private orderAccessService: OrderAccessService,
+              private router: Router) { }
 
   ngOnInit(): void {
     if (this.dataStorageService.user.getValue()) {
@@ -79,7 +81,9 @@ export class OrderPageComponent implements OnInit, OnDestroy {
 
     this.orderAccessService.createOrder(this.order)
       .subscribe((newOrder) => {
-        console.log(newOrder);
+        if (newOrder) {
+          this.router.navigate(['/shipping']);
+        }
       });
   }
 

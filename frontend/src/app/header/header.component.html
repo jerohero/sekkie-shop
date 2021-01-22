@@ -7,7 +7,8 @@
     <ul>
       <li id="shopping-cart"><a [routerLink]="['../shopping-list']"><img src="../../assets/images/shoppingcart.svg" alt="cart">cart ({{ shoppingCartSize }})</a></li>
       <li id="login" *ngIf="!user"><a (click)="onLoginClicked()">login/register</a></li>
-      <li id="account" *ngIf="user"><a [routerLink]="['/account']">{{ user.email.substr(0, user.email.indexOf('@')) }}</a></li>
+      <li id="admin" *ngIf="user && user.role === 'ROLE_ADMIN'"><a [routerLink]="['/admin']">admin</a></li>
+      <li id="account" *ngIf="user"><a [routerLink]="['/account']">account</a></li>
       <li id="logout" *ngIf="user"><a (click)="onLogoutClicked()">logout</a></li>
     </ul>
   </div>

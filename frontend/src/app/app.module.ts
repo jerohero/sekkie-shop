@@ -23,6 +23,7 @@ import {RolePipe} from './shared/pipes/role.pipe';
 import { OrderPageComponent } from './shopping-list/order-page/order-page.component';
 import { OrdersBoxComponent } from './account/orders-box/orders-box.component';
 import { ShippingPageComponent } from './shopping-list/order-page/shipping-page/shipping-page.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ShippingPageComponent } from './shopping-list/order-page/shipping-page/
     OrderPageComponent,
     OrdersBoxComponent,
     ShippingPageComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
