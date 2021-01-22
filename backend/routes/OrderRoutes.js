@@ -11,4 +11,6 @@ router.get('/:id', orderController.getOrdersByUserId);
 
 router.get('/', findUser.byHeaderId, orderController.getOrders);
 
+router.put('/', findUser.byHeaderId, orderController.updateOrder);
+
 module.exports = router;

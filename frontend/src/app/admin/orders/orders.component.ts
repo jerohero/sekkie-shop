@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Order} from '../../shared/models/order.model';
+import {OrderAccessService} from '../../shared/order-access.service';
 
 @Component({
   selector: 'app-orders',
@@ -10,7 +11,7 @@ export class OrdersComponent implements OnInit {
   @Input() orders: Order[];
   selectedOrder: Order;
 
-  constructor() { }
+  constructor(private orderAccessService: OrderAccessService) { }
 
   ngOnInit(): void {
     if (this.orders) {
@@ -28,10 +29,11 @@ export class OrdersComponent implements OnInit {
 
   updateOrderStatus() {
     if (this.orderStatusButtonTxt === 'ship') {
-      // ship
+      this.selectedOrder.status = 'SHIPPING';
     } else {
-      // cancel
+      this.selectedOrder.status = 'ON_HOLD';
     }
+    this.orderAccessService.updateOrder(this.selectedOrder).subscribe();
   }
 
   get orderStatusButtonTxt() {

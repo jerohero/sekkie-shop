@@ -18,6 +18,11 @@ export class OrderAccessService {
     return this.genericAccessService.sendPOST<Order>('orders/', body, false);
   }
 
+  updateOrder(order: Order): Observable<Order> {
+    const body = { order };
+    return this.genericAccessService.sendUserSpecificPUT<Order>('orders/', body);
+  }
+
   fetchOrders(): Observable<Order[]> {
     return this.genericAccessService.sendUserSpecificGET<Order[]>('orders/');
   }

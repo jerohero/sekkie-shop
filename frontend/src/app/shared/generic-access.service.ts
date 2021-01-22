@@ -35,6 +35,12 @@ export class GenericAccessService {
     return this.http.put<T>(this.API_URL + requestPath, body, options);
   }
 
+  sendUserSpecificPUT<T>(requestPath: string, body: unknown): Observable<T> {
+    const options = this.generateUserSpecificOptions();
+    console.log(requestPath);
+    return this.http.put<T>(this.API_URL + requestPath, body, options);
+  }
+
   private generateOptions(tokenRequired): { headers: HttpHeaders } {
     let authHeader = null;
     const headers = new HttpHeaders();

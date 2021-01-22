@@ -24,6 +24,21 @@ exports.createOrder = async (req, res) => {
     }
 }
 
+exports.updateOrder = async (req, res) => {
+    if (res.user.role !== 'ROLE_ADMIN') {
+        res.status(401).json({ message: 'UNAUTHORIZED' });
+    }
+    try {
+        const order = await Order.findById(req.body.order.id);
+        const updatedOrder = await order.set(req.body.order);
+        const result = await updatedOrder.update();
+        res.status(200).json(result);
+    } catch (err) {
+        console.log(err);
+        res.status(400).json({ message: err });
+    }
+}
+
 exports.getOrders = async (req, res) => {
     if (res.user.role !== 'ROLE_ADMIN') {
         res.status(401).json({ message: 'UNAUTHORIZED' });
