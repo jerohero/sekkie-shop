@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import {AccountComponent} from './account/account.component';
 import {AuthGuard} from './shared/guard/auth.guard';
 import {OrderPageComponent} from './shopping-list/order-page/order-page.component';
+import {ShippingPageComponent} from './shopping-list/order-page/shipping-page/shipping-page.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/shop', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
   { path: 'order', component: OrderPageComponent},
   { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
   { path: '404', component: UnknownPageComponent },
+  { path: 'shipping-temp', component: ShippingPageComponent },
   { path: ':id', component: ItemDetailsComponent },
   { path: '**', redirectTo: '/shop' }
 ];
