@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Order} from '../shared/models/order.model';
 
 @Component({
   selector: 'app-admin',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  orders: Order[];
 
   constructor() { }
 
