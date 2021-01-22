@@ -24,6 +24,7 @@ import { OrderPageComponent } from './shopping-list/order-page/order-page.compon
 import { OrdersBoxComponent } from './account/orders-box/orders-box.component';
 import { ShippingPageComponent } from './shopping-list/order-page/shipping-page/shipping-page.component';
 import { AdminComponent } from './admin/admin.component';
+import { OrdersComponent } from './admin/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AdminComponent } from './admin/admin.component';
     OrdersBoxComponent,
     ShippingPageComponent,
     AdminComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,
