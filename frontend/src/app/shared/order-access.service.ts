@@ -18,6 +18,11 @@ export class OrderAccessService {
     return this.genericAccessService.sendPOST<Order>('orders/', body, false);
   }
 
+  deleteOrder(order: Order): Observable<Order> {
+    const body = { order };
+    return this.genericAccessService.sendUserSpecificDELETE<Order>('orders/', body);
+  }
+
   updateOrder(order: Order): Observable<Order> {
     const body = { order };
     return this.genericAccessService.sendUserSpecificPUT<Order>('orders/', body);

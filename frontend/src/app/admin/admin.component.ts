@@ -8,15 +8,10 @@ import {OrderAccessService} from '../shared/order-access.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  orders: Order[];
 
-  constructor(private orderAccessService: OrderAccessService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.orderAccessService.fetchOrders()
-      .subscribe((orders) => {
-        this.orders = orders;
-      });
   }
 
 }

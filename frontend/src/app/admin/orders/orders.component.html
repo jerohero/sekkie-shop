@@ -10,7 +10,7 @@
         <li><p>total</p></li>
       </ul>
       <ul class="left-items-container">
-        <li class="item {{ order.id === selectedOrder.id ? 'active' : '' }}" *ngFor="let order of orders;" (click)="showOrder(order)">
+        <li class="item {{ order.id === selectedOrder?.id ? 'active' : '' }}" *ngFor="let order of orders;" (click)="showOrder(order)">
           <ul>
             <li><p>{{ order.name.firstName.substr(0, 1) + '. ' + order.name.lastName }}</p></li>
             <li><p>{{ order.address.country }}</p></li>
@@ -73,6 +73,6 @@
         </div>
       </div>
     </div>
-    <ng-template #noneSelected><p class="noneSelected">select an order to view its details</p></ng-template>
+    <ng-template #noneSelected><p class="noneSelected">{{ orders?.length <= 0 ? 'There are currently no orders' : 'Select an order to view it' }}</p></ng-template>
   </div>
 </div>

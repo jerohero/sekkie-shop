@@ -11,7 +11,7 @@ require('dotenv').config()
 const app = express();
 
 // mongoDB connection
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
     .then(() => app.listen(PORT))
     .catch((err) => console.log(err));
 

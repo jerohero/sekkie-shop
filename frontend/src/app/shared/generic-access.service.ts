@@ -37,7 +37,11 @@ export class GenericAccessService {
 
   sendUserSpecificPUT<T>(requestPath: string, body: unknown): Observable<T> {
     const options = this.generateUserSpecificOptions();
-    console.log(requestPath);
+    return this.http.put<T>(this.API_URL + requestPath, body, options);
+  }
+
+  sendUserSpecificDELETE<T>(requestPath: string, body: unknown): Observable<T> {
+    const options = this.generateUserSpecificOptions();
     return this.http.put<T>(this.API_URL + requestPath, body, options);
   }
 

@@ -29,12 +29,10 @@ exports.updateOrder = async (req, res) => {
         res.status(401).json({ message: 'UNAUTHORIZED' });
     }
     try {
-        const order = await Order.findById(req.body.order.id);
-        const updatedOrder = await order.set(req.body.order);
-        const result = await updatedOrder.update();
-        res.status(200).json(result);
+        const query = {'_id': req.body.order.id}
+        const order = await Order.findOneAndUpdate(query, req.body.order);
+        res.status(200).json(order);
     } catch (err) {
-        console.log(err);
         res.status(400).json({ message: err });
     }
 }
@@ -45,9 +43,22 @@ exports.getOrders = async (req, res) => {
     }
     try {
         const orders = await Order.find();
-        res.json(orders);
+        res.status(200).json(orders);
     } catch (err) {
         res.status(500).json({ message: err.message });
+    }
+}
+
+exports.deleteOrder = async (req, res) => {
+    if (res.user.role !== 'ROLE_ADMIN') {
+        res.status(401).json({ message: 'UNAUTHORIZED' });
+    }
+    try {
+        const query = {'_id': req.body.order.id}
+        await Order.findOneAndDelete(query);
+        res.status(200).json({ message: 'Item has been deleted' });
+    } catch (err) {
+        res.status(400).json({ message: err });
     }
 }
 
