@@ -38,10 +38,15 @@ exports.getProfile = async (req, res) => {
 
 exports.updateProfile = async (req, res) => {
     try {
+        if (res.user.id !== req.body.id) {
+            res.status(400).json({ message: 'FAULTY_REQUEST' });
+        }
         const updatedUser = await res.user.set(req.body);
         const result = await updatedUser.save();
-        res.json(result);
+        result.password = undefined;
+        res.status(200).json(result);
     } catch (err) {
+        console.log(err)
         res.status(400).json({ message: err });
     }
 }

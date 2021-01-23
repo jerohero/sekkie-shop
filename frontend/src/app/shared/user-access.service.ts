@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Observable, pipe, throwError} from 'rxjs';
 import {User} from './models/user.model';
 import {GenericAccessService} from './generic-access.service';
+import {Order} from './models/order.model';
 
 export interface AuthResponseData {
   token: string;
@@ -23,16 +24,19 @@ export class UserAccessService {
     return this.genericAccessService.sendPOST<AuthResponseData>('users/authenticate', body, false);
   }
 
-  updateUser(user: User) {
+  updateUserDetails(user: User) {
     const body = {
+      id: user.id,
       email: user.email,
       name: user.name,
-      id: user.id,
-      role: user.role,
-      address: user.address,
-      token: user.token
+      address: user.address
     };
     return this.genericAccessService.sendPUT<any>('users/profile', body, true);
+  }
+
+  updateUserRole(user: User): Observable<User> {
+    const body = { user };
+    return this.genericAccessService.sendUserSpecificPUT<User>('users/', body);
   }
 
   fetchUsers(): Observable<User[]> {

@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {skipWhile, take} from 'rxjs/operators';
 import {User, UserAddress, UserName} from '../shared/models/user.model';
 import {NgForm} from '@angular/forms';
-import {UserService} from '../shared/services/user.service';
 import {DataStorageService} from '../shared/services/data-storage.service';
 import {OrderAccessService} from '../shared/order-access.service';
 import {Order} from '../shared/models/order.model';
+import {UserAccessService} from '../shared/user-access.service';
 
 @Component({
   selector: 'app-account',
@@ -17,8 +17,8 @@ export class AccountComponent implements OnInit {
   orders: Order[];
 
   constructor(
-    private accountService: UserService, private dataStorageService: DataStorageService,
-    private orderAccessService: OrderAccessService
+    private dataStorageService: DataStorageService,
+    private orderAccessService: OrderAccessService, private userAccessService: UserAccessService
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +44,9 @@ export class AccountComponent implements OnInit {
       postalCode: form.value.postalCode,
     };
 
-    this.accountService.updateUser(this.user);
+    this.userAccessService.updateUserDetails(this.user).subscribe((user) => {
+      console.log(user);
+    });
   }
 
 }

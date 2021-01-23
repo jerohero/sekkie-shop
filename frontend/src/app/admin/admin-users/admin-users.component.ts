@@ -21,14 +21,14 @@ export class AdminUsersComponent implements OnInit {
       });
   }
 
-  deleteUser() {
+  deleteUser(): void {
 
   }
 
-  showUser(user: User) {
+  showUser(user: User): void {
     this.selectedUser = user;
   }
 
-  updateUserRole() {
+  updateUserRole(): void {
   }
 }
