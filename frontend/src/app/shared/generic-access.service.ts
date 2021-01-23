@@ -61,7 +61,7 @@ export class GenericAccessService {
     let authHeader = null;
     const headers = new HttpHeaders();
     const options = { headers };
-    if (this.dataStorageService.user.value.token !== null) {
+    if (this.fetchToken() !== null) {
       authHeader = 'Bearer ' + this.fetchToken();
       options.headers = options.headers
         .set('Authorization', authHeader)

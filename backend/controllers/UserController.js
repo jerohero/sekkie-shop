@@ -59,7 +59,6 @@ exports.updateProfile = async (req, res) => {
             }
         });
     } catch (err) {
-        console.log(err)
         res.status(400).json({ message: err });
     }
 }
@@ -97,7 +96,6 @@ exports.authenticateUser = async (req, res) => {
 
 // Create one user
 exports.createUser = async (req, res) => {
-    console.log(req.body);
     if (!req.body.email || req.body.email.length <= 0) {
         res.status(400).json({ message: 'NO_EMAIL' });
         return;
@@ -140,10 +138,23 @@ exports.getUsers = async (req, res) => {
     }
     try {
         const users = await User.find().select('-password');
-        console.log(users);
         res.status(200).json(users);
     } catch (err) {
         res.status(500).json({ message: err.message });
+    }
+}
+
+// Update user
+exports.updateUser = async (req, res) => {
+    if (res.user.role !== 'ROLE_ADMIN') {
+        res.status(401).json({ message: 'UNAUTHORIZED' });
+    }
+    try {
+        const query = {'_id': req.body.user.id}
+        const user = await User.findOneAndUpdate(query, req.body.user).select('-password');
+        res.status(200).json(user);
+    } catch (err) {
+        res.status(400).json({ message: err });
     }
 }
 

@@ -16,11 +16,16 @@ export class AdminGuard implements CanActivate {
   ): boolean | UrlTree | Promise<boolean | UrlTree> | Observable<boolean | UrlTree> {
     return this.dataStorageService.user
       .pipe(map((user) => {
-        const isAdmin = user.role === 'ROLE_ADMIN';
-        if (isAdmin) {
-          return true;
+        if (user) {
+          const isAdmin = user.role === 'ROLE_ADMIN';
+          if (isAdmin) {
+            return true;
+          }
         }
-        this.authService.showLogin.next(true);
+        // User isn't logged in
+        if (!localStorage.getItem('token')) {
+          this.authService.showLogin.next(true);
+        }
         return this.router.createUrlTree(['/']);
       }));
   }

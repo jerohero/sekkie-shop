@@ -16,9 +16,14 @@ router.post('/authenticate', findUser.byEmail, userController.authenticateUser);
 // GET Profile
 router.get('/profile', isAuth, userController.getProfile);
 
-// UPDATE Profile
+// UPDATE Profile (done by users)
 router.put('/profile', isAuth, findUser.byEmail, userController.updateProfile);
 
+// GET Users
 router.get('/', findUser.byHeaderId, userController.getUsers);
+
+// UPDATE User (done by admins)
+router.put('/', findUser.byHeaderId, userController.updateUser);
+
 
 module.exports = router;

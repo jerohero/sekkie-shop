@@ -24,7 +24,8 @@ const appRoutes: Routes = [
   { path: 'order', component: OrderPageComponent },
   { path: 'shipping', component: ShippingPageComponent },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
-  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+  { path: 'admin', component: AdminComponent },
+  // { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
   { path: '404', component: UnknownPageComponent },
   { path: ':id', component: ItemDetailsComponent },
   { path: '**', redirectTo: '/shop' }

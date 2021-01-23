@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Order} from '../../shared/models/order.model';
 import {OrderAccessService} from '../../shared/order-access.service';
+import {skipWhile, take} from 'rxjs/operators';
+import {DataStorageService} from '../../shared/services/data-storage.service';
 
 @Component({
   selector: 'app-admin-orders',
@@ -11,13 +13,16 @@ export class AdminOrdersComponent implements OnInit {
   orders: Order[];
   selectedOrder: Order;
 
-  constructor(private orderAccessService: OrderAccessService) { }
+  constructor(private orderAccessService: OrderAccessService, private dataStorageService: DataStorageService) { }
 
   ngOnInit(): void {
-    this.orderAccessService.fetchOrders()
-      .subscribe((orders) => {
-        this.orders = orders;
-        this.selectedOrder = this.orders[0];
+    this.dataStorageService.user.pipe(skipWhile(user => !user), take(1))
+      .subscribe(() => {
+        this.orderAccessService.fetchOrders()
+          .subscribe((orders) => {
+            this.orders = orders;
+            this.selectedOrder = this.orders[0];
+          });
       });
   }
 
