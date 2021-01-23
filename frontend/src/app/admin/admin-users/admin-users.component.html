@@ -9,10 +9,10 @@
         <li><p>role</p></li>
       </ul>
       <ul class="left-items-container">
-        <li class="item {{ user.id === selectedUser?.id ? 'active' : '' }}" *ngFor="let user of users;" (click)="showUser(user)">
+        <li *ngFor="let user of users;" class="item {{ user.id === selectedUser?.id ? 'active' : '' }}" (click)="showUser(user)">
           <ul>
-            <li><p>{{ user.name ? user.name.firstName.substr(0, 1) + '. ' + user.name.lastName : 'n/a' }}</p></li>
-            <li><p>{{ user.address ? user.address.country : 'n/a' }}</p></li>
+            <li><p>{{ user.name?.firstName && user.name?.firstName ? user.name.firstName.substr(0, 1) + '. ' + user.name.lastName : 'n/a' }}</p></li>
+            <li><p>{{ user.address?.country ? user.address.country : 'n/a' }}</p></li>
             <li><p>{{ user.email }}</p></li>
             <li><p>{{ user.role | role}}</p></li>
           </ul>
@@ -26,10 +26,21 @@
       <div id="user-details">
         <ul id="top-details">
           <li><p><span>id</span> {{selectedUser.id}}</p></li>
-          <li><p><span>name</span> {{ selectedUser.name ? selectedUser.name.firstName.substr(0, 1) + '. ' + selectedUser.name.lastName : 'n/a' }}</p></li>
-          <li><p><span>items</span> {{selectedUser.email}}</p></li>
-          <li><p><span>date</span> {{selectedUser.role}}</p></li>
+          <li><p><span>email</span> {{selectedUser.email}}</p></li>
+          <li><p><span>role</span> {{selectedUser.role | role}}</p></li>
         </ul>
+        <div class="bottom-details">
+          <ul id="bottom-details-left">
+            <li><p><span>street and housenumber</span> {{ selectedUser.address?.streetAndHouseNumber ? selectedUser.address.streetAndHouseNumber : 'n/a' }}</p></li>
+            <li><p><span>postal code</span> {{ selectedUser.address?.postalCode ? selectedUser.address.postalCode : 'n/a' }}</p></li>
+            <li><p><span>city</span> {{ selectedUser.address?.city ? selectedUser.address.city : 'n/a' }}</p></li>
+            <li><p><span>country</span> {{ selectedUser.address?.country ? selectedUser.address.country : 'n/a' }}</p></li>
+          </ul>
+          <ul id="bottom-details-right">
+            <li><p><span>first name</span> {{ selectedUser.name?.firstName ? selectedUser.name.firstName : 'n/a' }}</p></li>
+            <li><p><span>last name</span> {{ selectedUser.name?.lastName ? selectedUser.name.lastName : 'n/a' }}</p></li>
+          </ul>
+        </div>
         <div class="primary-buttons">
           <button id="delete" (click)="deleteUser()">delete</button>
           <button (click)="updateUserRole()">demote</button>

@@ -99,6 +99,35 @@
         }
       }
     }
+
+    .bottom-details {
+      margin-top: 30px;
+      width: 68%;
+      display: flex;
+
+      #bottom-details-left, #bottom-details-right {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+
+        li {
+          margin-bottom: 11px;
+          width: 100%;
+
+          p {
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+            span {
+            }
+          }
+        }
+      }
+
+      #bottom-details-left {
+        margin-right: 20px;
+      }
+    }
   }
 
   .primary-buttons {
