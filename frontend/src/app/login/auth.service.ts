@@ -16,9 +16,7 @@ export class AuthService {
   signup(email: string, password: string): Observable<AuthResponseData> {
     return this.userAccessService.registerUser(email, password)
       .pipe(catchError(this.handleError), tap((resData) => {
-        this.handleAuthentication(
-          resData.user.email, resData.user.id, resData.user.name, resData.user.role, resData.user.address, resData.token);
-
+        this.handleAuthentication(resData.token);
       }));
   }
 
@@ -26,8 +24,7 @@ export class AuthService {
     return this.userAccessService.loginUser(email, password)
       .pipe(catchError(this.handleError), tap((resData) => {
         console.log(resData);
-        this.handleAuthentication(
-          resData.user.email, resData.user.id, resData.user.name, resData.user.role, resData.user.address, resData.token);
+        this.handleAuthentication(resData.token);
       }));
   }
 
@@ -36,7 +33,20 @@ export class AuthService {
     if (!token) {
       return;
     }
+    this.handleAuthentication(token);
+  }
 
+  logout(): void {
+    this.dataStorageService.user.next(null);
+    localStorage.removeItem('token');
+  }
+
+  handleAuthentication(token: string) {
+    // const expirationDate = new Date(
+    //   new Date().getTime() + +expiresIn * 1000
+    // );
+
+    localStorage.setItem('token', token);
     this.userAccessService.verifyUser()
       .subscribe((res) => {
         console.log(res);
@@ -50,31 +60,6 @@ export class AuthService {
         );
         this.dataStorageService.user.next(user);
       });
-  }
-
-  logout(): void {
-    this.dataStorageService.user.next(null);
-    localStorage.removeItem('token');
-  }
-
-  handleAuthentication(
-    email: string, userId: string, name: UserName, role: string, address: UserAddress, token: string
-  ) {
-    // const expirationDate = new Date(
-    //   new Date().getTime() + +expiresIn * 1000
-    // );
-
-    const user = new User(
-      userId,
-      email,
-      name,
-      role,
-      address,
-      token,
-      // expirationDate
-    );
-    this.dataStorageService.user.next(user);
-    localStorage.setItem('token', token);
   }
 
   handleError(errorRes: HttpErrorResponse): Observable<any> {

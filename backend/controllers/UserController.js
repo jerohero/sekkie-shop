@@ -44,7 +44,20 @@ exports.updateProfile = async (req, res) => {
         const updatedUser = await res.user.set(req.body);
         const result = await updatedUser.save();
         result.password = undefined;
-        res.status(200).json(result);
+
+        const token = newToken(result);
+
+        res.status(200).json({
+            success: true,
+            token: token,
+            user: {
+                id: result._id,
+                email: result.email,
+                role: result.role,
+                name: result.name,
+                address: result.address
+            }
+        });
     } catch (err) {
         console.log(err)
         res.status(400).json({ message: err });
@@ -62,9 +75,7 @@ exports.authenticateUser = async (req, res) => {
     bcrypt.compare(password, res.user.password, (err, isMatch) => {
         if (err) return res.status(500).json({ message: err.message });
         if (isMatch) {
-            const token = jwt.sign({data:user}, process.env.SECRET, {
-                expiresIn: 86400 // 1 day
-            });
+            const token = newToken(user);
 
             res.json({
                success: true,
@@ -106,9 +117,7 @@ exports.createUser = async (req, res) => {
             // if (err) throw err;
             user.password = hash;
 
-            const token = jwt.sign({data:user}, process.env.SECRET, {
-                expiresIn: 604800 // 1 week
-            });
+            const token = newToken(user);
 
             try {
                 user.save();
@@ -136,4 +145,11 @@ exports.getUsers = async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
+}
+
+newToken = (user) => {
+    user.password = undefined;
+    return jwt.sign({data: user}, process.env.SECRET, {
+        expiresIn: 86400 // 1 day
+    });
 }

@@ -44,8 +44,9 @@ export class AccountComponent implements OnInit {
       postalCode: form.value.postalCode,
     };
 
-    this.userAccessService.updateUserDetails(this.user).subscribe((user) => {
-      console.log(user);
+    this.userAccessService.updateUserDetails(this.user).subscribe((res) => {
+      localStorage.setItem('token', res.token);
+      this.dataStorageService.user.next(res.user);
     });
   }
 
