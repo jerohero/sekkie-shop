@@ -1,13 +1,13 @@
-import {AfterViewInit, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Order} from '../../shared/models/order.model';
 import {OrderAccessService} from '../../shared/order-access.service';
 
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.scss'],
+  selector: 'app-admin-orders',
+  templateUrl: './admin-orders.component.html',
+  styleUrls: ['./admin-orders.component.scss'],
 })
-export class OrdersComponent implements OnInit {
+export class AdminOrdersComponent implements OnInit {
   orders: Order[];
   selectedOrder: Order;
 

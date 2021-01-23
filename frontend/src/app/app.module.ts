@@ -24,8 +24,9 @@ import { OrderPageComponent } from './shopping-list/order-page/order-page.compon
 import { OrdersBoxComponent } from './account/orders-box/orders-box.component';
 import { ShippingPageComponent } from './shopping-list/order-page/shipping-page/shipping-page.component';
 import { AdminComponent } from './admin/admin.component';
-import { OrdersComponent } from './admin/orders/orders.component';
+import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import {StatusPipe} from './shared/pipes/status.pipe';
+import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {StatusPipe} from './shared/pipes/status.pipe';
     OrdersBoxComponent,
     ShippingPageComponent,
     AdminComponent,
-    OrdersComponent,
+    AdminOrdersComponent,
+    AdminUsersComponent,
   ],
   imports: [
     BrowserModule,

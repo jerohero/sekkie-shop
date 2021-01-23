@@ -13,12 +13,14 @@ ul {
 
 .admin-box {
   @include admin-box;
+
 }
 
 .orders-box {
   .left {
     width: 618px;
     min-width: 618px;
+    max-height: 655px;
 
     .box-content {
       .box-top {
@@ -26,6 +28,10 @@ ul {
       }
 
       .left-items-container {
+        max-height: 613px;
+        overflow-y: auto;
+        @include scrollbar;
+
         .item {
           padding: 19px 0;
           background-color: white;

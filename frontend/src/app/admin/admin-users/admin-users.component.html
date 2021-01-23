@@ -1,0 +1,48 @@
+<div class="admin-box users-box">
+  <div class="left">
+    <header class="box-title"><h2>users</h2></header>
+    <div class="box-content">
+      <ul class="box-top">
+        <li><p>name</p></li>
+        <li><p>country</p></li>
+        <li><p>email address</p></li>
+        <li><p>role</p></li>
+      </ul>
+      <ul class="left-items-container">
+        <li class="item {{ user.id === selectedUser?.id ? 'active' : '' }}" *ngFor="let user of users;" (click)="showUser(user)">
+          <ul>
+            <li><p>{{ user.name.firstName.substr(0, 1) + '. ' + user.name.lastName }}</p></li>
+            <li><p>{{ user.address.country }}</p></li>
+            <li><p>{{ user.email | date: 'dd/MM/yyyy' }}</p></li>
+            <li><p>{{ user.role | status}}</p></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="right">
+    <header class="box-title"><h2>user info</h2></header>
+    <div class="box-content" *ngIf="selectedUser; else noneSelected">
+      <ul class="box-top">
+        <li><p>name</p></li>
+        <li><p>color</p></li>
+        <li><p>amount</p></li>
+        <li><p>size</p></li>
+        <li><p>total</p></li>
+      </ul>
+      <div id="user-details">
+        <ul id="top-details">
+          <li><p><span>id</span> {{selectedUser.id}}</p></li>
+          <li><p><span>name</span> {{selectedUser.name.firstName + ' ' + selectedUser.name.lastName}}</p></li>
+          <li><p><span>items</span> {{selectedUser.email}}</p></li>
+          <li><p><span>date</span> {{selectedUser.role}}</p></li>
+        </ul>
+        <div id="user-buttons">
+          <button id="delete" (click)="deleteUser()">delete</button>
+          <button (click)="updateUserRole()">{{ userRoleButtonTxt }}</button>
+        </div>
+      </div>
+    </div>
+    <ng-template #noneSelected><p class="noneSelected">{{ users?.length <= 0 ? 'There are currently no admin-users' : 'Select an user to view it' }}</p></ng-template>
+  </div>
+</div>

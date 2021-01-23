@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 
 app.use('/items', itemsRouter);
 app.use('/auth', userRouter);
-app.use('/orders', orderRouter);
+app.use('/admin-orders', orderRouter);
 
 module.exports = app;
 
