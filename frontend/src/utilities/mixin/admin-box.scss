@@ -30,6 +30,46 @@
   .box-content {
     background-color: #F3F3F3;
 
+    .left-items-container {
+      overflow-y: auto;
+      @include scrollbar;
+
+      .item {
+        padding: 19px 0;
+        background-color: white;
+        border-top: #ABABAB 1px solid;
+        border-bottom: #ABABAB 1px solid;
+        margin-bottom: 7px;
+
+        &:hover {
+          background-color: #fafafa;
+          cursor: pointer;
+        }
+        ul {
+          li {
+            p {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+
+      .active {
+        background-color: #111111;
+        ul {
+          li {
+            p {
+              color: white;
+            }
+          }
+        }
+
+        &:hover {
+          background-color: #111111;
+        }
+      }
+    }
+
     .box-top {
       padding-top: 12px;
       display: grid;
@@ -58,6 +98,32 @@
           }
         }
       }
+    }
+  }
+
+  .primary-buttons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-right: 32px;
+    margin-bottom: 23px;
+    right: 0;
+    bottom: 0;
+
+    button {
+      min-width: 180px;
+      margin-top: 16px;
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 1px 37px;
+      font-family: 'Anton', sans-serif;
+      font-size: 36px;
+    }
+
+    #delete {
+      color: black;
+      background-color: white;
     }
   }
 }

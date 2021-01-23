@@ -32,27 +32,10 @@ ul {
 
       .left-items-container {
         max-height: 613px;
-        overflow-y: auto;
-        @include scrollbar;
 
         .item {
-          padding: 19px 0;
-          background-color: white;
-          border-top: #ABABAB 1px solid;
-          border-bottom: #ABABAB 1px solid;
-          margin-bottom: 7px;
-
-          &:hover {
-            background-color: #fafafa;
-            cursor: pointer;
-          }
             ul {
               grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-              li {
-                p {
-                  font-size: 16px;
-                }
-              }
           }
         }
 
@@ -161,32 +144,6 @@ ul {
 
           #bottom-details-left {
             margin-right: 20px;
-          }
-        }
-
-        #order-buttons {
-          display: flex;
-          flex-direction: column;
-          position: absolute;
-          margin-right: 32px;
-          margin-bottom: 23px;
-          right: 0;
-          bottom: 0;
-
-          button {
-            min-width: 180px;
-            margin-top: 20px;
-            background-color: black;
-            color: white;
-            border: none;
-            padding: 1px 37px;
-            font-family: 'Anton', sans-serif;
-            font-size: 36px;
-          }
-
-          #delete {
-            color: black;
-            background-color: white;
           }
         }
       }

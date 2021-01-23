@@ -16,7 +16,8 @@ export class AdminUsersComponent implements OnInit {
   ngOnInit(): void {
     this.userAccessService.fetchUsers()
       .subscribe((users) => {
-        console.log(users);
+        this.users = users;
+        this.selectedUser = this.users[0];
       });
   }
 
@@ -25,7 +26,7 @@ export class AdminUsersComponent implements OnInit {
   }
 
   showUser(user: User) {
-
+    this.selectedUser = user;
   }
 
   updateUserRole() {

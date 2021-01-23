@@ -11,10 +11,10 @@
       <ul class="left-items-container">
         <li class="item {{ user.id === selectedUser?.id ? 'active' : '' }}" *ngFor="let user of users;" (click)="showUser(user)">
           <ul>
-            <li><p>{{ user.name.firstName.substr(0, 1) + '. ' + user.name.lastName }}</p></li>
-            <li><p>{{ user.address.country }}</p></li>
-            <li><p>{{ user.email | date: 'dd/MM/yyyy' }}</p></li>
-            <li><p>{{ user.role | status}}</p></li>
+            <li><p>{{ user.name ? user.name.firstName.substr(0, 1) + '. ' + user.name.lastName : 'n/a' }}</p></li>
+            <li><p>{{ user.address ? user.address.country : 'n/a' }}</p></li>
+            <li><p>{{ user.email }}</p></li>
+            <li><p>{{ user.role | role}}</p></li>
           </ul>
         </li>
       </ul>
@@ -23,23 +23,16 @@
   <div class="right">
     <header class="box-title"><h2>user info</h2></header>
     <div class="box-content" *ngIf="selectedUser; else noneSelected">
-      <ul class="box-top">
-        <li><p>name</p></li>
-        <li><p>color</p></li>
-        <li><p>amount</p></li>
-        <li><p>size</p></li>
-        <li><p>total</p></li>
-      </ul>
       <div id="user-details">
         <ul id="top-details">
           <li><p><span>id</span> {{selectedUser.id}}</p></li>
-          <li><p><span>name</span> {{selectedUser.name.firstName + ' ' + selectedUser.name.lastName}}</p></li>
+          <li><p><span>name</span> {{ selectedUser.name ? selectedUser.name.firstName.substr(0, 1) + '. ' + selectedUser.name.lastName : 'n/a' }}</p></li>
           <li><p><span>items</span> {{selectedUser.email}}</p></li>
           <li><p><span>date</span> {{selectedUser.role}}</p></li>
         </ul>
-        <div id="user-buttons">
+        <div class="primary-buttons">
           <button id="delete" (click)="deleteUser()">delete</button>
-          <button (click)="updateUserRole()">{{ userRoleButtonTxt }}</button>
+          <button (click)="updateUserRole()">demote</button>
         </div>
       </div>
     </div>
