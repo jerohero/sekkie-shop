@@ -23,6 +23,9 @@ ul {
     max-height: 655px;
 
     .box-content {
+      height: 655px;
+      max-height: 655px;
+
       .box-top {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
       }
