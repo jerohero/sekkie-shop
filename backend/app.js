@@ -39,8 +39,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/items', itemsRouter);
-app.use('/auth', userRouter);
-app.use('/admin-orders', orderRouter);
+app.use('/users', userRouter);
+app.use('/orders', orderRouter);
 
 module.exports = app;
 

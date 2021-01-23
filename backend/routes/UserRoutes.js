@@ -19,4 +19,6 @@ router.get('/profile', passport.authenticate('jwt', {session: false}), userContr
 // UPDATE Profile
 router.put('/profile', isAuth, findUser.byEmail, userController.updateProfile);
 
+router.get('/', findUser.byHeaderId, userController.getUsers);
+
 module.exports = router;

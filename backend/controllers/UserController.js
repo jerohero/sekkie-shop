@@ -118,3 +118,17 @@ exports.createUser = async (req, res) => {
         });
     });
 }
+
+// Get users
+exports.getUsers = async (req, res) => {
+    if (res.user.role !== 'ROLE_ADMIN') {
+        res.status(401).json({ message: 'UNAUTHORIZED' });
+    }
+    try {
+        const users = await User.find().select('-password');
+        console.log(users);
+        res.status(200).json(users);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}

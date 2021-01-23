@@ -15,24 +15,24 @@ export class OrderAccessService {
 
   createOrder(order: Order): Observable<Order> {
     const body = { order };
-    return this.genericAccessService.sendPOST<Order>('admin-orders/', body, false);
+    return this.genericAccessService.sendPOST<Order>('orders/', body, false);
   }
 
   deleteOrder(order: Order): Observable<Order> {
     const body = { order };
-    return this.genericAccessService.sendUserSpecificDELETE<Order>('admin-orders/', body);
+    return this.genericAccessService.sendUserSpecificDELETE<Order>('orders/', body);
   }
 
   updateOrder(order: Order): Observable<Order> {
     const body = { order };
-    return this.genericAccessService.sendUserSpecificPUT<Order>('admin-orders/', body);
+    return this.genericAccessService.sendUserSpecificPUT<Order>('orders/', body);
   }
 
   fetchOrders(): Observable<Order[]> {
-    return this.genericAccessService.sendUserSpecificGET<Order[]>('admin-orders/');
+    return this.genericAccessService.sendUserSpecificGET<Order[]>('orders/');
   }
 
   fetchOrdersByUserId(userId: string): Observable<Order[]> {
-    return this.genericAccessService.sendGET<Order[]>('admin-orders/' + userId, true);
+    return this.genericAccessService.sendGET<Order[]>('orders/' + userId, true);
   }
 }

@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import { Item } from './models/item.model';
-import {ItemService} from './services/item.service';
 import {Observable, pipe, throwError} from 'rxjs';
 import {User} from './models/user.model';
-import {catchError, tap} from 'rxjs/operators';
 import {GenericAccessService} from './generic-access.service';
 
 export interface AuthResponseData {
@@ -18,12 +15,12 @@ export class UserAccessService {
 
   registerUser(email: string, password: string): Observable<AuthResponseData> {
     const body = { email, password };
-    return this.genericAccessService.sendPOST<AuthResponseData>('auth/register', body, false);
+    return this.genericAccessService.sendPOST<AuthResponseData>('users/register', body, false);
   }
 
   loginUser(email: string, password: string): Observable<AuthResponseData> {
     const body = { email, password };
-    return this.genericAccessService.sendPOST<AuthResponseData>('auth/authenticate', body, false);
+    return this.genericAccessService.sendPOST<AuthResponseData>('users/authenticate', body, false);
   }
 
   updateUser(user: User) {
@@ -35,6 +32,10 @@ export class UserAccessService {
       address: user.address,
       token: user.token
     };
-    return this.genericAccessService.sendPUT<any>('auth/profile', body, true);
+    return this.genericAccessService.sendPUT<any>('users/profile', body, true);
+  }
+
+  fetchUsers(): Observable<User[]> {
+    return this.genericAccessService.sendUserSpecificGET<User[]>('users/');
   }
 }
