@@ -49,7 +49,8 @@ export class GenericAccessService {
     let authHeader = null;
     const headers = new HttpHeaders();
     const options = { headers };
-    if (tokenRequired && this.dataStorageService.user.value.token !== null) {
+    // if (tokenRequired && this.dataStorageService.user.value.token !== null) {
+    if (tokenRequired && this.fetchToken() !== null) {
       authHeader = 'Bearer ' + this.fetchToken();
       options.headers = options.headers.set('Authorization', authHeader);
     }
@@ -70,7 +71,8 @@ export class GenericAccessService {
   }
 
   private fetchToken(): string {
-    return this.dataStorageService.user.getValue().token;
+    // return this.dataStorageService.user.getValue().token;
+    return localStorage.getItem('token');
   }
 
 }

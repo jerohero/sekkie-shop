@@ -33,7 +33,7 @@ exports.getUserByEmail = async (req, res) => {
 }
 
 exports.getProfile = async (req, res) => {
-    res.json({user: req.user});
+    res.json(res.verifiedUser);
 }
 
 exports.updateProfile = async (req, res) => {
@@ -63,7 +63,7 @@ exports.authenticateUser = async (req, res) => {
         if (err) return res.status(500).json({ message: err.message });
         if (isMatch) {
             const token = jwt.sign({data:user}, process.env.SECRET, {
-                expiresIn: 604800 // 1 week
+                expiresIn: 86400 // 1 day
             });
 
             res.json({

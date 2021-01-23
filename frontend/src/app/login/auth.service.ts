@@ -32,27 +32,29 @@ export class AuthService {
   }
 
   autoLogin() {
-    const user: {
-      id: string,
-      email: string,
-      name: UserName,
-      role: string,
-      address: UserAddress,
-      _token: string
-    } = JSON.parse(localStorage.getItem('user'));
-    if (!user) {
+    const token = localStorage.getItem('token');
+    if (!token) {
       return;
     }
-    const loadedUser = new User(user.id, user.email, user.name, user.role, user.address, user._token);
 
-    if (loadedUser.token) {
-      this.dataStorageService.user.next(loadedUser);
-    }
+    this.userAccessService.verifyUser()
+      .subscribe((res) => {
+        console.log(res);
+        const user = new User(
+          res.data.id,
+          res.data.email,
+          res.data.name,
+          res.data.role,
+          res.data.address,
+          token
+        );
+        this.dataStorageService.user.next(user);
+      });
   }
 
   logout(): void {
     this.dataStorageService.user.next(null);
-    localStorage.removeItem('user');
+    localStorage.removeItem('token');
   }
 
   handleAuthentication(
@@ -61,6 +63,7 @@ export class AuthService {
     // const expirationDate = new Date(
     //   new Date().getTime() + +expiresIn * 1000
     // );
+
     const user = new User(
       userId,
       email,
@@ -71,7 +74,7 @@ export class AuthService {
       // expirationDate
     );
     this.dataStorageService.user.next(user);
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('token', token);
   }
 
   handleError(errorRes: HttpErrorResponse): Observable<any> {

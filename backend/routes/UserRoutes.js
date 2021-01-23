@@ -14,7 +14,7 @@ router.post('/register', findUser.byEmail, userController.createUser);
 router.post('/authenticate', findUser.byEmail, userController.authenticateUser);
 
 // GET Profile
-router.get('/profile', passport.authenticate('jwt', {session: false}), userController.getProfile);
+router.get('/profile', isAuth, userController.getProfile);
 
 // UPDATE Profile
 router.put('/profile', isAuth, findUser.byEmail, userController.updateProfile);

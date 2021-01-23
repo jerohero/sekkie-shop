@@ -42,4 +42,8 @@ export class UserAccessService {
   fetchUsers(): Observable<User[]> {
     return this.genericAccessService.sendUserSpecificGET<User[]>('users/');
   }
+
+  verifyUser(): Observable<any> {
+    return this.genericAccessService.sendGET<User>('users/profile/', true);
+  }
 }
