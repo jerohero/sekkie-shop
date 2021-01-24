@@ -42,6 +42,9 @@ export class AdminUsersComponent implements OnInit {
   }
 
   updateUserRole(): void {
+    if (this.selectedUser.id === this.dataStorageService.user.getValue().id) {
+      return alert('You can\'t demote yourself!');
+    }
     if (this.userRoleButtonTxt === 'promote') {
       this.selectedUser.role = 'ROLE_ADMIN';
     } else {
