@@ -18,9 +18,8 @@ export class OrderAccessService {
     return this.genericAccessService.sendPOST<Order>('orders/', body, false);
   }
 
-  deleteOrder(order: Order): Observable<Order> {
-    const body = { order };
-    return this.genericAccessService.sendUserSpecificDELETE<Order>('orders/', body);
+  deleteOrder(orderId: string): Observable<Order> {
+    return this.genericAccessService.sendUserSpecificDELETE<Order>('orders/' + orderId);
   }
 
   updateOrder(order: Order): Observable<Order> {

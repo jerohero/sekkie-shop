@@ -40,9 +40,9 @@ export class GenericAccessService {
     return this.http.put<T>(this.API_URL + requestPath, body, options);
   }
 
-  sendUserSpecificDELETE<T>(requestPath: string, body: unknown): Observable<T> {
+  sendUserSpecificDELETE<T>(requestPath: string): Observable<T> {
     const options = this.generateUserSpecificOptions();
-    return this.http.put<T>(this.API_URL + requestPath, body, options);
+    return this.http.delete<T>(this.API_URL + requestPath, options);
   }
 
   private generateOptions(tokenRequired): { headers: HttpHeaders } {
@@ -70,7 +70,7 @@ export class GenericAccessService {
     return options;
   }
 
-  private fetchToken(): string {
+  fetchToken(): string {
     // return this.dataStorageService.user.getValue().token;
     return localStorage.getItem('token');
   }

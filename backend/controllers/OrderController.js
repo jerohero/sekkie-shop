@@ -54,7 +54,7 @@ exports.deleteOrder = async (req, res) => {
         res.status(401).json({ message: 'UNAUTHORIZED' });
     }
     try {
-        const query = {'_id': req.body.order.id}
+        const query = {'_id': req.params.id}
         await Order.findOneAndDelete(query);
         res.status(200).json({ message: 'Item has been deleted' });
     } catch (err) {

@@ -31,7 +31,7 @@ export class AdminOrdersComponent implements OnInit {
   }
 
   deleteOrder(): void {
-    this.orderAccessService.deleteOrder(this.selectedOrder)
+    this.orderAccessService.deleteOrder(this.selectedOrder.id)
       .subscribe(() => {
         const index = this.orders.indexOf(this.selectedOrder, 0);
         if (index > -1) {
@@ -47,8 +47,7 @@ export class AdminOrdersComponent implements OnInit {
     } else {
       this.selectedOrder.status = 'ON_HOLD';
     }
-    this.orderAccessService.updateOrder(this.selectedOrder)
-      .subscribe();
+    this.orderAccessService.updateOrder(this.selectedOrder).subscribe();
   }
 
   get orderStatusButtonTxt() {

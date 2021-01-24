@@ -77,15 +77,15 @@ exports.authenticateUser = async (req, res) => {
             const token = newToken(user);
 
             res.json({
-               success: true,
-               token: token,
-               user: {
-                   id: user._id,
-                   email: user.email,
-                   role: user.role,
-                   name: user.name,
-                   address: user.address
-               }
+                success: true,
+                token: token,
+                user: {
+                    id: user._id,
+                    email: user.email,
+                    role: user.role,
+                    name: user.name,
+                    address: user.address
+                }
             });
         } else {
             return res.status(401).json({ success: false, message: 'WRONG_CREDENTIALS' })
@@ -153,6 +153,21 @@ exports.updateUser = async (req, res) => {
         const query = {'_id': req.body.user.id}
         const user = await User.findOneAndUpdate(query, req.body.user).select('-password');
         res.status(200).json(user);
+    } catch (err) {
+        res.status(400).json({ message: err });
+    }
+}
+
+// Delete user
+exports.deleteUser = async (req, res) => {
+    if (res.user.role !== 'ROLE_ADMIN') {
+        res.status(401).json({ message: 'UNAUTHORIZED' });
+    }
+    try {
+        const query = {'_id': req.params.id}
+        await User.findOneAndDelete(query);
+        console.log(query);
+        res.status(200).json({ message: 'User has been deleted' });
     } catch (err) {
         res.status(400).json({ message: err });
     }

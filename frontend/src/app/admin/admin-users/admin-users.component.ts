@@ -27,7 +27,14 @@ export class AdminUsersComponent implements OnInit {
   }
 
   deleteUser(): void {
-    // this.userAccessService.
+    this.userAccessService.deleteUser(this.selectedUser.id)
+      .subscribe(() => {
+        const index = this.users.indexOf(this.selectedUser, 0);
+        if (index > -1) {
+          this.users.splice(index, 1);
+        }
+        this.selectedUser = null;
+      });
   }
 
   showUser(user: User): void {

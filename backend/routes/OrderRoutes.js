@@ -11,7 +11,7 @@ router.get('/:id', orderController.getOrdersByUserId);
 
 router.get('/', findUser.byHeaderId, orderController.getOrders);
 
-router.delete('/', findUser.byHeaderId, orderController.deleteOrder);
+router.delete('/:id', findUser.byHeaderId, orderController.deleteOrder);
 
 router.put('/', findUser.byHeaderId, orderController.updateOrder);
 

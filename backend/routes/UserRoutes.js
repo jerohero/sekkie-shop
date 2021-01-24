@@ -25,5 +25,7 @@ router.get('/', findUser.byHeaderId, userController.getUsers);
 // UPDATE User (done by admins)
 router.put('/', findUser.byHeaderId, userController.updateUser);
 
+router.delete('/:id', findUser.byHeaderId, userController.deleteUser);
+
 
 module.exports = router;
