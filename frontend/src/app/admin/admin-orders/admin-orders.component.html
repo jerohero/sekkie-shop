@@ -32,8 +32,8 @@
         <li><p>size</p></li>
         <li><p>total</p></li>
       </ul>
-      <div id="order-items-container">
-        <ul id="order-items-list">
+      <div class="order-items-container">
+        <ul class="order-items-list">
           <li *ngFor="let item of selectedOrder.items" class="order-items-list-item">
             <a [routerLink]="['/' + item.id]">
               <ul>
@@ -47,28 +47,28 @@
           </li>
         </ul>
       </div>
-      <div id="order-details">
-        <ul id="top-details">
+      <div class="order-details">
+        <ul class="top-details">
           <li><p><span>id</span> {{selectedOrder.id}}</p></li>
           <li><p><span>total</span> ${{selectedOrder.totalPrice}}</p></li>
           <li><p><span>items</span> {{selectedOrder.items.length}}</p></li>
           <li><p><span>date</span> {{selectedOrder.date | date: 'dd/MM/yyyy'}}</p></li>
         </ul>
         <div class="bottom-details">
-          <ul id="bottom-details-left">
+          <ul class="bottom-details-left">
             <li><p><span>street and housenumber</span> {{selectedOrder.address.streetAndHouseNumber}}</p></li>
             <li><p><span>postal code</span> {{selectedOrder.address.postalCode}}</p></li>
             <li><p><span>city</span> {{selectedOrder.address.city}}</p></li>
             <li><p><span>country</span> {{selectedOrder.address.country}}</p></li>
           </ul>
-          <ul id="bottom-details-right">
+          <ul class="bottom-details-right">
             <li><p><span>first name</span> {{selectedOrder.name.firstName}}</p></li>
             <li><p><span>last name</span> {{selectedOrder.name.lastName}}</p></li>
             <li><p><span>email</span> {{selectedOrder.email}}</p></li>
           </ul>
         </div>
         <div class="primary-buttons">
-          <button id="delete" (click)="deleteOrder()">delete</button>
+          <button class="delete" (click)="deleteOrder()">delete</button>
           <button (click)="updateOrderStatus()">{{ orderStatusButtonTxt }}</button>
         </div>
       </div>

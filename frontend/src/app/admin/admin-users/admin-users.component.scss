@@ -48,13 +48,13 @@ ul {
     min-width: 959px;
 
     .box-content {
-      #user-details {
+      .user-details {
         padding-left: 78px;
         padding-top: 10px;
         height: 287px;
         position: relative;
 
-        #top-details, #bottom-details-left, #bottom-details-right {
+        .top-details, .bottom-details-left, .bottom-details-right {
           display: flex;
           //flex-direction: column;
 

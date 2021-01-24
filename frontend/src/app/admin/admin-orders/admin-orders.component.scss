@@ -61,14 +61,14 @@ ul {
     width: 1083px;
     min-width: 1083px;
     .box-content {
-      #order-items-container {
+      .order-items-container {
         height: 326px;
         max-height: 326px;
         background-color: #DADADA;
         overflow-y: auto;
         @include scrollbar;
 
-        #order-items-list {
+        .order-items-list {
           .order-items-list-item {
             padding: 19px 0;
             background-color: white;
@@ -101,13 +101,13 @@ ul {
         }
       }
 
-      #order-details {
+      .order-details {
         padding-left: 78px;
         padding-top: 10px;
         height: 287px;
         position: relative;
 
-        #top-details, #bottom-details-left, #bottom-details-right {
+        .top-details, .bottom-details-left, .bottom-details-right {
           display: flex;
           li {
             margin-right: 20px;

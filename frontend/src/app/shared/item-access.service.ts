@@ -4,6 +4,8 @@ import { Item } from './models/item.model';
 import {ItemService} from './services/item.service';
 import {AuthService} from '../login/auth.service';
 import {GenericAccessService} from './generic-access.service';
+import {Observable} from 'rxjs';
+import {Order} from './models/order.model';
 
 @Injectable({providedIn: 'root'})
 export class ItemAccessService {
@@ -12,14 +14,15 @@ export class ItemAccessService {
     private authService: AuthService, private genericAccessService: GenericAccessService) { }
 
   fetchItems() {
-    return this.genericAccessService.sendGET<Item[]>('items/', false)
-      .subscribe(items => {
-        this.itemService.setItems(items);
-      });
+    return this.genericAccessService.sendGET<Item[]>('items/', false);
   }
 
   fetchItem(id: string) {
     return this.genericAccessService.sendGET<Item>('items/' + id, false);
+  }
+
+  deleteItem(itemId: string): Observable<Order> {
+    return this.genericAccessService.sendUserSpecificDELETE<Order>('items/' + itemId);
   }
 }
 

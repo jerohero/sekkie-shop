@@ -24,8 +24,12 @@ export class ItemListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataAccessService.fetchItems();
+    this.dataAccessService.fetchItems()
+      .subscribe((items) => {
+        this.itemService.setItems(items);
+      });
 
+    // todo necessary?
     this.itemService.itemsChanged
       .subscribe((items) => {
         this.items = items;

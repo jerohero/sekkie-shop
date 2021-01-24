@@ -23,26 +23,26 @@
   <div class="right">
     <header class="box-title"><h2>user info</h2></header>
     <div class="box-content" *ngIf="selectedUser; else noneSelected">
-      <div id="user-details">
-        <ul id="top-details">
+      <div class="user-details">
+        <ul class="top-details">
           <li><p><span>id</span> {{selectedUser.id}}</p></li>
           <li><p><span>email</span> {{selectedUser.email}}</p></li>
           <li><p><span>role</span> {{selectedUser.role | role}}</p></li>
         </ul>
         <div class="bottom-details">
-          <ul id="bottom-details-left">
+          <ul class="bottom-details-left">
             <li><p><span>street and housenumber</span> {{ selectedUser.address?.streetAndHouseNumber ? selectedUser.address.streetAndHouseNumber : 'n/a' }}</p></li>
             <li><p><span>postal code</span> {{ selectedUser.address?.postalCode ? selectedUser.address.postalCode : 'n/a' }}</p></li>
             <li><p><span>city</span> {{ selectedUser.address?.city ? selectedUser.address.city : 'n/a' }}</p></li>
             <li><p><span>country</span> {{ selectedUser.address?.country ? selectedUser.address.country : 'n/a' }}</p></li>
           </ul>
-          <ul id="bottom-details-right">
+          <ul class="bottom-details-right">
             <li><p><span>first name</span> {{ selectedUser.name?.firstName ? selectedUser.name.firstName : 'n/a' }}</p></li>
             <li><p><span>last name</span> {{ selectedUser.name?.lastName ? selectedUser.name.lastName : 'n/a' }}</p></li>
           </ul>
         </div>
         <div class="primary-buttons">
-          <button id="delete" (click)="deleteUser()">delete</button>
+          <button class="delete" (click)="deleteUser()">delete</button>
           <button (click)="updateUserRole()">{{ userRoleButtonTxt }}</button>
         </div>
       </div>

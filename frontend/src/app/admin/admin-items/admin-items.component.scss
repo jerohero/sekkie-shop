@@ -1,0 +1,74 @@
+@import "/src/utilities/mixin/admin-box";
+@import "/src/utilities/variables";
+@import "/src/utilities/mixin";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.admin-box {
+  @include admin-box;
+
+}
+
+.items-box {
+  margin-bottom: 100px;
+  .left {
+    width: 449px;
+    min-width: 449px;
+    max-height: 643px;
+
+    .box-content {
+      height: 590px;
+      max-height: 590px;
+
+      .box-top {
+        grid-template-columns: 1fr;
+      }
+
+      .left-items-container {
+        max-height: 613px;
+
+        .item {
+          ul {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .active {
+          background-color: #111111;
+          ul {
+            li {
+              p {
+                color: white;
+              }
+            }
+          }
+
+          &:hover {
+            background-color: #111111;
+          }
+        }
+      }
+    }
+  }
+
+  .right {
+    width: 1250px;
+    min-width: 1250px;
+    .box-content {
+      .item-details {
+        padding-left: 78px;
+        padding-top: 10px;
+        height: 287px;
+        position: relative;
+      }
+    }
+
+  }
+}

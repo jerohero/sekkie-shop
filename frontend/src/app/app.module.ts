@@ -27,6 +27,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import {StatusPipe} from './shared/pipes/status.pipe';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
+import { AdminItemsComponent } from './admin/admin-items/admin-items.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
     AdminComponent,
     AdminOrdersComponent,
     AdminUsersComponent,
+    AdminItemsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,29 @@
+<div class="admin-box items-box">
+  <div class="left">
+    <header class="box-title"><h2>items</h2></header>
+    <div class="box-content">
+      <ul class="box-top">
+        <li><p>name</p></li>
+      </ul>
+      <ul class="left-items-container">
+        <li *ngFor="let item of items;" class="item {{ item.id === selectedItem?.id ? 'active' : '' }}" (click)="showItem(item)">
+          <ul>
+            <li><p>{{ item.name }}</p></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="right">
+    <header class="box-title"><h2>item info</h2></header>
+    <div class="box-content" *ngIf="selectedItem; else noneSelected">
+      <div class="item-details">
+        <div class="primary-buttons">
+          <button class="delete" (click)="deleteItem()">delete</button>
+          <button (click)="updateItem()">update</button>
+        </div>
+      </div>
+    </div>
+    <ng-template #noneSelected><p class="noneSelected">{{ items?.length <= 0 ? 'There are currently no admin-items' : 'Select an item to view it' }}</p></ng-template>
+  </div>
+</div>
