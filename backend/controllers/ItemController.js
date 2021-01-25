@@ -34,7 +34,7 @@ exports.createItem = async (req, res) => {
     });
     try {
         const newItem = await item.save();
-        res.status(201).json({ newItem });
+        res.status(201).json(newItem);
     } catch (err) {
         res.status(400).json({ message: err.message });
     }

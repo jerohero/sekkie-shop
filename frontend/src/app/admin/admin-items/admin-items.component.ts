@@ -61,7 +61,11 @@ export class AdminItemsComponent implements OnInit {
 
     if (this.creatingItem) {
       this.itemAccessService.createItem(this.selectedItem)
-        .subscribe();
+        .subscribe((newItem) => {
+          this.creatingItem = false;
+          this.selectedItem = null;
+          this.items.push(newItem);
+        });
       return;
     }
     this.itemAccessService.updateItem(this.selectedItem)
