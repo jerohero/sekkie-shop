@@ -11,7 +11,7 @@ ul {
 }
 
 #admin {
-  padding-top: 90px;
+  padding-top: 110px;
   display: flex;
   height: 100vh;
   overflow: auto;
@@ -20,27 +20,20 @@ ul {
   @include scrollbar;
 
   #admin-title {
-    margin-bottom: 13px;
+    margin-bottom: 40px;
     text-align: center;
 
     h1 {
       font-size: 50px;
-    }
-
-    button {
-      background-color: black;
-      font-family: 'Anton', sans-serif;
-      font-size: 36px;
-      color: white;
-      border: none;
-      padding: 0 55px;
-      margin-left: 1px;
-      margin-right: 1px;
     }
   }
 
   #admin-content {
     width: 100%;
     padding: 0 93px 93px;
+
+    .admin-panel {
+      margin-bottom: 60px;
+    }
   }
 }
