@@ -43,11 +43,15 @@ export class AdminItemsComponent implements OnInit {
   }
 
   updateItem(form: NgForm): void {
-    console.log(form.value);
-    const sizes = this.findSizes(form.value.sizes);
-    const secondaryImages = this.findSecondaryImages(form.value.secondaryImages);
-    const colors = this.findColors(form.value.colors);
-    console.log(colors);
+    this.selectedItem.name = form.value.title;
+    this.selectedItem.primaryImagePath = form.value.primaryImage;
+    this.selectedItem.price = form.value.price;
+    this.selectedItem.secondaryImagePaths = this.findSecondaryImages(form.value.secondaryImages);
+    this.selectedItem.sizes = this.findSizes(form.value.sizes);
+    this.selectedItem.colors = this.findColors(form.value.colors);
+
+    this.itemAccessService.updateItem(this.selectedItem)
+      .subscribe();
   }
 
   findColors(colors: string | string[]) {

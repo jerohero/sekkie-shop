@@ -1,4 +1,5 @@
 const Item = require('../models/Item');
+const User = require('../models/User')
 
 // Get all items
 exports.getItems = async (req, res) => {
@@ -50,11 +51,14 @@ exports.deleteItemById = async (req, res) => {
     }
 }
 
-exports.updateItemById = async (req, res) => {
+exports.updateItem = async (req, res) => {
+    if (res.user.role !== 'ROLE_ADMIN') {
+        res.status(401).json({ message: 'UNAUTHORIZED' });
+    }
     try {
-        const updatedItem = await res.item.set(req.body);
-        const result = await updatedItem.save();
-        res.json(result);
+        const query = {'_id': req.params.id}
+        const item = await Item.findOneAndUpdate(query, req.body.item);
+        res.status(200).json(item);
     } catch (err) {
         res.status(400).json({ message: err });
     }

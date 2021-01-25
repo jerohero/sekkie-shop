@@ -24,6 +24,11 @@ export class ItemAccessService {
   deleteItem(itemId: string): Observable<Order> {
     return this.genericAccessService.sendUserSpecificDELETE<Order>('items/' + itemId);
   }
+
+  updateItem(item: Item): Observable<Item> {
+    const body = { item };
+    return this.genericAccessService.sendUserSpecificPUT<Item>('items/' + item.id, body);
+  }
 }
 
 // this.authService.user.pipe(take(1), exhaustMap(user => {

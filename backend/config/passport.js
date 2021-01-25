@@ -10,6 +10,7 @@ module.exports = function(passport) {
         jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
         secretOrKey: process.env.SECRET
     }, function (jwt_payload, done) {
+        console.log(jwt_payload);
         User.findById(jwt_payload.data._id, (err, user) => {
             if (err) {
                 return done(err, false);
