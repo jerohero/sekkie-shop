@@ -60,7 +60,8 @@ export class AdminItemsComponent implements OnInit {
     this.selectedItem.colors = this.findColors(form.value.colors);
 
     if (this.creatingItem) {
-      console.log(this.selectedItem);
+      this.itemAccessService.createItem(this.selectedItem)
+        .subscribe();
       return;
     }
     this.itemAccessService.updateItem(this.selectedItem)

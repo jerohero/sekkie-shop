@@ -23,15 +23,14 @@ exports.getItemById = (req, res) => {
 
 // Create one item
 exports.createItem = async (req, res) => {
-    console.log(req);
+    const reqItem = req.body.item;
     const item = new Item({
-        name: req.body.name,
-        price: req.body.price,
-        description: req.body.description,
-        primaryImagePath: req.body.primaryImagePath,
-        secondaryImagePaths: req.body.secondaryImagePaths,
-        sizes: req.body.sizes,
-        colors: req.body.colors
+        name: reqItem.name,
+        price: reqItem.price,
+        primaryImagePath: reqItem.primaryImagePath,
+        secondaryImagePaths: reqItem.secondaryImagePaths,
+        sizes: reqItem.sizes,
+        colors: reqItem.colors
     });
     try {
         const newItem = await item.save();

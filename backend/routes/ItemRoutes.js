@@ -6,7 +6,7 @@ const findUser = require('../middleware/findUser');
 
 const router = express.Router();
 
-router.post('/', itemController.createItem);
+router.post('/', findUser.byHeaderId, itemController.createItem);
 
 router.get('/', itemController.getItems)
 

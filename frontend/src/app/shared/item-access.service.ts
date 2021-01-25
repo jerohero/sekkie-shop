@@ -29,6 +29,11 @@ export class ItemAccessService {
     const body = { item };
     return this.genericAccessService.sendUserSpecificPUT<Item>('items/' + item.id, body);
   }
+
+  createItem(item: Item): Observable<Item> {
+    const body = { item };
+    return this.genericAccessService.sendUserSpecificPOST<Item>('items/', body);
+  }
 }
 
 // this.authService.user.pipe(take(1), exhaustMap(user => {

@@ -29,6 +29,11 @@ export class GenericAccessService {
     return this.http.post<T>(this.API_URL + requestPath, body, options);
   }
 
+  sendUserSpecificPOST<T>(requestPath: string, body: unknown): Observable<T> {
+    const options = this.generateUserSpecificOptions();
+    return this.http.post<T>(this.API_URL + requestPath, body, options);
+  }
+
   sendPUT<T>(requestPath: string, body: unknown, tokenRequired: boolean): Observable<T> {
     const options = this.generateOptions(tokenRequired);
 

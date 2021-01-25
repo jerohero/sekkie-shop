@@ -10,7 +10,7 @@ const ItemSchema = new Schema({
         required: true },
     description: {
         type: String,
-        required: true },
+        required: false },
     primaryImagePath: {
         type: String,
         required: true },
