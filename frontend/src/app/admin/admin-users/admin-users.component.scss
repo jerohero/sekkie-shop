@@ -18,14 +18,14 @@ ul {
 
 .users-box {
   margin-bottom: 100px;
+  height: 425px;
 
   .left {
     width: 740px;
     min-width: 740px;
 
     .box-content {
-      height: 319px;
-      max-height: 319px;
+      height: 100%;
 
       .box-top {
         grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -51,7 +51,7 @@ ul {
       height: 100%;
       .user-details {
         padding-left: 78px;
-        padding-top: 10px;
+        padding-top: 30px;
         height: 100%;
         position: relative;
 

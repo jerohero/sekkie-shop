@@ -20,9 +20,22 @@ ul {
   @include scrollbar;
 
   #admin-title {
+    margin-bottom: 13px;
+    text-align: center;
+
     h1 {
       font-size: 50px;
-      margin-bottom: 75px;
+    }
+
+    button {
+      background-color: black;
+      font-family: 'Anton', sans-serif;
+      font-size: 36px;
+      color: white;
+      border: none;
+      padding: 0 55px;
+      margin-left: 1px;
+      margin-right: 1px;
     }
   }
 

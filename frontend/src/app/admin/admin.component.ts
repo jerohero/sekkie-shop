@@ -1,6 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Order} from '../shared/models/order.model';
-import {OrderAccessService} from '../shared/order-access.service';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-admin',
@@ -8,10 +6,8 @@ import {OrderAccessService} from '../shared/order-access.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

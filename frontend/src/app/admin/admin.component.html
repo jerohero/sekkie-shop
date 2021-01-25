@@ -1,10 +1,15 @@
 <div id="admin">
   <header id="admin-title">
     <h1>admin panel</h1>
+    <div id="nav-buttons">
+      <button (click)="toOrders(orders)">orders</button>
+      <button (click)="toItems()">items</button>
+      <button (click)="toUsers()">users</button>
+    </div>
   </header>
   <div id="admin-content">
+    <app-admin-orders></app-admin-orders>
     <app-admin-items></app-admin-items>
     <app-admin-users></app-admin-users>
-    <app-admin-orders></app-admin-orders>
   </div>
 </div>
