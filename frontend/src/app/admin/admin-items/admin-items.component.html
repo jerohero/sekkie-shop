@@ -18,6 +18,40 @@
     <header class="box-title"><h2>item info</h2></header>
     <div class="box-content" *ngIf="selectedItem; else noneSelected">
       <div class="item-details">
+        <form class="item-attributes" #itemForm="ngForm">
+          <div class="attributes-r1">
+            <ul>
+              <li>
+                <label for="title">title</label>
+                <input type="text" id="title" name="title" class="form-control">
+              </li>
+              <li>
+                <label for="primaryImage">primary image</label>
+                <input type="text" id="primaryImage" name="primaryImage" class="form-control">
+              </li>
+              <li>
+                <label for="secondaryImages">secondary images <span>(comma separated)</span></label>
+                <textarea id="secondaryImages" class="form-control" rows="5" cols="60"></textarea>
+              </li>
+            </ul>
+          </div>
+          <div class="attributes-r2">
+            <ul>
+              <li>
+                <label for="price">price <span>(usd)</span></label>
+                <input type="text" id="price" name="price" class="form-control">
+              </li>
+              <li>
+                <label for="sizes">sizes <span>(comma separated)</span></label>
+                <input type="text" id="sizes" name="sizes" class="form-control">
+              </li>
+              <li>
+                <label for="colors">colors <span>(comma separated)</span></label>
+                <input type="text" id="colors" name="colors" class="form-control">
+              </li>
+            </ul>
+          </div>
+        </form>
         <div class="primary-buttons">
           <button class="delete" (click)="deleteItem()">delete</button>
           <button (click)="updateItem()">update</button>

@@ -13,7 +13,6 @@ ul {
 
 .admin-box {
   @include admin-box;
-
 }
 
 .items-box {
@@ -61,12 +60,65 @@ ul {
   .right {
     width: 1250px;
     min-width: 1250px;
+    max-height: 643px;
+
+
     .box-content {
+      max-height: 590px;
+      height: 590px;
+
       .item-details {
+        height: 100%;
         padding-left: 78px;
-        padding-top: 10px;
-        height: 287px;
+        padding-top: 40px;
         position: relative;
+
+        .item-attributes {
+          display: flex;
+
+          .attributes-r1, .attributes-r2 {
+            ul {
+              li {
+                margin-bottom: 18px;
+                label {
+                  font-weight: bold;
+                  font-size: 17px;
+
+                  span {
+                    font-size: 14px;
+                    font-weight: normal;
+                  }
+                }
+                input {
+                  @include input;
+                }
+                textarea {
+                  @include input;
+                  resize: none;
+                  height: 137px;
+                }
+                input, textarea {
+                  width: 490px;
+                }
+              }
+            }
+          }
+
+          .attributes-r1 {
+            margin-right: 60px;
+          }
+          .attributes-r2 {
+            ul {
+              li {
+                #price {
+                  width: 100px;
+                }
+              }
+            }
+          }
+        }
+
+
       }
     }
 
