@@ -89,12 +89,16 @@ ul {
                     font-weight: normal;
                   }
                 }
+                p {
+                  font-size: 17px;
+                }
                 input {
                   @include input;
                 }
                 textarea {
                   @include input;
                   resize: none;
+                  padding-top: 6px;
                   height: 137px;
                 }
                 input, textarea {

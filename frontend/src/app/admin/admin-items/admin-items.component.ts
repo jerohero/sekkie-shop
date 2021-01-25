@@ -3,6 +3,7 @@ import {Item} from '../../shared/models/item.model';
 import {ItemAccessService} from '../../shared/item-access.service';
 import {DataStorageService} from '../../shared/services/data-storage.service';
 import {skipWhile, take} from 'rxjs/operators';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-admin-items',
@@ -41,7 +42,51 @@ export class AdminItemsComponent implements OnInit {
       });
   }
 
-  updateItem(): void {
+  updateItem(form: NgForm): void {
+    console.log(form.value);
+    const sizes = this.findSizes(form.value.sizes);
+    const secondaryImages = this.findSecondaryImages(form.value.secondaryImages);
+    const colors = this.findColors(form.value.colors);
+    console.log(colors);
+  }
 
+  findColors(colors: string | string[]) {
+    if (!Array.isArray(colors)) {
+      colors = colors
+        .replace(/ , | ,|, /g, ',')
+        .split(',');
+    }
+    return colors;
+  }
+
+  findSizes(sizes: string | string[]) {
+    if (!Array.isArray(sizes)) {
+      sizes = sizes
+        .replace(/\s/g, '')
+        .split(',');
+    }
+    return sizes;
+  }
+
+  findSecondaryImages(secondaryImages: string | string[]) {
+    if (!Array.isArray(secondaryImages)) {
+      secondaryImages = secondaryImages
+        .replace(/\s/g, '')
+        .split(',')
+        .filter(Boolean);
+    }
+    return secondaryImages;
+  }
+
+  get colors() {
+    return this.selectedItem.colors.join(', ');
+  }
+
+  get secondaryImages() {
+    return this.selectedItem.secondaryImagePaths.join(',\n');
+  }
+
+  get sizes() {
+    return this.selectedItem.sizes.join(', ');
   }
 }

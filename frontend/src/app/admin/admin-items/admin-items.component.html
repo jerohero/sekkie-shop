@@ -18,20 +18,20 @@
     <header class="box-title"><h2>item info</h2></header>
     <div class="box-content" *ngIf="selectedItem; else noneSelected">
       <div class="item-details">
-        <form class="item-attributes" #itemForm="ngForm">
+        <form class="item-attributes" #itemForm="ngForm" (ngSubmit)="updateItem(itemForm)">
           <div class="attributes-r1">
             <ul>
               <li>
                 <label for="title">title</label>
-                <input type="text" id="title" name="title" class="form-control">
+                <input type="text" id="title" name="title" class="form-control" [ngModel]="selectedItem?.name" required>
               </li>
               <li>
                 <label for="primaryImage">primary image</label>
-                <input type="text" id="primaryImage" name="primaryImage" class="form-control">
+                <input type="text" id="primaryImage" name="primaryImage" class="form-control" [ngModel]="selectedItem?.primaryImagePath" required>
               </li>
               <li>
                 <label for="secondaryImages">secondary images <span>(comma separated)</span></label>
-                <textarea id="secondaryImages" class="form-control" rows="5" cols="60"></textarea>
+                <textarea id="secondaryImages"  name="secondaryImages" class="form-control" rows="7" cols="60" [ngModel]="secondaryImages"></textarea>
               </li>
             </ul>
           </div>
@@ -39,23 +39,27 @@
             <ul>
               <li>
                 <label for="price">price <span>(usd)</span></label>
-                <input type="text" id="price" name="price" class="form-control">
+                <input type="text" id="price" name="price" class="form-control" [ngModel]="selectedItem?.price" required>
               </li>
               <li>
                 <label for="sizes">sizes <span>(comma separated)</span></label>
-                <input type="text" id="sizes" name="sizes" class="form-control">
+                <input type="text" id="sizes" name="sizes" class="form-control" [ngModel]="sizes" required>
               </li>
               <li>
                 <label for="colors">colors <span>(comma separated)</span></label>
-                <input type="text" id="colors" name="colors" class="form-control">
+                <input type="text" id="colors" name="colors" class="form-control" [ngModel]="colors" required>
+              </li>
+              <li>
+                <label>id</label>
+                <p>{{ selectedItem.id }}</p>
               </li>
             </ul>
           </div>
+          <div class="primary-buttons">
+            <button class="delete" (click)="deleteItem()">delete</button>
+            <button>update</button>
+          </div>
         </form>
-        <div class="primary-buttons">
-          <button class="delete" (click)="deleteItem()">delete</button>
-          <button (click)="updateItem()">update</button>
-        </div>
       </div>
     </div>
     <ng-template #noneSelected><p class="noneSelected">{{ items?.length <= 0 ? 'There are currently no admin-items' : 'Select an item to view it' }}</p></ng-template>
