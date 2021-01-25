@@ -11,6 +11,9 @@ const ItemSchema = new Schema({
     category: {
         type: String,
         required: true },
+    clothingCollection: {
+        type: String,
+        required: true },
     primaryImagePath: {
         type: String,
         required: true },

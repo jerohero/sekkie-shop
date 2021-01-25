@@ -15,7 +15,7 @@ export class AdminItemsComponent implements OnInit {
   selectedItem: Item;
   creatingItem: boolean;
   categories: string[] = ['outerwear', 'tops', 'pants', 'accessories'];
-  collections: string[] = ['f/w 20'];
+  collections: string[] = ['f/w 20', 's/s 21'];
 
   constructor(private itemAccessService: ItemAccessService, private dataStorageService: DataStorageService) { }
 

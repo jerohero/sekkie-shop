@@ -28,6 +28,7 @@ exports.createItem = async (req, res) => {
         name: reqItem.name,
         price: reqItem.price,
         category: reqItem.category,
+        clothingCollection: reqItem.clothingCollection,
         primaryImagePath: reqItem.primaryImagePath,
         secondaryImagePaths: reqItem.secondaryImagePaths,
         sizes: reqItem.sizes,

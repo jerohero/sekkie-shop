@@ -3,7 +3,7 @@ export class Item {
               public name: string,
               public price: number,
               public category: string,
-              public collection: string,
+              public clothingCollection: string,
               public primaryImagePath: string,
               public secondaryImagePaths: string[],
               public sizes: string[],
@@ -12,7 +12,7 @@ export class Item {
     this.name = name;
     this.price = price;
     this.category = category;
-    this.collection = collection;
+    this.clothingCollection = clothingCollection;
     this.primaryImagePath = primaryImagePath;
     this.secondaryImagePaths = secondaryImagePaths;
     this.sizes = sizes;

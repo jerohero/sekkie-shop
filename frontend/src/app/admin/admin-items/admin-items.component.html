@@ -19,7 +19,7 @@
     <header class="box-title"><h2>{{ !creatingItem ? 'item info' : 'create item' }}</h2></header>
     <div class="box-content" *ngIf="selectedItem; else noneSelected">
       <div class="item-details">
-        <form class="item-attributes" #itemForm="ngForm" (ngSubmit)="saveItem(itemForm)">
+        <form class="item-attributes" #itemForm="ngForm">
           <div class="attributes-c1">
             <div class="attributes-r1">
               <ul>
@@ -70,13 +70,13 @@
             <label>collection</label>
             <ul class="categories">
               <li *ngFor="let collection of collections">
-                <button (click)="selectedItem.collection = collection" class="{{ selectedItem.collection === collection ? 'selected' : '' }}">{{ collection }}</button>
+                <button (click)="selectedItem.clothingCollection = collection" class="{{ selectedItem.clothingCollection === collection ? 'selected' : '' }}">{{ collection }}</button>
               </li>
             </ul>
           </div>
           <div class="primary-buttons">
             <button class="delete" (click)="deleteItem()" *ngIf="!creatingItem">delete</button>
-            <button [disabled]="!itemForm.valid || !this.selectedItem.category">{{ !creatingItem ? 'update' : 'create' }}</button>
+            <button [disabled]="!itemForm.valid || !this.selectedItem.category" (click)="saveItem(itemForm)">{{ !creatingItem ? 'update' : 'create' }}</button>
           </div>
         </form>
       </div>
