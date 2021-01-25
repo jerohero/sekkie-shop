@@ -17,21 +17,21 @@ ul {
 
 .items-box {
   margin-bottom: 100px;
+
   .left {
     width: 449px;
     min-width: 449px;
-    max-height: 643px;
 
     .box-content {
+      position: relative;
       height: 590px;
-      max-height: 590px;
 
       .box-top {
         grid-template-columns: 1fr;
       }
 
       .left-items-container {
-        max-height: 613px;
+        max-height: 548px;
 
         .item {
           ul {
@@ -53,6 +53,22 @@ ul {
             background-color: #111111;
           }
         }
+      }
+
+      .fab {
+        line-height: 66px;
+        position: absolute;
+        background-color: black;
+        width: 64px;
+        height: 64px;
+        border-radius: 100%;
+        border: none;
+        outline: none;
+        right: 18px;
+        bottom: 24px;
+        font-family: sans-serif;
+        color: white;
+        font-size: 55px;
       }
     }
   }

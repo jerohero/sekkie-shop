@@ -1,3 +1,5 @@
+@import "/src/utilities/mixin";
+
 @mixin admin-box {
   display: flex;
 
@@ -148,6 +150,10 @@
       padding: 1px 37px;
       font-family: 'Anton', sans-serif;
       font-size: 36px;
+
+      &:disabled {
+        background-color: #4a4a4a;
+      }
     }
 
     .delete {

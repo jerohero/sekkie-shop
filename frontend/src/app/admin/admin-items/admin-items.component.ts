@@ -13,6 +13,7 @@ import {NgForm} from '@angular/forms';
 export class AdminItemsComponent implements OnInit {
   items: Item[];
   selectedItem: Item;
+  creatingItem: boolean;
 
   constructor(private itemAccessService: ItemAccessService, private dataStorageService: DataStorageService) { }
 
@@ -29,6 +30,7 @@ export class AdminItemsComponent implements OnInit {
 
   showItem(item: Item): void {
     this.selectedItem = item;
+    if (this.creatingItem) { this.creatingItem = false; }
   }
 
   deleteItem(): void {
@@ -42,7 +44,14 @@ export class AdminItemsComponent implements OnInit {
       });
   }
 
-  updateItem(form: NgForm): void {
+  createItem(): void {
+    this.creatingItem = true;
+    this.selectedItem = new Item(
+      null, null, null, null, null, null, null , null
+    );
+  }
+
+  saveItem(form: NgForm): void {
     this.selectedItem.name = form.value.title;
     this.selectedItem.primaryImagePath = form.value.primaryImage;
     this.selectedItem.price = form.value.price;
@@ -50,6 +59,10 @@ export class AdminItemsComponent implements OnInit {
     this.selectedItem.sizes = this.findSizes(form.value.sizes);
     this.selectedItem.colors = this.findColors(form.value.colors);
 
+    if (this.creatingItem) {
+      console.log(this.selectedItem);
+      return;
+    }
     this.itemAccessService.updateItem(this.selectedItem)
       .subscribe();
   }
@@ -83,14 +96,17 @@ export class AdminItemsComponent implements OnInit {
   }
 
   get colors() {
+    if (!this.selectedItem.colors) { return null; }
     return this.selectedItem.colors.join(', ');
   }
 
   get secondaryImages() {
+    if (!this.selectedItem.secondaryImagePaths) { return null; }
     return this.selectedItem.secondaryImagePaths.join(',\n');
   }
 
   get sizes() {
+    if (!this.selectedItem.colors) { return null; }
     return this.selectedItem.sizes.join(', ');
   }
 }

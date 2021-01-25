@@ -12,13 +12,14 @@
           </ul>
         </li>
       </ul>
+      <button class="fab" (click)="createItem()">+</button>
     </div>
   </div>
   <div class="right">
-    <header class="box-title"><h2>item info</h2></header>
+    <header class="box-title"><h2>{{ !creatingItem ? 'item info' : 'create item' }}</h2></header>
     <div class="box-content" *ngIf="selectedItem; else noneSelected">
       <div class="item-details">
-        <form class="item-attributes" #itemForm="ngForm" (ngSubmit)="updateItem(itemForm)">
+        <form class="item-attributes" #itemForm="ngForm" (ngSubmit)="saveItem(itemForm)">
           <div class="attributes-r1">
             <ul>
               <li>
@@ -39,7 +40,7 @@
             <ul>
               <li>
                 <label for="price">price <span>(usd)</span></label>
-                <input type="text" id="price" name="price" class="form-control" [ngModel]="selectedItem?.price" required>
+                <input type="number" id="price" name="price" class="form-control" [ngModel]="selectedItem?.price" required>
               </li>
               <li>
                 <label for="sizes">sizes <span>(comma separated)</span></label>
@@ -49,15 +50,15 @@
                 <label for="colors">colors <span>(comma separated)</span></label>
                 <input type="text" id="colors" name="colors" class="form-control" [ngModel]="colors" required>
               </li>
-              <li>
+              <li *ngIf="!creatingItem">
                 <label>id</label>
                 <p>{{ selectedItem.id }}</p>
               </li>
             </ul>
           </div>
           <div class="primary-buttons">
-            <button class="delete" (click)="deleteItem()">delete</button>
-            <button>update</button>
+            <button class="delete" (click)="deleteItem()" *ngIf="!creatingItem">delete</button>
+            <button [disabled]="!itemForm.valid">{{ !creatingItem ? 'update' : 'create' }}</button>
           </div>
         </form>
       </div>
