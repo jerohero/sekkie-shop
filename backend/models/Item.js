@@ -8,9 +8,9 @@ const ItemSchema = new Schema({
     price: {
         type: Number,
         required: true },
-    description: {
+    category: {
         type: String,
-        required: false },
+        required: true },
     primaryImagePath: {
         type: String,
         required: true },

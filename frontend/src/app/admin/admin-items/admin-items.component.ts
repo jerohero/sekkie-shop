@@ -14,6 +14,8 @@ export class AdminItemsComponent implements OnInit {
   items: Item[];
   selectedItem: Item;
   creatingItem: boolean;
+  categories: string[] = ['outerwear', 'tops', 'pants', 'accessories'];
+  collections: string[] = ['f/w 20'];
 
   constructor(private itemAccessService: ItemAccessService, private dataStorageService: DataStorageService) { }
 
@@ -47,7 +49,7 @@ export class AdminItemsComponent implements OnInit {
   createItem(): void {
     this.creatingItem = true;
     this.selectedItem = new Item(
-      null, null, null, null, null, null, null , null
+      null, null, null, null, null, null, null, null , null
     );
   }
 

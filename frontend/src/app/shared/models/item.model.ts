@@ -2,7 +2,8 @@ export class Item {
   constructor(public id: string,
               public name: string,
               public price: number,
-              public description: string,
+              public category: string,
+              public collection: string,
               public primaryImagePath: string,
               public secondaryImagePaths: string[],
               public sizes: string[],
@@ -10,7 +11,8 @@ export class Item {
     this.id = id;
     this.name = name;
     this.price = price;
-    this.description = description;
+    this.category = category;
+    this.collection = collection;
     this.primaryImagePath = primaryImagePath;
     this.secondaryImagePaths = secondaryImagePaths;
     this.sizes = sizes;

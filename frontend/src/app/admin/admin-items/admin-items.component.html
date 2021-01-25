@@ -20,45 +20,63 @@
     <div class="box-content" *ngIf="selectedItem; else noneSelected">
       <div class="item-details">
         <form class="item-attributes" #itemForm="ngForm" (ngSubmit)="saveItem(itemForm)">
-          <div class="attributes-r1">
-            <ul>
-              <li>
-                <label for="title">title</label>
-                <input type="text" id="title" name="title" class="form-control" [ngModel]="selectedItem?.name" required>
-              </li>
-              <li>
-                <label for="primaryImage">primary image</label>
-                <input type="text" id="primaryImage" name="primaryImage" class="form-control" [ngModel]="selectedItem?.primaryImagePath" required>
-              </li>
-              <li>
-                <label for="secondaryImages">secondary images <span>(comma separated)</span></label>
-                <textarea id="secondaryImages"  name="secondaryImages" class="form-control" rows="7" cols="60" [ngModel]="secondaryImages"></textarea>
+          <div class="attributes-c1">
+            <div class="attributes-r1">
+              <ul>
+                <li>
+                  <label for="title">title</label>
+                  <input type="text" id="title" name="title" class="form-control" [ngModel]="selectedItem?.name" required>
+                </li>
+                <li>
+                  <label for="primaryImage">primary image</label>
+                  <input type="text" id="primaryImage" name="primaryImage" class="form-control" [ngModel]="selectedItem?.primaryImagePath" required>
+                </li>
+                <li>
+                  <label for="secondaryImages">secondary images <span>(comma separated)</span></label>
+                  <textarea id="secondaryImages"  name="secondaryImages" class="form-control" rows="7" cols="60" [ngModel]="secondaryImages"></textarea>
+                </li>
+              </ul>
+            </div>
+            <div class="attributes-r2">
+              <ul>
+                <li>
+                  <label for="price">price <span>(usd)</span></label>
+                  <input type="number" id="price" name="price" class="form-control" [ngModel]="selectedItem?.price" required>
+                </li>
+                <li>
+                  <label for="sizes">sizes <span>(comma separated)</span></label>
+                  <input type="text" id="sizes" name="sizes" class="form-control" [ngModel]="sizes" required>
+                </li>
+                <li>
+                  <label for="colors">colors <span>(comma separated)</span></label>
+                  <input type="text" id="colors" name="colors" class="form-control" [ngModel]="colors" required>
+                </li>
+                <li *ngIf="!creatingItem">
+                  <label>id</label>
+                  <p>{{ selectedItem.id }}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="attributes-c2">
+            <label>category</label>
+            <ul class="categories">
+              <li *ngFor="let category of categories">
+                <button (click)="selectedItem.category = category" class="{{ selectedItem.category === category ? 'selected' : '' }}">{{ category }}</button>
               </li>
             </ul>
           </div>
-          <div class="attributes-r2">
-            <ul>
-              <li>
-                <label for="price">price <span>(usd)</span></label>
-                <input type="number" id="price" name="price" class="form-control" [ngModel]="selectedItem?.price" required>
-              </li>
-              <li>
-                <label for="sizes">sizes <span>(comma separated)</span></label>
-                <input type="text" id="sizes" name="sizes" class="form-control" [ngModel]="sizes" required>
-              </li>
-              <li>
-                <label for="colors">colors <span>(comma separated)</span></label>
-                <input type="text" id="colors" name="colors" class="form-control" [ngModel]="colors" required>
-              </li>
-              <li *ngIf="!creatingItem">
-                <label>id</label>
-                <p>{{ selectedItem.id }}</p>
+          <div class="attributes-c3">
+            <label>collection</label>
+            <ul class="categories">
+              <li *ngFor="let collection of collections">
+                <button (click)="selectedItem.collection = collection" class="{{ selectedItem.collection === collection ? 'selected' : '' }}">{{ collection }}</button>
               </li>
             </ul>
           </div>
           <div class="primary-buttons">
             <button class="delete" (click)="deleteItem()" *ngIf="!creatingItem">delete</button>
-            <button [disabled]="!itemForm.valid">{{ !creatingItem ? 'update' : 'create' }}</button>
+            <button [disabled]="!itemForm.valid || !this.selectedItem.category">{{ !creatingItem ? 'update' : 'create' }}</button>
           </div>
         </form>
       </div>
