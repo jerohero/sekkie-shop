@@ -8,7 +8,6 @@ import { HeaderComponent } from './header/header.component';
 import { ShopComponent } from './shop/shop.component';
 import { ItemListItemComponent } from './shop/item-list/item-list-item/item-list-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { DropdownDirective } from './shared/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { UnknownPageComponent } from './unknown-page/unknown-page.component';
 import { ShoppingCartItemComponent } from './shopping-list/shopping-cart-item/shopping-cart-item.component';
@@ -37,7 +36,6 @@ import {AngularResizedEventModule} from 'angular-resize-event';
     ItemListComponent,
     ItemListItemComponent,
     ShoppingListComponent,
-    DropdownDirective,
     ItemDetailsComponent,
     UnknownPageComponent,
     ShoppingCartItemComponent,

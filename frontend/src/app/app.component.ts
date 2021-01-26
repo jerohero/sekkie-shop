@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ShoppingListService} from './shopping-list/shopping-list.service';
-import {AuthService} from './login/auth.service';
+import {ShoppingListService} from './shared/services/shopping-list.service';
+import {AuthService} from './shared/services/auth.service';
 import {Subscription} from 'rxjs';
 
 @Component({

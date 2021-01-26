@@ -2,13 +2,13 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DataStorageService} from '../../shared/services/data-storage.service';
 import {User, UserAddress, UserName} from '../../shared/models/user.model';
 import {NgForm} from '@angular/forms';
-import {AuthService} from '../../login/auth.service';
+import {AuthService} from '../../shared/services/auth.service';
 import {Subscription} from 'rxjs';
-import {ShoppingCartItem} from '../shopping-cart-item.model';
-import {OrderService} from './order.service';
+import {ShoppingCartItem} from '../../shared/models/shopping-cart-item.model';
+import {OrderService} from '../../shared/services/order.service';
 import {Order} from '../../shared/models/order.model';
 import {DatePipe} from '@angular/common';
-import {OrderAccessService} from '../../shared/order-access.service';
+import {OrderAccessService} from '../../shared/services/data-access/order-access.service';
 import {Router} from '@angular/router';
 
 @Component({

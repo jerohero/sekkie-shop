@@ -1,8 +1,8 @@
 import {Inject, Injectable} from '@angular/core';
 
-import { Item } from '../shared/models/item.model';
+import { Item } from '../models/item.model';
 import { Subject } from 'rxjs';
-import { ShoppingCartItem } from './shopping-cart-item.model';
+import { ShoppingCartItem } from '../models/shopping-cart-item.model';
 
 @Injectable({providedIn: 'root'})
 export class ShoppingListService {

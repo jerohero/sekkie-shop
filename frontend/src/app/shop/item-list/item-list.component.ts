@@ -2,8 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Item} from '../../shared/models/item.model';
 import {ItemService} from '../../shared/services/item.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ItemAccessService} from '../../shared/item-access.service';
-import {ShopService} from '../shop.service';
+import {ItemAccessService} from '../../shared/services/data-access/item-access.service';
+import {ShopService} from '../../shared/services/shop.service';
 import {Subscription} from 'rxjs';
 
 

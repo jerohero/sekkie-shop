@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Item} from '../models/item.model';
-import {ShoppingListService} from '../../shopping-list/shopping-list.service';
+import {ShoppingListService} from './shopping-list.service';
 
 @Injectable({providedIn: 'root'})
 export class ItemService {

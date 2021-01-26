@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { Item } from './models/item.model';
-import {ItemService} from './services/item.service';
-import {AuthService} from '../login/auth.service';
+import { Item } from '../../models/item.model';
+import {ItemService} from '../item.service';
+import {AuthService} from '../auth.service';
 import {GenericAccessService} from './generic-access.service';
 import {Observable} from 'rxjs';
-import {Order} from './models/order.model';
+import {Order} from '../../models/order.model';
 
 @Injectable({providedIn: 'root'})
 export class ItemAccessService {

@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 
-import { ShoppingListService } from './shopping-list.service';
+import { ShoppingListService } from '../shared/services/shopping-list.service';
 import { Subscription } from 'rxjs';
-import { ShoppingCartItem } from './shopping-cart-item.model';
-import {OrderService} from './order-page/order.service';
+import { ShoppingCartItem } from '../shared/models/shopping-cart-item.model';
+import {OrderService} from '../shared/services/order.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({

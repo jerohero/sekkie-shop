@@ -1,7 +1,7 @@
 import {Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {AuthService} from './auth.service';
-import {UserAccessService} from '../shared/user-access.service';
+import {AuthService} from '../shared/services/auth.service';
+import {UserAccessService} from '../shared/services/data-access/user-access.service';
 import {Router} from '@angular/router';
 
 @Component({

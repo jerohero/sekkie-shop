@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Item} from '../../shared/models/item.model';
-import {ItemAccessService} from '../../shared/item-access.service';
+import {ItemAccessService} from '../../shared/services/data-access/item-access.service';
 import {DataStorageService} from '../../shared/services/data-storage.service';
 import {skipWhile, take} from 'rxjs/operators';
 import {NgForm} from '@angular/forms';

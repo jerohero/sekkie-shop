@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Order} from '../../shared/models/order.model';
-import {OrderAccessService} from '../../shared/order-access.service';
+import {OrderAccessService} from '../../shared/services/data-access/order-access.service';
 import {skipWhile, take} from 'rxjs/operators';
 import {DataStorageService} from '../../shared/services/data-storage.service';
 

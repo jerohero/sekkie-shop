@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {BehaviorSubject, Observable, Subject, throwError} from 'rxjs';
-import {User, UserAddress, UserName} from '../shared/models/user.model';
-import {AuthResponseData, UserAccessService} from '../shared/user-access.service';
+import {User, UserAddress, UserName} from '../models/user.model';
+import {AuthResponseData, UserAccessService} from './data-access/user-access.service';
 import {catchError, tap} from 'rxjs/operators';
-import {DataStorageService} from '../shared/services/data-storage.service';
+import {DataStorageService} from './data-storage.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {

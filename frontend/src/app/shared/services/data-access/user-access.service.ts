@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Observable, pipe, throwError} from 'rxjs';
-import {User} from './models/user.model';
+import {User} from '../../models/user.model';
 import {GenericAccessService} from './generic-access.service';
-import {Order} from './models/order.model';
+import {Order} from '../../models/order.model';
 
 export interface AuthResponseData {
   token: string;

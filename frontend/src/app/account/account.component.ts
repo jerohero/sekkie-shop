@@ -3,9 +3,9 @@ import {skipWhile, take} from 'rxjs/operators';
 import {User, UserAddress, UserName} from '../shared/models/user.model';
 import {NgForm} from '@angular/forms';
 import {DataStorageService} from '../shared/services/data-storage.service';
-import {OrderAccessService} from '../shared/order-access.service';
+import {OrderAccessService} from '../shared/services/data-access/order-access.service';
 import {Order} from '../shared/models/order.model';
-import {UserAccessService} from '../shared/user-access.service';
+import {UserAccessService} from '../shared/services/data-access/user-access.service';
 
 @Component({
   selector: 'app-account',

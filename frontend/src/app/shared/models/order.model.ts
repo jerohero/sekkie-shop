@@ -1,4 +1,4 @@
-import {ShoppingCartItem} from '../../shopping-list/shopping-cart-item.model';
+import {ShoppingCartItem} from './shopping-cart-item.model';
 import {User, UserAddress, UserName} from './user.model';
 
 export class Order {

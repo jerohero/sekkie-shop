@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../shared/models/user.model';
-import {UserAccessService} from '../../shared/user-access.service';
+import {UserAccessService} from '../../shared/services/data-access/user-access.service';
 import {DataStorageService} from '../../shared/services/data-storage.service';
 import {skipWhile, take} from 'rxjs/operators';
 

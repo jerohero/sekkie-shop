@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {AuthService} from '../login/auth.service';
-import {DataStorageService} from './services/data-storage.service';
+import {AuthService} from '../auth.service';
+import {DataStorageService} from '../data-storage.service';
 
 @Injectable({providedIn: 'root'})
 export class GenericAccessService {
