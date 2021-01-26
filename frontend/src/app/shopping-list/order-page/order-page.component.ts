@@ -54,16 +54,25 @@ export class OrderPageComponent implements OnInit, OnDestroy {
     this.orderItems = this.orderService.shoppingCartItems;
   }
 
-  onContinue(accountInfoForm: NgForm) {
-    if (!accountInfoForm.valid) {
-      alert('Not valid');
+  createOrder(form: NgForm): void {
+    if (!form.valid) {
+      alert('The form is not valid.');
       return;
     }
 
-    this.createOrder();
-  }
+    // Retrieve form values
+    this.user.email = form.value.email;
+    this.user.name = {
+      firstName: form.value.firstName,
+      lastName: form.value.lastName
+    };
+    this.user.address = {
+      streetAndHouseNumber: form.value.streetAndHouseNumber,
+      city: form.value.city,
+      country: form.value.country,
+      postalCode: form.value.postalCode,
+    };
 
-  createOrder(): void {
     let totalPrice = 0;
     this.orderItems.forEach((item) => {
       totalPrice = totalPrice + item.totalPrice;

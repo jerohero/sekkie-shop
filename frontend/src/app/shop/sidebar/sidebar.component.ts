@@ -23,9 +23,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (this.activeCollection !== '' || this.activeCategory !== '') {
-      this.search.search();
-    }
+    this.search.search();
   }
 
   setActiveCategory(category: string): void {

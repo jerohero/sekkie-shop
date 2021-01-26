@@ -11,12 +11,12 @@
         <li><p>items</p></li>
         <li><p>total</p></li>
       </ul>
-      <ul id="orders-list" *ngIf="orders; else noOrders">
+      <ul id="orders-list" *ngIf="orders?.length > 0; else noOrders">
         <li class="order" *ngFor="let order of orders;">
           <ul>
             <li><p>{{ order.name.firstName + ' ' + order.name.lastName }}</p></li>
             <li><p>{{ order.date | date }}</p></li>
-            <li><p class="highlight">{{ order.status }}</p></li>
+            <li><p class="highlight">{{ order.status | status }}</p></li>
             <li><p>{{ order.items.length }} items</p></li>
             <li><p>${{ order.totalPrice }}</p></li>
           </ul>
