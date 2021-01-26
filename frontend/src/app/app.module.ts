@@ -28,6 +28,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import {StatusPipe} from './shared/pipes/status.pipe';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { AdminItemsComponent } from './admin/admin-items/admin-items.component';
+import {AngularResizedEventModule} from 'angular-resize-event';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { AdminItemsComponent } from './admin/admin-items/admin-items.component';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    AngularResizedEventModule
   ],
   providers: [],
   bootstrap: [AppComponent]

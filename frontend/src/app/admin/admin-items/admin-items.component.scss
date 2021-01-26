@@ -25,7 +25,7 @@ ul {
       height: 590px;
 
       .box-top {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1.4fr 1fr;
       }
 
       .left-items-container {
@@ -33,7 +33,7 @@ ul {
 
         .item {
           ul {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1.4fr 1fr;
           }
         }
 

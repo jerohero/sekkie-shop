@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, DoCheck, ElementRef, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ItemService } from '../shared/services/item.service';
@@ -12,6 +12,7 @@ import {ItemAccessService} from '../shared/item-access.service';
   styleUrls: ['./item-details.component.scss']
 })
 export class ItemDetailsComponent implements OnInit {
+  @ViewChild('showcased') showcasedEl: ElementRef;
   item: Item;
   id: string;
   showcasedImg: string;
@@ -22,12 +23,12 @@ export class ItemDetailsComponent implements OnInit {
   showNoSizeSelectedError: boolean;
   showNoColorSelectedError: boolean;
   fadeAnimationInterval: number;
+  imageHeight: number;
 
   constructor(private itemService: ItemService,
               private route: ActivatedRoute,
               private router: Router,
-              private dataAccessService: ItemAccessService) {
-  }
+              private dataAccessService: ItemAccessService) { }
 
   ngOnInit(): void {
     this.route.params
@@ -52,6 +53,9 @@ export class ItemDetailsComponent implements OnInit {
         } else {
           this.showcaseImage(this.item.primaryImagePath);
         }
+        // setTimeout(() => {
+        //   this.imageHeight = this.showcased.nativeElement.height;
+        // }, 500);
       });
     }
   }
@@ -108,4 +112,7 @@ export class ItemDetailsComponent implements OnInit {
     // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
+  onResized() {
+    this.imageHeight = this.showcasedEl.nativeElement.height;
+  }
 }

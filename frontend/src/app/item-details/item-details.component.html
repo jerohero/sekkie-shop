@@ -1,6 +1,6 @@
 <div id="details" *ngIf="item">
   <div id="images">
-    <div id="side-images">
+    <div id="side-images" [style.max-height.px]="imageHeight">
       <ul>
         <li (mouseover)="showcaseImage(item.primaryImagePath)">
           <img src="{{ item.primaryImagePath }}" alt="Primary image">
@@ -10,8 +10,8 @@
         </li>
       </ul>
     </div>
-    <div id="showcase-image">
-      <img id="showcased-img" [src]="[showcasedImg]" alt="{{item.name}} image">
+    <div id="showcase-image" (resized)="onResized()" *ngIf="showcasedImg">
+      <img id="showcased-img" [src]="[showcasedImg]" alt="{{item.name}} image" #showcased>
       <img id="fade-img" [style.opacity]="playFadeAnimation ? 1 : 0" [src]="fadeImg" alt="{{item.name}} image">
     </div>
   </div>

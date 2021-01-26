@@ -4,11 +4,13 @@
     <div class="box-content">
       <ul class="box-top">
         <li><p>name</p></li>
+        <li><p>collection</p></li>
       </ul>
       <ul class="left-items-container">
         <li *ngFor="let item of items;" class="item {{ item.id === selectedItem?.id ? 'active' : '' }}" (click)="showItem(item)">
           <ul>
             <li><p>{{ item.name }}</p></li>
+            <li><p>{{ item.clothingCollection }}</p></li>
           </ul>
         </li>
       </ul>
