@@ -1,5 +1,5 @@
 <div *ngIf="items?.length <= 0" id="no-items-found">
-  <p>No items were found..</p>
+  <p>{{searchValue ? 'No items containing \'' + searchValue + '\' were found..' : 'No items were found..'}}</p>
 </div>
 <div id="items-wrapper">
   <app-item-list-item

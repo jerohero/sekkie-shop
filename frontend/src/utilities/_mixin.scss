@@ -3,12 +3,12 @@
 @mixin scrollbar {
   &::-webkit-scrollbar {
     width: $scrollbar-width;
-    background-color: #eaeaea;
+    background-color: #DEDFD9;
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 7px;
-    background-color: #aaaaaa;
+    background-color: #aeaeae;
   }
 }
 
