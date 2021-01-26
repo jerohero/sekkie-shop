@@ -106,7 +106,7 @@ $selected-size: #636F7A;
 
         p {
           font-size: 30px;
-          width: 126px;
+          width: 120px;
         }
 
         #colors, #sizes {
@@ -122,6 +122,7 @@ $selected-size: #636F7A;
             transition: border-color 0.2s ease;
             font-size: 30px;
             font-weight: 300;
+            padding: 0 10px;
 
             &:hover {
               font-weight: 400;
@@ -137,13 +138,13 @@ $selected-size: #636F7A;
           }
 
           .selected-option-box {
-            font-weight: 600;
+            font-weight: 600 !important;
           }
         }
 
         #sizes {
           button {
-            margin-right: 21px;
+            margin-right: 11px;
           }
         }
 
@@ -190,6 +191,11 @@ $selected-size: #636F7A;
       border: none;
       padding: 10px 10px 10px 15px;
       font-size: 22px;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        padding-left: 30px;
+      }
     }
   }
 
