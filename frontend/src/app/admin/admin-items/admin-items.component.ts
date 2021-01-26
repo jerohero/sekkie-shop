@@ -4,6 +4,7 @@ import {ItemAccessService} from '../../shared/item-access.service';
 import {DataStorageService} from '../../shared/services/data-storage.service';
 import {skipWhile, take} from 'rxjs/operators';
 import {NgForm} from '@angular/forms';
+import {ItemService} from '../../shared/services/item.service';
 
 @Component({
   selector: 'app-admin-items',
@@ -14,10 +15,11 @@ export class AdminItemsComponent implements OnInit {
   items: Item[];
   selectedItem: Item;
   creatingItem: boolean;
-  categories: string[] = ['outerwear', 'tops', 'pants', 'accessories'];
-  collections: string[] = ['f/w 20', 's/s 21'];
+  categories: string[] = this.itemService.categories;
+  collections: string[] = this.itemService.collections;
 
-  constructor(private itemAccessService: ItemAccessService, private dataStorageService: DataStorageService) { }
+  constructor(private itemAccessService: ItemAccessService, private dataStorageService: DataStorageService,
+              private itemService: ItemService) { }
 
   ngOnInit(): void {
     this.dataStorageService.user.pipe(skipWhile(item => !item), take(1))

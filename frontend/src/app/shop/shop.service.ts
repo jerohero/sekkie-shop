@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {Item} from '../shared/models/item.model';
 
 @Injectable({providedIn: 'root'})
 export class ShopService {
-  itemsFiltered = new Subject<Item[]>();
+  itemsFiltered = new BehaviorSubject<Item[]>([]);
+  activeCategory = new BehaviorSubject<string>('');
 
   constructor() {
   }

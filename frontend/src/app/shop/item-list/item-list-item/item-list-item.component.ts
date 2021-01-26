@@ -17,6 +17,6 @@ export class ItemListItemComponent implements OnInit {
 
   toggleImage() {
     this.shownImagePath =
-      this.shownImagePath === this.item.primaryImagePath ? this.item.secondaryImagePaths[1] : this.item.primaryImagePath;
+      this.shownImagePath === this.item.primaryImagePath ? this.item.secondaryImagePaths[0] : this.item.primaryImagePath;
   }
 }

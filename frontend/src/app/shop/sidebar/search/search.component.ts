@@ -9,16 +9,31 @@ import {Item} from '../../../shared/models/item.model';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  searchValue: string;
+  searchValue = '';
 
   constructor(private itemService: ItemService, private shopService: ShopService) { }
 
   ngOnInit(): void {
   }
 
-  search(value): void {
+  search(): void {
+    const activeCategory = this.shopService.activeCategory.getValue();
+
+    let items;
+    if (activeCategory) {
+      items = this.itemService.getItemsByCategory(activeCategory);
+    } else {
+      items = this.itemService.getItems();
+    }
+
     let results: Item[];
-    results = this.itemService.getItems().filter((item) => item.name.toLowerCase().includes(value.toLowerCase()));
+    if (this.searchValue) {
+      results = items.filter((item) =>
+        item.name.toLowerCase().includes(this.searchValue.toLowerCase()));
+    } else {
+      results = items;
+    }
+
     this.shopService.itemsFiltered.next(results);
   }
 

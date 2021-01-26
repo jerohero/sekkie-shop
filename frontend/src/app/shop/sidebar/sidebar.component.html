@@ -2,10 +2,9 @@
   <aside class="sidebar-section">
     <p>categories</p>
     <ul>
-      <li><a href="">outerwear</a></li>
-      <li><a href="">tops</a></li>
-      <li><a href="">pants</a></li>
-      <li><a href="">accessories</a></li>
+      <li *ngFor="let category of categories">
+        <a (click)="setActiveCategory(category)" class="{{ activeCategory === category ? 'active' : '' }}">{{ category }}</a>
+      </li>
     </ul>
   </aside>
   <aside class="sidebar-section">
@@ -16,6 +15,6 @@
   </aside>
   <aside class="sidebar-section">
     <p>search</p>
-    <app-search></app-search>
+    <app-search #search></app-search>
   </aside>
 </div>
