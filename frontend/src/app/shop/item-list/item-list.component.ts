@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Item} from '../../shared/models/item.model';
 import {ItemService} from '../../shared/services/item.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -12,7 +12,7 @@ import {Subscription} from 'rxjs';
   templateUrl: './item-list.component.html',
   styleUrls: ['./item-list.component.scss']
 })
-export class ItemListComponent implements OnInit {
+export class ItemListComponent implements OnInit, OnDestroy {
   items: Item[];
   private itemsFilteredSub: Subscription;
 
@@ -20,21 +20,14 @@ export class ItemListComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private dataAccessService: ItemAccessService,
-              private shopService: ShopService) {
-  }
+              private shopService: ShopService) { }
 
   ngOnInit() {
     this.dataAccessService.fetchItems()
       .subscribe((items) => {
+        this.items = items;
         this.itemService.setItems(items);
       });
-
-    // todo necessary?
-    this.itemService.itemsChanged
-      .subscribe((items) => {
-        this.items = items;
-      });
-    this.items = this.itemService.getItems();
 
     this.itemsFilteredSub = this.shopService.itemsFiltered
       .subscribe((filteredItems) => {
@@ -44,5 +37,9 @@ export class ItemListComponent implements OnInit {
 
   onNewItem() {
     this.router.navigate(['new'], {relativeTo: this.route});
+  }
+
+  ngOnDestroy() {
+    this.itemsFilteredSub.unsubscribe();
   }
 }
