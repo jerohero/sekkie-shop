@@ -17,24 +17,42 @@ export class SearchComponent implements OnInit {
   }
 
   search(): void {
-    const activeCategory = this.shopService.activeCategory.getValue();
+    let results = this.itemService.getItems();
 
-    let items;
-    if (activeCategory) {
-      items = this.itemService.getItemsByCategory(activeCategory);
-    } else {
-      items = this.itemService.getItems();
-    }
-
-    let results: Item[];
-    if (this.searchValue) {
-      results = items.filter((item) =>
-        item.name.toLowerCase().includes(this.searchValue.toLowerCase()));
-    } else {
-      results = items;
-    }
+    results = this.filterByCategory(results);
+    results = this.filterByCollection(results);
+    results = this.filterBySearchValue(results);
 
     this.shopService.itemsFiltered.next(results);
+  }
+
+  filterByCategory(items: Item[]): Item[] {
+    const activeCategory = this.shopService.activeCategory.getValue();
+    if (activeCategory) {
+      return items.filter((item) =>
+        item.category.toLowerCase().includes(activeCategory.toLowerCase()));
+    } else {
+      return items;
+    }
+  }
+
+  filterByCollection(items: Item[]): Item[] {
+    const activeCollection = this.shopService.activeCollection.getValue();
+    if (activeCollection) {
+      return items.filter((item) =>
+        item.clothingCollection.toLowerCase().includes(activeCollection.toLowerCase()));
+    } else {
+      return items;
+    }
+  }
+
+  filterBySearchValue(items: Item[]): Item[] {
+    if (this.searchValue) {
+       return items.filter((item: Item) =>
+        item.name.toLowerCase().includes(this.searchValue.toLowerCase()));
+    } else {
+      return items;
+    }
   }
 
 }

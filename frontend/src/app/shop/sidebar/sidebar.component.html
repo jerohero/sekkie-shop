@@ -2,6 +2,9 @@
   <aside class="sidebar-section">
     <p>categories</p>
     <ul>
+      <li>
+        <a (click)="setActiveCategory('')" class="{{ activeCategory === '' ? 'active' : '' }}">all</a>
+      </li>
       <li *ngFor="let category of categories">
         <a (click)="setActiveCategory(category)" class="{{ activeCategory === category ? 'active' : '' }}">{{ category }}</a>
       </li>
@@ -10,7 +13,12 @@
   <aside class="sidebar-section">
     <p>collections</p>
     <div id="collections">
-      <button>F/W 20</button>
+      <button (click)="setActiveCollection('')" class="{{ activeCollection === '' ? 'active' : '' }}">
+        all
+      </button>
+      <button *ngFor="let collection of collections" (click)="setActiveCollection(collection)" class="{{ activeCollection === collection ? 'active' : '' }}">
+        {{ collection }}
+      </button>
     </div>
   </aside>
   <aside class="sidebar-section">

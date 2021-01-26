@@ -6,6 +6,8 @@ import {Item} from '../shared/models/item.model';
 export class ShopService {
   itemsFiltered = new BehaviorSubject<Item[]>([]);
   activeCategory = new BehaviorSubject<string>('');
+  activeCollection = new BehaviorSubject<string>('');
+
 
   constructor() {
   }

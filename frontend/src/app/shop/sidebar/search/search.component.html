@@ -1,6 +1,6 @@
 <label id="search">
-  <input type="text" [(ngModel)]="searchValue" (keyup.enter)="search(searchValue)">
-  <span id="search-button" (click)="search(searchValue)">
+  <input type="text" [(ngModel)]="searchValue" (keyup.enter)="search()">
+  <span id="search-button" (click)="search()">
     <span class="img-center-helper"></span><img src="../../../assets/images/search.svg" alt="search icon">
   </span>
 </label>

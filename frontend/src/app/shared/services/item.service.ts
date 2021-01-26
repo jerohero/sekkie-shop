@@ -23,10 +23,6 @@ export class ItemService {
     return this.items.slice();
   }
 
-  getItemsByCategory(category: string) {
-    return this.items.slice().filter((item) => item.category.toLowerCase().includes(category.toLowerCase()));
-  }
-
   getItem(id: string) {
     console.log(this.items);
     return this.items.find(i => i.id === id);
