@@ -78,7 +78,8 @@ export class AuthService {
         errorMsg = 'You did not enter a password. Please enter a password.';
         break;
       case 'NO_MATCH':
-        errorMsg = 'You did not enter a password. Please enter a password.';
+      case 'WRONG_CREDENTIALS':
+        errorMsg = 'You entered the wrong credentials. Please try logging in again.';
         break;
     }
     return throwError(errorMsg);

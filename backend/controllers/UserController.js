@@ -90,7 +90,6 @@ exports.authenticateUser = async (req, res) => {
         } else {
             return res.status(401).json({ success: false, message: 'WRONG_CREDENTIALS' })
         }
-
     });
 }
 
@@ -103,7 +102,7 @@ exports.createUser = async (req, res) => {
         res.status(400).json({ message: 'NO_PASSWORD' });
         return;
     }
-    // middleware found an account with same email address
+    // Middleware found an account with same email address
     if (res.user) {
         res.status(409).json({ message: 'EMAIL_IN_USE' });
         return;
@@ -112,7 +111,7 @@ exports.createUser = async (req, res) => {
 
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(user.password, salt, (err, hash) => {
-            // if (err) throw err;
+            if (err) throw err;
             user.password = hash;
 
             const token = newToken(user);
@@ -174,8 +173,9 @@ exports.deleteUser = async (req, res) => {
 }
 
 newToken = (user) => {
-    user.password = undefined;
-    return jwt.sign({data: user}, process.env.SECRET, {
+    const userPayload = JSON.parse(JSON.stringify(user));
+    userPayload.password = undefined;
+    return jwt.sign({data: userPayload}, process.env.SECRET, {
         expiresIn: 86400 // 1 day
     });
 }

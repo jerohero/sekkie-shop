@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../shared/services/auth.service';
 import {UserAccessService} from '../shared/services/data-access/user-access.service';
@@ -11,7 +11,6 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   @ViewChild('overlay') overlay: ElementRef;
-  error: string;
 
   constructor(private renderer: Renderer2, private userAccessService: UserAccessService,
               private authService: AuthService, private router: Router) { }
@@ -28,44 +27,32 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  validateForm(form: NgForm): boolean {
-    if (!form.valid) {
-      console.log('Form not valid');
-      return false;
-    }
-    return true;
-  }
-
   onRegister(form: NgForm): void {
-    const formValid = this.validateForm(form);
-    if (!formValid) { return; }
+    if (!form.valid) { return; }
     const email = form.value.registerEmail;
     const password = form.value.registerPassword;
 
     this.authService.signup(email, password)
-      .subscribe((user) => {
-        console.log(user);
-        // this.router.navigate(['/account']);
+      .subscribe(() => {
+        this.router.navigate(['/account']);
+        this.authService.showLogin.next(false);
       }, errorMsg => {
-        console.log(errorMsg);
-        this.error = errorMsg;
+        alert(errorMsg);
       });
 
     form.reset();
   }
 
   onLogin(form: NgForm): void {
-    const formValid = this.validateForm(form);
-    if (!formValid) { return; }
+    if (!form.valid) { return; }
     const email = form.value.loginEmail;
     const password = form.value.loginPassword;
 
     this.authService.login(email, password)
-      .subscribe((user) => {
+      .subscribe(() => {
         this.authService.showLogin.next(false);
       }, errorMsg => {
-        console.log(errorMsg);
-        this.error = errorMsg;
+        alert(errorMsg);
       });
 
     form.reset();

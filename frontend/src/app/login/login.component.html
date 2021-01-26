@@ -1,6 +1,5 @@
 <div id="overlay" #overlay>
   <div id="login-container">
-    <p *ngIf="error">{{ error }}</p>
     <div id="login">
       <h3>login</h3>
       <form #loginForm="ngForm" class="login-form" (ngSubmit)="onLogin(loginForm)">
