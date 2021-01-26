@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ShoppingListService} from './shared/services/shopping-list.service';
 import {AuthService} from './shared/services/auth.service';
-import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-root',

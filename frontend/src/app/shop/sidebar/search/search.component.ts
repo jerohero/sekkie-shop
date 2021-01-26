@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../../shared/services/item.service';
 import { ShopService } from '../../../shared/services/shop.service';
 import { Item } from '../../../shared/models/item.model';
+import {FiltersService} from '../../../shared/services/filters-service';
 
 @Component({
   selector: 'app-search',
@@ -11,7 +12,7 @@ import { Item } from '../../../shared/models/item.model';
 export class SearchComponent implements OnInit {
   searchValue = '';
 
-  constructor(private itemService: ItemService, private shopService: ShopService) { }
+  constructor(private itemService: ItemService, private shopService: ShopService, private filtersService: FiltersService) { }
 
   ngOnInit(): void {
   }
@@ -27,7 +28,7 @@ export class SearchComponent implements OnInit {
   }
 
   filterByCategory(items: Item[]): Item[] {
-    const activeCategory = this.shopService.activeCategory.getValue();
+    const activeCategory = this.filtersService.activeCategory;
     if (activeCategory) {
       return items.filter((item) =>
         item.category.toLowerCase().includes(activeCategory.toLowerCase()));
@@ -37,7 +38,7 @@ export class SearchComponent implements OnInit {
   }
 
   filterByCollection(items: Item[]): Item[] {
-    const activeCollection = this.shopService.activeCollection.getValue();
+    const activeCollection = this.filtersService.activeCollection;
     if (activeCollection) {
       return items.filter((item) =>
         item.clothingCollection.toLowerCase().includes(activeCollection.toLowerCase()));

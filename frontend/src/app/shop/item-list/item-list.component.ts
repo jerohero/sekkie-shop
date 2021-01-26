@@ -23,14 +23,19 @@ export class ItemListComponent implements OnInit, OnDestroy {
               private shopService: ShopService) { }
 
   ngOnInit() {
-    this.dataAccessService.fetchItems()
-      .subscribe((items) => {
-        this.items = items;
-        this.itemService.setItems(items);
-      });
+    // Only fetch if there hasn't been fetched yet
+    if (this.itemService.getItems().length < 1) {
+      this.dataAccessService.fetchItems()
+        .subscribe((items) => {
+          this.items = items;
+          this.itemService.setItems(items);
+        });
+    }
 
+    // Filters have been added
     this.itemsFilteredSub = this.shopService.itemsFiltered
       .subscribe((filteredItems) => {
+        console.log(filteredItems);
         this.items = filteredItems;
       });
   }
