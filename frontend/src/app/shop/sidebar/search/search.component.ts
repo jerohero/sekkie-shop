@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../../shared/services/item.service';
-import { ShopService } from '../../../shared/services/shop.service';
 import { Item } from '../../../shared/models/item.model';
 import {FiltersService} from '../../../shared/services/filters-service';
 
@@ -12,19 +11,22 @@ import {FiltersService} from '../../../shared/services/filters-service';
 export class SearchComponent implements OnInit {
   searchValue = '';
 
-  constructor(private itemService: ItemService, private shopService: ShopService, private filtersService: FiltersService) { }
+  constructor(private itemService: ItemService, private filtersService: FiltersService) { }
 
   ngOnInit(): void {
+    this.searchValue = this.filtersService.searchValue;
   }
 
   search(): void {
+    this.filtersService.searchValue = this.searchValue;
+
     let results = this.itemService.getItems();
 
     results = this.filterByCategory(results);
     results = this.filterByCollection(results);
     results = this.filterBySearchValue(results);
 
-    this.shopService.itemsFiltered.next(results);
+    this.filtersService.itemsFiltered.next(results);
   }
 
   filterByCategory(items: Item[]): Item[] {

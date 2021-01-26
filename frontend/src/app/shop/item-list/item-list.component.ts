@@ -3,9 +3,8 @@ import {Item} from '../../shared/models/item.model';
 import {ItemService} from '../../shared/services/item.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ItemAccessService} from '../../shared/services/data-access/item-access.service';
-import {ShopService} from '../../shared/services/shop.service';
 import {Subscription} from 'rxjs';
-
+import {FiltersService} from '../../shared/services/filters-service';
 
 @Component({
   selector: 'app-item-list',
@@ -20,7 +19,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
               private router: Router,
               private route: ActivatedRoute,
               private dataAccessService: ItemAccessService,
-              private shopService: ShopService) { }
+              private filtersService: FiltersService) { }
 
   ngOnInit() {
     // Only fetch if there hasn't been fetched yet
@@ -33,9 +32,8 @@ export class ItemListComponent implements OnInit, OnDestroy {
     }
 
     // Filters have been added
-    this.itemsFilteredSub = this.shopService.itemsFiltered
+    this.itemsFilteredSub = this.filtersService.itemsFiltered
       .subscribe((filteredItems) => {
-        console.log(filteredItems);
         this.items = filteredItems;
       });
   }

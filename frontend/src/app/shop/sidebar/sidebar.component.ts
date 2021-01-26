@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ItemService} from '../../shared/services/item.service';
-import {ShopService} from '../../shared/services/shop.service';
 import {SearchComponent} from './search/search.component';
 import {FiltersService} from '../../shared/services/filters-service';
 
@@ -16,7 +15,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   activeCategory;
   activeCollection;
 
-  constructor(private itemService: ItemService, private shopService: ShopService, private filtersService: FiltersService) { }
+  constructor(private itemService: ItemService, private filtersService: FiltersService) { }
 
   ngOnInit(): void {
     this.activeCategory = this.filtersService.activeCategory;
