@@ -1,25 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ItemService } from '../../../shared/services/item.service';
 import { Item } from '../../../shared/models/item.model';
 import {FiltersService} from '../../../shared/services/filters-service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
   searchValue = '';
+  searchValueSnapshot = '';
+  private searchValueSub = new Subscription();
 
   constructor(private itemService: ItemService, private filtersService: FiltersService) { }
 
   ngOnInit(): void {
-    this.searchValue = this.filtersService.searchValue;
+    this.searchValueSub = this.filtersService.searchValue
+      .subscribe(searchValue => {
+        this.searchValue = searchValue;
+        this.searchValueSnapshot = searchValue;
+      });
   }
 
   search(): void {
-    this.filtersService.searchValue = this.searchValue;
-
+    this.searchValueSnapshot = this.searchValue;
+    this.filtersService.searchValue.next(this.searchValue);
     let results = this.itemService.getItems();
 
     results = this.filterByCategory(results);
@@ -58,4 +65,12 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  resetSearch(): void {
+    this.searchValue = '';
+    this.search();
+  }
+
+  ngOnDestroy() {
+    this.searchValueSub.unsubscribe();
+  }
 }

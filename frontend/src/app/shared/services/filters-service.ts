@@ -6,7 +6,7 @@ import {Item} from '../models/item.model';
 export class FiltersService {
   activeCategory = '';
   activeCollection = '';
-  searchValue = '';
+  searchValue = new BehaviorSubject<string>('');
   itemsFiltered = new BehaviorSubject<Item[]>([]);
 
   constructor() {

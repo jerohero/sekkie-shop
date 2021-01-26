@@ -36,7 +36,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
     this.itemsFilteredSub = this.filtersService.itemsFiltered
       .subscribe((filteredItems) => {
         this.items = filteredItems;
-        this.searchValue = this.filtersService.searchValue;
+        this.searchValue = this.filtersService.searchValue.getValue();
       });
   }
 

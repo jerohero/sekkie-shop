@@ -4,3 +4,6 @@
     <span class="img-center-helper"></span><img src="../../../assets/images/search.svg" alt="search icon">
   </span>
 </label>
+<a *ngIf="searchValueSnapshot" class="current-search-value" (click)="resetSearch()">
+  {{ searchValueSnapshot }} <span>x</span>
+</a>
