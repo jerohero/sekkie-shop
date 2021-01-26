@@ -27,6 +27,7 @@ import {StatusPipe} from './shared/pipes/status.pipe';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { AdminItemsComponent } from './admin/admin-items/admin-items.component';
 import {AngularResizedEventModule} from 'angular-resize-event';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {AngularResizedEventModule} from 'angular-resize-event';
     AdminOrdersComponent,
     AdminUsersComponent,
     AdminItemsComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

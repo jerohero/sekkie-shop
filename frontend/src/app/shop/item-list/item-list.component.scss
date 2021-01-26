@@ -16,6 +16,14 @@
   @media only screen and (max-width: $mobile) {
     grid-template-columns: 1fr 1fr;
   }
+
+  .loading-spinner {
+    display: flex;
+    height: 300px;
+    opacity: 0.2;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 #no-items-found {

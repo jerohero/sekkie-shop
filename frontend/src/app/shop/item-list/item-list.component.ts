@@ -14,6 +14,7 @@ import {FiltersService} from '../../shared/services/filters-service';
 export class ItemListComponent implements OnInit, OnDestroy {
   items: Item[];
   searchValue = '';
+  isFetchingItems: boolean;
   private itemsFilteredSub: Subscription;
 
   constructor(private itemService: ItemService,
@@ -25,8 +26,10 @@ export class ItemListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // Only fetch if there hasn't been fetched yet
     if (this.itemService.getItems().length < 1) {
+      this.isFetchingItems = true;
       this.dataAccessService.fetchItems()
         .subscribe((items) => {
+          this.isFetchingItems = false;
           this.items = items;
           this.itemService.setItems(items);
         });

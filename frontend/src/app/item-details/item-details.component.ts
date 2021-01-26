@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, DoCheck, ElementRef, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, DoCheck, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ItemService } from '../shared/services/item.service';

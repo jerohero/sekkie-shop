@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {ItemService} from '../../shared/services/item.service';
 import {SearchComponent} from './search/search.component';
 import {FiltersService} from '../../shared/services/filters-service';
@@ -23,7 +23,9 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.search.search();
+    setTimeout(() => {
+      this.search.search();
+    });
   }
 
   setActiveCategory(category: string): void {
