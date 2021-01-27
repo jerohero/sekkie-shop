@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 require('dotenv').config()
 
-
 module.exports.createTokens = async (user, secret, secret2) => {
     user = JSON.parse(JSON.stringify(user));
     const createToken = jwt.sign(
@@ -28,6 +27,7 @@ module.exports.createTokens = async (user, secret, secret2) => {
 
     return Promise.all([createToken, createRefreshToken]);
 }
+
 module.exports.refreshTokens = async (token, refreshToken, SECRET, SECRET_2) => {
     let userId = -1;
     try {
@@ -47,7 +47,6 @@ module.exports.refreshTokens = async (token, refreshToken, SECRET, SECRET_2) => 
     }
 
     const refreshSecret = SECRET_2 + user.password;
-
     try {
         jwt.verify(refreshToken, refreshSecret);
     } catch (err) {

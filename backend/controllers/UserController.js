@@ -35,6 +35,9 @@ exports.getUserByEmail = async (req, res) => {
 }
 
 exports.getProfile = async (req, res) => {
+    if (!req.locals) {
+        return res.status(401).json({ message: 'Token expired' });
+    }
     res.status(200).json({
         success: true,
         token: req.headers['authorization'],

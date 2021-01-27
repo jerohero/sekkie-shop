@@ -13,21 +13,11 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     router: RouterStateSnapshot
   ): boolean | UrlTree | Promise<boolean | UrlTree> | Observable<boolean | UrlTree> {
-    const token = localStorage.getItem('refresh-token');
-    const isAuth = !!this.dataStorageService.user.getValue();
-    if (token && isAuth) {
+    const token = localStorage.getItem('token');
+    if (token) {
       return true;
     }
     this.authService.showLogin.next(true);
     return this.router.createUrlTree(['/']);
-    // return this.dataStorageService.user
-    //   .pipe(map((user) => {
-    //     const isAuth = !!user;
-    //     if (isAuth) {
-    //       return true;
-    //     }
-    //     this.authService.showLogin.next(true);
-    //     return this.router.createUrlTree(['/']);
-    //   }));
   }
 }

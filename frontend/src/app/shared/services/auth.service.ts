@@ -23,7 +23,6 @@ export class AuthService {
   login(email: string, password: string): Observable<AuthResponseData> {
     return this.userAccessService.loginUser(email, password)
       .pipe(catchError(this.handleError), tap((resData) => {
-        console.log(resData);
         this.handleAuthentication(resData);
       }));
   }
@@ -37,6 +36,8 @@ export class AuthService {
     this.userAccessService.verifyUser()
       .subscribe((resData) => {
         this.handleAuthentication(resData);
+      }, () => {
+        this.logout();
       });
   }
 
