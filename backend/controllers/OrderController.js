@@ -25,9 +25,6 @@ exports.createOrder = async (req, res) => {
 }
 
 exports.updateOrder = async (req, res) => {
-    if (res.user.role !== 'ROLE_ADMIN') {
-        res.status(401).json({ message: 'UNAUTHORIZED' });
-    }
     try {
         const query = {'_id': req.body.order.id}
         const order = await Order.findOneAndUpdate(query, req.body.order);
@@ -38,9 +35,6 @@ exports.updateOrder = async (req, res) => {
 }
 
 exports.getOrders = async (req, res) => {
-    if (res.user.role !== 'ROLE_ADMIN') {
-        res.status(401).json({ message: 'UNAUTHORIZED' });
-    }
     try {
         const orders = await Order.find();
         res.status(200).json(orders);
@@ -50,9 +44,6 @@ exports.getOrders = async (req, res) => {
 }
 
 exports.deleteOrder = async (req, res) => {
-    if (res.user.role !== 'ROLE_ADMIN') {
-        res.status(401).json({ message: 'UNAUTHORIZED' });
-    }
     try {
         const query = {'_id': req.params.id}
         await Order.findOneAndDelete(query);

@@ -33,15 +33,15 @@ exports.getUserByEmail = async (req, res) => {
 }
 
 exports.getProfile = async (req, res) => {
-    res.json(res.verifiedUser);
+    res.json(res.locals.verifiedUser);
 }
 
 exports.updateProfile = async (req, res) => {
     try {
-        if (res.user.id !== req.body.id) {
+        if (res.locals.user.id !== req.body.id) {
             res.status(400).json({ message: 'FAULTY_REQUEST' });
         }
-        const updatedUser = await res.user.set(req.body);
+        const updatedUser = await res.locals.user.set(req.body);
         const result = await updatedUser.save();
         result.password = undefined;
 
@@ -65,7 +65,7 @@ exports.updateProfile = async (req, res) => {
 
 exports.authenticateUser = async (req, res) => {
     const password = req.body.password;
-    const user = res.user;
+    const user = res.locals.user;
 
     if (!user) {
         return res.status(404).json({ success: false, message: 'NO_MATCH' });
@@ -103,7 +103,7 @@ exports.createUser = async (req, res) => {
         return;
     }
     // Middleware found an account with same email address
-    if (res.user) {
+    if (res.locals.user) {
         res.status(409).json({ message: 'EMAIL_IN_USE' });
         return;
     }
@@ -132,9 +132,6 @@ exports.createUser = async (req, res) => {
 
 // Get users
 exports.getUsers = async (req, res) => {
-    if (res.user.role !== 'ROLE_ADMIN') {
-        res.status(401).json({ message: 'UNAUTHORIZED' });
-    }
     try {
         const users = await User.find().select('-password');
         res.status(200).json(users);
@@ -145,9 +142,6 @@ exports.getUsers = async (req, res) => {
 
 // Update user
 exports.updateUser = async (req, res) => {
-    if (res.user.role !== 'ROLE_ADMIN') {
-        res.status(401).json({ message: 'UNAUTHORIZED' });
-    }
     try {
         const query = {'_id': req.body.user.id}
         const user = await User.findOneAndUpdate(query, req.body.user).select('-password');
@@ -159,9 +153,6 @@ exports.updateUser = async (req, res) => {
 
 // Delete user
 exports.deleteUser = async (req, res) => {
-    if (res.user.role !== 'ROLE_ADMIN') {
-        res.status(401).json({ message: 'UNAUTHORIZED' });
-    }
     try {
         const query = {'_id': req.params.id}
         await User.findOneAndDelete(query);

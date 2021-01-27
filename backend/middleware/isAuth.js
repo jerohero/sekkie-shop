@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
     }
 
     try {
-        res.verifiedUser = jwt.verify(token, process.env.SECRET);
+        res.locals.verifiedUser = jwt.verify(token, process.env.SECRET);
         next();
     } catch (ex) {
         return res.status(400).json({ error: 'TOKEN_INVALID' })
