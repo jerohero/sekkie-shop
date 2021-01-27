@@ -56,7 +56,7 @@ export class GenericAccessService {
     // if (tokenRequired && this.dataStorageService.user.value.token !== null) {
     if (tokenRequired) {
       options.headers = options.headers
-        .set('Authorization', this.fetchToken())
+        .set('Authorization', 'Bearer ' + this.fetchToken())
         .set('Refresh', this.fetchRefreshToken());
     }
     return options;
@@ -67,7 +67,7 @@ export class GenericAccessService {
     const options = { headers };
     if (this.fetchToken() !== null && this.fetchRefreshToken() !== null) {
       options.headers = options.headers
-        .set('Authorization', this.fetchToken())
+        .set('Authorization', 'Bearer ' + this.fetchToken())
         .set('Refresh', this.fetchRefreshToken())
         .set('User', this.dataStorageService.user.getValue().id);
     }

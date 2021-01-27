@@ -37,8 +37,8 @@ exports.getUserByEmail = async (req, res) => {
 exports.getProfile = async (req, res) => {
     res.status(200).json({
         success: true,
-        token: req.headers['authorization'],
-        refreshToken: req.headers['refresh'],
+        token: res.get('Authorization'),
+        refreshToken: res.get('Refresh') ? res.get('Refresh') : req.headers['refresh'],
         user: {
             id: res.locals.user._id,
             email: res.locals.user.email,
