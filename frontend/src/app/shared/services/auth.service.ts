@@ -30,19 +30,25 @@ export class AuthService {
 
   autoLogin() {
     const refreshToken = localStorage.getItem('refresh-token');
-    if (!refreshToken) {
+    const token = localStorage.getItem('token');
+    if (!refreshToken || !token) {
       return;
     }
-    // this.handleAuthentication(null, null, refreshToken);
+    this.userAccessService.verifyUser()
+      .subscribe((resData) => {
+        this.handleAuthentication(resData);
+      });
   }
 
   logout(): void {
     this.dataStorageService.user.next(null);
     localStorage.removeItem('refresh-token');
+    localStorage.removeItem('token');
   }
 
   handleAuthentication(resData: AuthResponseData) {
     localStorage.setItem('refresh-token', resData.refreshToken);
+    localStorage.setItem('token', resData.token);
     if (!resData.user.id) {
       return this.dataStorageService.user.next(null);
     }
@@ -55,24 +61,6 @@ export class AuthService {
       resData.token
     );
     this.dataStorageService.user.next(user);
-    // this.dataStorageService.
-    // this.userAccessService.verifyUser()
-    //   .subscribe((res) => {
-    //     console.log(res);
-    //     localStorage.removeItem('refresh-token');
-    //     if (!res.user.id) {
-    //       return this.dataStorageService.user.next(null);
-    //     }
-    //     const user = new User(
-    //       res.user.id,
-    //       res.user.email,
-    //       res.user.name,
-    //       res.user.role,
-    //       res.user.address,
-    //       token
-    //     );
-    //     this.dataStorageService.user.next(user);
-    //   });
   }
 
   handleError(errorRes: HttpErrorResponse): Observable<any> {

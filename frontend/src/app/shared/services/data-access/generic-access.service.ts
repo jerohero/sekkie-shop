@@ -51,14 +51,12 @@ export class GenericAccessService {
   }
 
   private generateOptions(tokenRequired): { headers: HttpHeaders } {
-    let authHeader = null;
     const headers = new HttpHeaders();
     const options = { headers };
     // if (tokenRequired && this.dataStorageService.user.value.token !== null) {
-    if (tokenRequired && this.fetchRefreshToken() !== null) {
-      authHeader = 'Bearer ' + this.fetchToken();
+    if (tokenRequired) {
       options.headers = options.headers
-        .set('Authorization', authHeader)
+        .set('Authorization', 'Bearer ' + this.fetchToken())
         .set('Refresh', this.fetchRefreshToken());
     }
     return options;
@@ -79,7 +77,7 @@ export class GenericAccessService {
   }
 
   fetchToken(): string {
-    return this.dataStorageService.user.getValue().token;
+    return localStorage.getItem('token');
   }
 
   fetchRefreshToken(): string {

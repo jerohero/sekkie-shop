@@ -48,7 +48,7 @@ export class UserAccessService {
     return this.genericAccessService.sendUserSpecificDELETE<any>('users/' + userId);
   }
 
-  verifyUser(): Observable<any> {
-    return this.genericAccessService.sendGET<User>('users/profile/', true);
+  verifyUser(): Observable<AuthResponseData> {
+    return this.genericAccessService.sendGET<AuthResponseData>('users/profile/', true);
   }
 }
