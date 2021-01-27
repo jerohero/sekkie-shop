@@ -9,11 +9,6 @@ exports.getItems = async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
-
-    // Item.find().sort( {createdAt: -1 })
-    //     .then((result) => {
-    //         for (let i = 0; i < result.length; i++) {
-    //             result[i]._id = result[i]._id.toHexString();
 }
 
 // Get one item

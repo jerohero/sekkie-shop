@@ -1,6 +1,5 @@
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
-// const User = require('../models/user');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 require('dotenv').config()
@@ -10,7 +9,6 @@ module.exports = function(passport) {
         jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
         secretOrKey: process.env.SECRET
     }, function (jwt_payload, done) {
-        console.log(jwt_payload);
         User.findById(jwt_payload.data._id, (err, user) => {
             if (err) {
                 return done(err, false);
@@ -20,7 +18,6 @@ module.exports = function(passport) {
             } else {
                 return done(null, false);
             }
-
         });
     }));
 }
