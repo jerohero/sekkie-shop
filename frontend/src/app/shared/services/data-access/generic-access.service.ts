@@ -56,20 +56,18 @@ export class GenericAccessService {
     // if (tokenRequired && this.dataStorageService.user.value.token !== null) {
     if (tokenRequired) {
       options.headers = options.headers
-        .set('Authorization', 'Bearer ' + this.fetchToken())
+        .set('Authorization', this.fetchToken())
         .set('Refresh', this.fetchRefreshToken());
     }
     return options;
   }
 
   private generateUserSpecificOptions(): { headers: HttpHeaders } {
-    let authHeader = null;
     const headers = new HttpHeaders();
     const options = { headers };
     if (this.fetchToken() !== null && this.fetchRefreshToken() !== null) {
-      authHeader = 'Bearer ' + this.fetchToken();
       options.headers = options.headers
-        .set('Authorization', authHeader)
+        .set('Authorization', this.fetchToken())
         .set('Refresh', this.fetchRefreshToken())
         .set('User', this.dataStorageService.user.getValue().id);
     }
