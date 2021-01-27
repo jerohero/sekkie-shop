@@ -2,9 +2,9 @@ const express = require('express');
 
 const userController = require('../controllers/UserController');
 const findUser = require('../middleware/findUser');
-const isAuth = require('../middleware/isAuth');
 const passport = require('passport');
 const isAdmin = require('../middleware/isAdmin');
+const addUser = require('../middleware/addUser');
 
 const router = express.Router();
 
@@ -15,10 +15,10 @@ router.post('/register', findUser, userController.createUser);
 router.post('/authenticate', findUser, userController.authenticateUser);
 
 // GET Profile
-router.get('/profile', isAuth, userController.getProfile);
+router.get('/profile', addUser, userController.getProfile);
 
 // UPDATE Profile (done by users)
-router.put('/profile', isAuth, findUser, userController.updateProfile);
+router.put('/profile', addUser, findUser, userController.updateProfile);
 
 // GET Users
 router.get('/', isAdmin, userController.getUsers);

@@ -16,7 +16,7 @@ export class AuthService {
   signup(email: string, password: string): Observable<AuthResponseData> {
     return this.userAccessService.registerUser(email, password)
       .pipe(catchError(this.handleError), tap((resData) => {
-        this.handleAuthentication(resData.token);
+        this.handleAuthentication(resData);
       }));
   }
 
@@ -24,42 +24,55 @@ export class AuthService {
     return this.userAccessService.loginUser(email, password)
       .pipe(catchError(this.handleError), tap((resData) => {
         console.log(resData);
-        this.handleAuthentication(resData.token);
+        this.handleAuthentication(resData);
       }));
   }
 
   autoLogin() {
-    const token = localStorage.getItem('token');
-    if (!token) {
+    const refreshToken = localStorage.getItem('refresh-token');
+    if (!refreshToken) {
       return;
     }
-    this.handleAuthentication(token);
+    // this.handleAuthentication(null, null, refreshToken);
   }
 
   logout(): void {
     this.dataStorageService.user.next(null);
-    localStorage.removeItem('token');
+    localStorage.removeItem('refresh-token');
   }
 
-  handleAuthentication(token: string) {
-    // const expirationDate = new Date(
-    //   new Date().getTime() + +expiresIn * 1000
-    // );
-
-    localStorage.setItem('token', token);
-    this.userAccessService.verifyUser()
-      .subscribe((res) => {
-        console.log(res);
-        const user = new User(
-          res.data.id,
-          res.data.email,
-          res.data.name,
-          res.data.role,
-          res.data.address,
-          token
-        );
-        this.dataStorageService.user.next(user);
-      });
+  handleAuthentication(resData: AuthResponseData) {
+    localStorage.setItem('refresh-token', resData.refreshToken);
+    if (!resData.user.id) {
+      return this.dataStorageService.user.next(null);
+    }
+    const user = new User(
+      resData.user.id,
+      resData.user.email,
+      resData.user.name,
+      resData.user.role,
+      resData.user.address,
+      resData.token
+    );
+    this.dataStorageService.user.next(user);
+    // this.dataStorageService.
+    // this.userAccessService.verifyUser()
+    //   .subscribe((res) => {
+    //     console.log(res);
+    //     localStorage.removeItem('refresh-token');
+    //     if (!res.user.id) {
+    //       return this.dataStorageService.user.next(null);
+    //     }
+    //     const user = new User(
+    //       res.user.id,
+    //       res.user.email,
+    //       res.user.name,
+    //       res.user.role,
+    //       res.user.address,
+    //       token
+    //     );
+    //     this.dataStorageService.user.next(user);
+    //   });
   }
 
   handleError(errorRes: HttpErrorResponse): Observable<any> {

@@ -7,6 +7,7 @@ import {Order} from '../../models/order.model';
 
 export interface AuthResponseData {
   token: string;
+  refreshToken: string;
   user: User;
 }
 

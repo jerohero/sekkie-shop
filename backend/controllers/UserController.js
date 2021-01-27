@@ -1,6 +1,8 @@
 const User = require('../models/User')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const _ = require('lodash');
+const auth = require('../auth');
 require('dotenv').config()
 
 // Get one user by Id
@@ -33,7 +35,18 @@ exports.getUserByEmail = async (req, res) => {
 }
 
 exports.getProfile = async (req, res) => {
-    res.json(res.locals.verifiedUser);
+    res.status(200).json({
+        success: true,
+        token: res.locals.token,
+        refreshToken: res.locals.refreshToken,
+        user: {
+            id: res.locals.user._id,
+            email: res.locals.user.email,
+            role: res.locals.user.role,
+            name: res.locals.user.name,
+            address: res.locals.user.address
+        }
+    });
 }
 
 exports.updateProfile = async (req, res) => {
@@ -45,7 +58,7 @@ exports.updateProfile = async (req, res) => {
         const result = await updatedUser.save();
         result.password = undefined;
 
-        const token = newToken(result);
+        const token = auth.createTokens(result);
 
         res.status(200).json({
             success: true,
@@ -71,14 +84,15 @@ exports.authenticateUser = async (req, res) => {
         return res.status(404).json({ success: false, message: 'NO_MATCH' });
     }
 
-    bcrypt.compare(password, res.user.password, (err, isMatch) => {
+    bcrypt.compare(password, res.locals.user.password, async (err, isMatch) => {
         if (err) return res.status(500).json({ message: err.message });
         if (isMatch) {
-            const token = newToken(user);
+            const [token, refreshToken] = await auth.createTokens(user, process.env.SECRET, process.env.SECRET_2 + user.password);
 
             res.json({
                 success: true,
                 token: token,
+                refreshToken: refreshToken,
                 user: {
                     id: user._id,
                     email: user.email,
@@ -110,17 +124,18 @@ exports.createUser = async (req, res) => {
     const user = new User(req.body);
 
     bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(user.password, salt, (err, hash) => {
+        bcrypt.hash(user.password, salt, async (err, hash) => {
             if (err) throw err;
             user.password = hash;
 
-            const token = newToken(user);
+            const [token, refreshToken] = await auth.createTokens(user, process.env.SECRET, process.env.SECRET_2 + user.password);
 
             try {
-                user.save();
+                await user.save();
                 res.status(201).json({
                     success: true,
                     token: token,
+                    refreshToken: refreshToken,
                     user: user
                 });
             } catch (err) {
@@ -156,17 +171,8 @@ exports.deleteUser = async (req, res) => {
     try {
         const query = {'_id': req.params.id}
         await User.findOneAndDelete(query);
-        console.log(query);
         res.status(200).json({ message: 'User has been deleted' });
     } catch (err) {
         res.status(400).json({ message: err });
     }
-}
-
-newToken = (user) => {
-    const userPayload = JSON.parse(JSON.stringify(user));
-    userPayload.password = undefined;
-    return jwt.sign({data: userPayload}, process.env.SECRET, {
-        expiresIn: 86400 // 1 day
-    });
 }

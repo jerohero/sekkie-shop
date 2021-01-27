@@ -55,9 +55,11 @@ export class GenericAccessService {
     const headers = new HttpHeaders();
     const options = { headers };
     // if (tokenRequired && this.dataStorageService.user.value.token !== null) {
-    if (tokenRequired && this.fetchToken() !== null) {
+    if (tokenRequired && this.fetchRefreshToken() !== null) {
       authHeader = 'Bearer ' + this.fetchToken();
-      options.headers = options.headers.set('Authorization', authHeader);
+      options.headers = options.headers
+        .set('Authorization', authHeader)
+        .set('Refresh', this.fetchRefreshToken());
     }
     return options;
   }
@@ -66,18 +68,22 @@ export class GenericAccessService {
     let authHeader = null;
     const headers = new HttpHeaders();
     const options = { headers };
-    if (this.fetchToken() !== null) {
+    if (this.fetchToken() !== null && this.fetchRefreshToken() !== null) {
       authHeader = 'Bearer ' + this.fetchToken();
       options.headers = options.headers
         .set('Authorization', authHeader)
+        .set('Refresh', this.fetchRefreshToken())
         .set('User', this.dataStorageService.user.getValue().id);
     }
     return options;
   }
 
   fetchToken(): string {
-    // return this.dataStorageService.user.getValue().token;
-    return localStorage.getItem('token');
+    return this.dataStorageService.user.getValue().token;
+  }
+
+  fetchRefreshToken(): string {
+    return localStorage.getItem('refresh-token');
   }
 
 }
