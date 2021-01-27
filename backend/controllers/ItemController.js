@@ -18,7 +18,7 @@ exports.getItems = async (req, res) => {
 
 // Get one item
 exports.getItemById = (req, res) => {
-    res.json(res.item);
+    res.status(200).json(res.locals.item);
 }
 
 // Create one item
@@ -45,7 +45,7 @@ exports.createItem = async (req, res) => {
 // Delete one item
 exports.deleteItemById = async (req, res) => {
     try {
-        await res.item.deleteOne();
+        await res.locals.item.deleteOne();
         res.json({ message: 'Item has been deleted' });
     } catch (err) {
         res.status(400).json({ message: err });
@@ -53,9 +53,6 @@ exports.deleteItemById = async (req, res) => {
 }
 
 exports.updateItem = async (req, res) => {
-    if (res.user.role !== 'ROLE_ADMIN') {
-        res.status(401).json({ message: 'UNAUTHORIZED' });
-    }
     try {
         const query = {'_id': req.params.id}
         const item = await Item.findOneAndUpdate(query, req.body.item);

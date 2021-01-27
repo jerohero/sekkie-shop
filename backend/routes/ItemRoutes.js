@@ -2,18 +2,18 @@ const express = require('express');
 
 const itemController = require('../controllers/ItemController');
 const findItem = require('../middleware/findItem');
-const findUser = require('../middleware/findUser');
+const isAdmin = require('../middleware/isAdmin');
 
 const router = express.Router();
 
-router.post('/', findUser.byHeaderId, itemController.createItem);
+router.post('/', isAdmin, itemController.createItem);
 
 router.get('/', itemController.getItems)
 
 router.get('/:id', findItem, itemController.getItemById);
 
-router.delete('/:id', findItem, itemController.deleteItemById);
+router.delete('/:id', isAdmin, findItem, itemController.deleteItemById);
 
-router.put('/:id', findUser.byHeaderId, itemController.updateItem)
+router.put('/:id', isAdmin, itemController.updateItem)
 
 module.exports = router;

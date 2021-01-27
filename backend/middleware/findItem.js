@@ -10,6 +10,6 @@ module.exports = async (req, res, next) => {
     } catch (err) {
         return res.status(500).json({ message: err.message });
     }
-    res.item = item;
+    res.locals.item = item;
     next();
 }
