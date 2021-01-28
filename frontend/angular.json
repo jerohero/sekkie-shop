@@ -30,7 +30,7 @@
             "scripts": []
           },
           "configurations": {
-            "itemion": {
+            "production": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -65,8 +65,8 @@
             "browserTarget": "sekkie:build"
           },
           "configurations": {
-            "itemion": {
-              "browserTarget": "sekkie:build:itemion"
+            "production": {
+              "browserTarget": "sekkie:build:production"
             }
           }
         },
@@ -113,8 +113,8 @@
             "devServerTarget": "sekkie:serve"
           },
           "configurations": {
-            "itemion": {
-              "devServerTarget": "sekkie:serve:itemion"
+            "production": {
+              "devServerTarget": "sekkie:serve:production"
             }
           }
         }

@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {AuthService} from '../auth.service';
 import {DataStorageService} from '../data-storage.service';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class GenericAccessService {
-  API_URL = 'http://localhost:3000/';
+  API_URL = environment.API_URL;
 
   constructor(private http: HttpClient, private dataStorageService: DataStorageService) {
   }

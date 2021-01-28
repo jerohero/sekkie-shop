@@ -1,3 +1,4 @@
 export const environment = {
-  itemion: true
+  production: true,
+  API_URL: 'http://jeroenbol.com/',
 };
