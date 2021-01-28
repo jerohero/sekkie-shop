@@ -15,7 +15,7 @@ export class OrderAccessService {
 
   createOrder(order: Order): Observable<Order> {
     const body = { order };
-    return this.genericAccessService.sendPOST<Order>('orders/', body, false);
+    return this.genericAccessService.sendPOST<Order>('orders/', body);
   }
 
   deleteOrder(orderId: string): Observable<Order> {
@@ -32,6 +32,6 @@ export class OrderAccessService {
   }
 
   fetchOrdersByUserId(userId: string): Observable<Order[]> {
-    return this.genericAccessService.sendGET<Order[]>('orders/' + userId, true);
+    return this.genericAccessService.sendGET<Order[]>('orders/' + userId);
   }
 }

@@ -11,7 +11,7 @@ export class GenericAccessService {
   constructor(private http: HttpClient, private dataStorageService: DataStorageService) {
   }
 
-  sendGET<T>(requestPath: string, tokenRequired: boolean): Observable<T> {
+  sendGET<T>(requestPath: string): Observable<T> {
     const options = this.generateOptions();
 
     return this.http.get<T>(this.API_URL + requestPath, options);
@@ -23,7 +23,7 @@ export class GenericAccessService {
     return this.http.get<T>(this.API_URL + requestPath, options);
   }
 
-  sendPOST<T>(requestPath: string, body: unknown, tokenRequired: boolean): Observable<T> {
+  sendPOST<T>(requestPath: string, body: unknown): Observable<T> {
     const options = this.generateOptions();
 
     return this.http.post<T>(this.API_URL + requestPath, body, options);
@@ -34,7 +34,7 @@ export class GenericAccessService {
     return this.http.post<T>(this.API_URL + requestPath, body, options);
   }
 
-  sendPUT<T>(requestPath: string, body: unknown, tokenRequired: boolean): Observable<T> {
+  sendPUT<T>(requestPath: string, body: unknown): Observable<T> {
     const options = this.generateOptions();
 
     return this.http.put<T>(this.API_URL + requestPath, body, options);

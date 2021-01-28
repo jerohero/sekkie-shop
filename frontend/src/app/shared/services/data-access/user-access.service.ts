@@ -17,12 +17,12 @@ export class UserAccessService {
 
   registerUser(email: string, password: string): Observable<AuthResponseData> {
     const body = { email, password };
-    return this.genericAccessService.sendPOST<AuthResponseData>('users/register', body, false);
+    return this.genericAccessService.sendPOST<AuthResponseData>('users/register', body);
   }
 
   loginUser(email: string, password: string): Observable<AuthResponseData> {
     const body = { email, password };
-    return this.genericAccessService.sendPOST<AuthResponseData>('users/authenticate', body, false);
+    return this.genericAccessService.sendPOST<AuthResponseData>('users/authenticate', body);
   }
 
   updateUserDetails(user: User) {
@@ -32,7 +32,7 @@ export class UserAccessService {
       name: user.name,
       address: user.address
     };
-    return this.genericAccessService.sendPUT<any>('users/profile', body, true);
+    return this.genericAccessService.sendPUT<any>('users/profile', body);
   }
 
   updateUserRole(user: User): Observable<User> {
@@ -49,6 +49,6 @@ export class UserAccessService {
   }
 
   verifyUser(): Observable<AuthResponseData> {
-    return this.genericAccessService.sendGET<AuthResponseData>('users/profile/', true);
+    return this.genericAccessService.sendGET<AuthResponseData>('users/profile/');
   }
 }

@@ -14,11 +14,11 @@ export class ItemAccessService {
     private authService: AuthService, private genericAccessService: GenericAccessService) { }
 
   fetchItems() {
-    return this.genericAccessService.sendGET<Item[]>('items/', false);
+    return this.genericAccessService.sendGET<Item[]>('items/');
   }
 
   fetchItem(id: string) {
-    return this.genericAccessService.sendGET<Item>('items/' + id, false);
+    return this.genericAccessService.sendGET<Item>('items/' + id);
   }
 
   deleteItem(itemId: string): Observable<Order> {
