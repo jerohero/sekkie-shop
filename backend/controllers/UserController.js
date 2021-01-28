@@ -34,11 +34,10 @@ exports.getUserByEmail = async (req, res) => {
     }
 }
 
+// Get user
 exports.getProfile = async (req, res) => {
     res.status(200).json({
         success: true,
-        token: req.cookies.token,
-        refreshToken: req.cookies.refreshToken,
         user: {
             id: res.locals.user._id,
             email: res.locals.user.email,
@@ -49,6 +48,7 @@ exports.getProfile = async (req, res) => {
     });
 }
 
+// Update user's data
 exports.updateProfile = async (req, res) => {
     try {
         if (res.locals.user.id !== req.body.id) {
@@ -76,6 +76,7 @@ exports.updateProfile = async (req, res) => {
     }
 }
 
+// Log in
 exports.authenticateUser = async (req, res) => {
     const password = req.body.password;
     const user = res.locals.user;
@@ -88,9 +89,8 @@ exports.authenticateUser = async (req, res) => {
         if (err) return res.status(500).json({ message: err.message });
         if (isMatch) {
             const [token, refreshToken] = await auth.createTokens(user, process.env.SECRET, process.env.SECRET_2 + user.password);
-            res.cookie('token', token, { maxAge: 60 * 60 * 24 * 7 * 1000 , httpOnly: false});
-            res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: false});
-
+            res.cookie('token', token, { maxAge: 60 * 60 * 24 * 7 * 1000 , httpOnly: true});
+            res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: true});
 
             const resUser = {
                 id: user._id,
@@ -99,7 +99,6 @@ exports.authenticateUser = async (req, res) => {
                 name: user.name,
                 address: user.address
             }
-
             res.status(200).json({ success: true, user: resUser });
         } else {
             return res.status(401).json({ success: false, message: 'WRONG_CREDENTIALS' })

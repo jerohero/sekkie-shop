@@ -12,22 +12,12 @@ require('dotenv').config()
 
 const app = express();
 
-// mongoDB connection
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
-    .then(() => app.listen(PORT))
-    .catch((err) => console.log(err));
-
 app.use(cookieParser());
 
 app.use(cors({
   origin: 'http://localhost:4200',
   credentials: true
 }));
-
-// middleware & static files
-app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 // body parser middleware
 app.use(bodyParser.json());
@@ -52,17 +42,7 @@ app.use('/items', itemsRouter);
 app.use('/users', userRouter);
 app.use('/orders', orderRouter);
 
-module.exports = app;
-
-
-// app.use(logger('dev'));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(cookieParser());
-// app.use(sassMiddleware({
-//   src: path.join(__dirname, 'public'),
-//   dest: path.join(__dirname, 'public'),
-//   indentedSyntax: true, // true = .sass and false = .scss
-//   sourceMap: true
-// }));
-// app.use(express.static(path.join(__dirname, 'public')));
+// mongoDB connection
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+    .then(() => app.listen(PORT))
+    .catch((err) => console.log(err));

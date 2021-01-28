@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {AuthService} from '../auth.service';
 import {DataStorageService} from '../data-storage.service';
 
 @Injectable({providedIn: 'root'})
@@ -12,7 +11,7 @@ export class GenericAccessService {
   }
 
   sendGET<T>(requestPath: string, tokenRequired: boolean): Observable<T> {
-    const options = this.generateOptions(tokenRequired);
+    const options = this.generateOptions();
 
     return this.http.get<T>(this.API_URL + requestPath, options);
   }
@@ -24,7 +23,7 @@ export class GenericAccessService {
   }
 
   sendPOST<T>(requestPath: string, body: unknown, tokenRequired: boolean): Observable<T> {
-    const options = this.generateOptions(tokenRequired);
+    const options = this.generateOptions();
 
     return this.http.post<T>(this.API_URL + requestPath, body, options);
   }
@@ -35,7 +34,7 @@ export class GenericAccessService {
   }
 
   sendPUT<T>(requestPath: string, body: unknown, tokenRequired: boolean): Observable<T> {
-    const options = this.generateOptions(tokenRequired);
+    const options = this.generateOptions();
 
     return this.http.put<T>(this.API_URL + requestPath, body, options);
   }
@@ -50,14 +49,9 @@ export class GenericAccessService {
     return this.http.delete<T>(this.API_URL + requestPath, options);
   }
 
-  private generateOptions(tokenRequired): { headers: HttpHeaders } {
+  private generateOptions(): { headers: HttpHeaders; withCredentials: boolean } {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const options = { headers, withCredentials: false };
-    // if (tokenRequired && this.dataStorageService.user.value.token !== null) {
-    if (tokenRequired) {
-      options.withCredentials = true;
-    }
-    return options;
+    return { headers, withCredentials: true };
   }
 
   private generateUserSpecificOptions(): { headers: HttpHeaders } {
