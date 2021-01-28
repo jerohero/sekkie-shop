@@ -3,10 +3,10 @@ import {Order} from '../../shared/models/order.model';
 
 @Component({
   selector: 'app-orders-box',
-  templateUrl: './orders-box.component.html',
-  styleUrls: ['./orders-box.component.scss']
+  templateUrl: './account-orders.component.html',
+  styleUrls: ['./account-orders.component.scss']
 })
-export class OrdersBoxComponent implements OnInit {
+export class AccountOrdersComponent implements OnInit {
   @Input() orders: Order[];
 
   constructor() { }

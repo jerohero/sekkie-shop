@@ -11,7 +11,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UnknownPageComponent } from './unknown-page/unknown-page.component';
 import { ShoppingCartItemComponent } from './shopping-list/shopping-cart-item/shopping-cart-item.component';
-import { ItemDetailsComponent } from './item-details/item-details.component';
+import { ItemDetailsComponent } from './shop/item-list/item-list-item/item-details/item-details.component';
 import { ItemListComponent } from './shop/item-list/item-list.component';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './shop/sidebar/sidebar.component';
@@ -19,7 +19,7 @@ import { SearchComponent } from './shop/sidebar/search/search.component';
 import { AccountComponent } from './account/account.component';
 import {RolePipe} from './shared/pipes/role.pipe';
 import { OrderPageComponent } from './shopping-list/order-page/order-page.component';
-import { OrdersBoxComponent } from './account/orders-box/orders-box.component';
+import { AccountOrdersComponent } from './account/account-orders/account-orders.component';
 import { ShippingPageComponent } from './shopping-list/order-page/shipping-page/shipping-page.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
@@ -27,7 +27,7 @@ import {StatusPipe} from './shared/pipes/status.pipe';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { AdminItemsComponent } from './admin/admin-items/admin-items.component';
 import {AngularResizedEventModule} from 'angular-resize-event';
-import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
+import {LoadingSpinnerComponent} from './shared/components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loa
     RolePipe,
     StatusPipe,
     OrderPageComponent,
-    OrdersBoxComponent,
+    AccountOrdersComponent,
     ShippingPageComponent,
     AdminComponent,
     AdminOrdersComponent,

@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, DoCheck, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { ItemService } from '../shared/services/item.service';
-import { Item } from '../shared/models/item.model';
-import {ItemAccessService} from '../shared/services/data-access/item-access.service';
+import { ItemService } from '../../../../shared/services/item.service';
+import { Item } from '../../../../shared/models/item.model';
+import {ItemAccessService} from '../../../../shared/services/data-access/item-access.service';
 
 
 @Component({
