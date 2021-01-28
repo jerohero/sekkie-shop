@@ -1,6 +1,6 @@
 @import "/src/utilities/variables";
 
-#items-wrapper {
+#items-wrapper, .loading-spinners-wrapper {
   height: inherit;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -17,12 +17,15 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .loading-spinner {
-    display: flex;
-    height: 300px;
-    opacity: 0.2;
-    justify-content: center;
-    align-items: center;
+  .loading-spinners-wrapper {
+    .loading-spinner {
+      width: 400px;
+      display: flex;
+      height: 300px;
+      opacity: 0.2;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 
