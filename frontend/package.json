@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --ssl true --ssl-cert ssl/server.crt --ssl-key ssl/server.key",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -20,7 +20,6 @@
     "@angular/platform-browser-dynamic": "~11.0.3",
     "@angular/router": "~11.0.3",
     "angular-resize-event": "^2.0.1",
-    "bootstrap": "^3.4.1",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "rxjs": "~6.6.0",
