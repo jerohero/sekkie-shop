@@ -51,35 +51,31 @@ export class GenericAccessService {
   }
 
   private generateOptions(tokenRequired): { headers: HttpHeaders } {
-    const headers = new HttpHeaders();
-    const options = { headers };
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const options = { headers, withCredentials: false };
     // if (tokenRequired && this.dataStorageService.user.value.token !== null) {
     if (tokenRequired) {
-      options.headers = options.headers
-        .set('Authorization', 'Bearer ' + this.fetchToken())
-        .set('Refresh', this.fetchRefreshToken());
+      options.withCredentials = true;
     }
     return options;
   }
 
   private generateUserSpecificOptions(): { headers: HttpHeaders } {
-    const headers = new HttpHeaders();
-    const options = { headers };
-    if (this.fetchToken() !== null && this.fetchRefreshToken() !== null) {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const options = { headers, withCredentials: true };
+    if (this.dataStorageService.user.getValue().id) {
       options.headers = options.headers
-        .set('Authorization', 'Bearer ' + this.fetchToken())
-        .set('Refresh', this.fetchRefreshToken())
         .set('User', this.dataStorageService.user.getValue().id);
     }
     return options;
   }
 
-  fetchToken(): string {
-    return localStorage.getItem('token');
-  }
-
-  fetchRefreshToken(): string {
-    return localStorage.getItem('refresh-token');
-  }
+  // fetchToken(): string {
+  //   return localStorage.getItem('token');
+  // }
+  //
+  // fetchRefreshToken(): string {
+  //   return localStorage.getItem('refresh-token');
+  // }
 
 }

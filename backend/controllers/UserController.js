@@ -37,8 +37,8 @@ exports.getUserByEmail = async (req, res) => {
 exports.getProfile = async (req, res) => {
     res.status(200).json({
         success: true,
-        token: res.get('Authorization'),
-        refreshToken: res.get('Refresh') ? res.get('Refresh') : req.headers['refresh'],
+        token: req.cookies.token,
+        refreshToken: req.cookies.refreshToken,
         user: {
             id: res.locals.user._id,
             email: res.locals.user.email,
@@ -88,19 +88,19 @@ exports.authenticateUser = async (req, res) => {
         if (err) return res.status(500).json({ message: err.message });
         if (isMatch) {
             const [token, refreshToken] = await auth.createTokens(user, process.env.SECRET, process.env.SECRET_2 + user.password);
+            res.cookie('token', token, { maxAge: 60 * 60 * 24 * 7 * 1000 , httpOnly: false});
+            res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: false});
 
-            res.json({
-                success: true,
-                token: token,
-                refreshToken: refreshToken,
-                user: {
-                    id: user._id,
-                    email: user.email,
-                    role: user.role,
-                    name: user.name,
-                    address: user.address
-                }
-            });
+
+            const resUser = {
+                id: user._id,
+                email: user.email,
+                role: user.role,
+                name: user.name,
+                address: user.address
+            }
+
+            res.status(200).json({ success: true, user: resUser });
         } else {
             return res.status(401).json({ success: false, message: 'WRONG_CREDENTIALS' })
         }
