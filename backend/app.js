@@ -7,10 +7,19 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const https = require('https');
+const fs = require('fs');
 const PORT = 3000;
 require('dotenv').config()
 
 const app = express();
+
+const key = fs.readFileSync(__dirname + '/ssl/server.key');
+const cert = fs.readFileSync(__dirname + '/ssl/server.crt');
+const options = {
+  key: key,
+  cert: cert
+};
 
 app.use(cookieParser());
 
@@ -38,11 +47,15 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/items', itemsRouter);
-app.use('/users', userRouter);
-app.use('/orders', orderRouter);
+app.use('/api/items', itemsRouter);
+app.use('/api/users', userRouter);
+app.use('/api/orders', orderRouter);
+
+const server = https.createServer(options, app);
 
 // mongoDB connection
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
-    .then(() => app.listen(PORT))
+    .then(() => {
+      server.listen(PORT);
+    })
     .catch((err) => console.log(err));
