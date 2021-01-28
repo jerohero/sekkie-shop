@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Observable, pipe, throwError} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 import {User} from '../../models/user.model';
 import {GenericAccessService} from './generic-access.service';
-import {Order} from '../../models/order.model';
 
 export interface AuthResponseData {
   token: string;
@@ -50,5 +49,9 @@ export class UserAccessService {
 
   verifyUser(): Observable<AuthResponseData> {
     return this.genericAccessService.sendGET<AuthResponseData>('users/profile/');
+  }
+
+  logOut(): Observable<void> {
+    return this.genericAccessService.sendDELETE<void>('users/logout/');
   }
 }

@@ -45,6 +45,11 @@ export class GenericAccessService {
     return this.http.put<T>(this.API_URL + requestPath, body, options);
   }
 
+  sendDELETE<T>(requestPath: string): Observable<T> {
+    const options = this.generateOptions();
+    return this.http.delete<T>(this.API_URL + requestPath, options);
+  }
+
   sendUserSpecificDELETE<T>(requestPath: string): Observable<T> {
     const options = this.generateUserSpecificOptions();
     return this.http.delete<T>(this.API_URL + requestPath, options);
@@ -72,5 +77,4 @@ export class GenericAccessService {
   // fetchRefreshToken(): string {
   //   return localStorage.getItem('refresh-token');
   // }
-
 }

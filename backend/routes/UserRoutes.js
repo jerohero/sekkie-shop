@@ -2,7 +2,6 @@ const express = require('express');
 
 const userController = require('../controllers/UserController');
 const findUser = require('../middleware/findUser');
-const passport = require('passport');
 const isAdmin = require('../middleware/isAdmin');
 const addUser = require('../middleware/addUser');
 
@@ -20,12 +19,16 @@ router.get('/profile', addUser, userController.getProfile);
 // UPDATE Profile (done by users)
 router.put('/profile', addUser, findUser, userController.updateProfile);
 
+// Log out user
+router.delete('/logout', userController.logout);
+
 // GET Users
 router.get('/', isAdmin, userController.getUsers);
 
 // UPDATE User (done by admins)
 router.put('/', isAdmin, userController.updateUser);
 
+// DELETE User
 router.delete('/:id', isAdmin, userController.deleteUser);
 
 

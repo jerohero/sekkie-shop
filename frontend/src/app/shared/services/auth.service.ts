@@ -31,18 +31,19 @@ export class AuthService {
     this.userAccessService.verifyUser()
       .subscribe((resData) => {
         this.handleAuthentication(resData);
-      }, () => {
-        this.logout();
       });
   }
 
   logout(): void {
-    this.dataStorageService.user.next(null);
+    this.userAccessService.logOut()
+      .subscribe(() => {
+        this.dataStorageService.user.next(null);
+      });
   }
 
   handleAuthentication(resData: AuthResponseData) {
-    if (!resData.user.id) {
-      return this.dataStorageService.user.next(null);
+    if (!resData.user || !resData.user.id) {
+      return;
     }
     const user = new User(
       resData.user.id,

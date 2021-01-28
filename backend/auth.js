@@ -21,7 +21,7 @@ module.exports.createTokens = async (user, secret, secret2) => {
         },
         secret2,
         {
-            expiresIn: '7d',
+            expiresIn: '14d',
         },
     );
 

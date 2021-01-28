@@ -175,3 +175,10 @@ exports.deleteUser = async (req, res) => {
         res.status(400).json({ message: err });
     }
 }
+
+// Log out
+exports.logout = async (req, res) => {
+    res.clearCookie('token');
+    res.clearCookie('refresh-token');
+    res.status(205).json({ message: 'LOGGED_OUT '});
+}
