@@ -47,7 +47,10 @@ export class AdminOrdersComponent implements OnInit {
     } else {
       this.selectedOrder.status = 'ON_HOLD';
     }
-    this.orderAccessService.updateOrder(this.selectedOrder).subscribe();
+    this.orderAccessService.updateOrder(this.selectedOrder)
+      .subscribe(() => {
+        alert('Order status has been updated');
+      });
   }
 
   get orderStatusButtonTxt() {

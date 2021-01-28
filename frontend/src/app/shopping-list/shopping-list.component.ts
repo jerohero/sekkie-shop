@@ -4,7 +4,7 @@ import { ShoppingListService } from '../shared/services/shopping-list.service';
 import { Subscription } from 'rxjs';
 import { ShoppingCartItem } from '../shared/models/shopping-cart-item.model';
 import {OrderService} from '../shared/services/order.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-shopping-list',

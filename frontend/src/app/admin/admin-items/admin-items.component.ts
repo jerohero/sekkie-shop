@@ -73,7 +73,9 @@ export class AdminItemsComponent implements OnInit {
       return;
     }
     this.itemAccessService.updateItem(this.selectedItem)
-      .subscribe();
+      .subscribe(() => {
+        alert('Item has been saved.');
+      });
   }
 
   findColors(colors: string | string[]) {

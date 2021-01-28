@@ -52,7 +52,7 @@ export class AdminUsersComponent implements OnInit {
     }
     this.userAccessService.updateUserRole(this.selectedUser)
       .subscribe((user) => {
-        console.log(user);
+        alert('User role has been updated.');
       });
   }
 

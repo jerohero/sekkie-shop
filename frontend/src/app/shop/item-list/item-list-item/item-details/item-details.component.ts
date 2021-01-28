@@ -1,10 +1,9 @@
-import {AfterViewInit, Component, DoCheck, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ItemService } from '../../../../shared/services/item.service';
 import { Item } from '../../../../shared/models/item.model';
 import {ItemAccessService} from '../../../../shared/services/data-access/item-access.service';
-
 
 @Component({
   selector: 'app-item-details',
@@ -105,11 +104,6 @@ export class ItemDetailsComponent implements OnInit {
 
     this.itemService.addItemToShoppingList(this.item, {selectedSize: this.selectedSize, selectedColor: this.selectedColor});
     this.router.navigate(['shopping-list']);
-  }
-
-  onEditItem() {
-    this.router.navigate(['edit'], {relativeTo: this.route});
-    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
   onResized() {
