@@ -14,10 +14,10 @@ const app = express();
 
 app.use(cookieParser());
 
-app.use(cors({
-  origin: process.env.ORIGIN_URL,
-  credentials: true
-}));
+// app.use(cors({
+//   origin: process.env.ORIGIN_URL,
+//   credentials: true
+// }));
 
 // body parser middleware
 app.use(bodyParser.json());
@@ -30,13 +30,13 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 // // External access (CORS)
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200'); // Allow client to send requests from given origin, * serving as a wildcard
-//   res.setHeader('Access-Control-Allow-Credentials', 'true');
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE'); // Allow client to use given request methods
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, User');   // Allow client to send request headers
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', process.env.ORIGIN_URL); // Allow client to send requests from given origin, * serving as a wildcard
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE'); // Allow client to use given request methods
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, User');   // Allow client to send request headers
+  next();
+});
 
 app.use('/items', itemsRouter);
 app.use('/users', userRouter);
