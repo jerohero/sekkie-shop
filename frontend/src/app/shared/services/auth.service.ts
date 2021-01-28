@@ -28,11 +28,6 @@ export class AuthService {
   }
 
   autoLogin() {
-    const refreshToken = localStorage.getItem('refresh-token');
-    const token = localStorage.getItem('token');
-    if (!refreshToken || !token) {
-      return;
-    }
     this.userAccessService.verifyUser()
       .subscribe((resData) => {
         this.handleAuthentication(resData);
@@ -43,13 +38,9 @@ export class AuthService {
 
   logout(): void {
     this.dataStorageService.user.next(null);
-    localStorage.removeItem('refresh-token');
-    localStorage.removeItem('token');
   }
 
   handleAuthentication(resData: AuthResponseData) {
-    localStorage.setItem('refresh-token', resData.refreshToken);
-    localStorage.setItem('token', resData.token);
     if (!resData.user.id) {
       return this.dataStorageService.user.next(null);
     }

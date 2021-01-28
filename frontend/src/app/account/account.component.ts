@@ -45,7 +45,6 @@ export class AccountComponent implements OnInit {
     };
 
     this.userAccessService.updateUserDetails(this.user).subscribe((res) => {
-      localStorage.setItem('token', res.token);
       this.dataStorageService.user.next(res.user);
     });
   }

@@ -12,7 +12,7 @@ export class GenericAccessService {
   }
 
   sendGET<T>(requestPath: string, tokenRequired: boolean): Observable<T> {
-    const options = this.generateOptions(tokenRequired);
+    const options = this.generateOptions();
 
     return this.http.get<T>(this.API_URL + requestPath, options);
   }
@@ -24,7 +24,7 @@ export class GenericAccessService {
   }
 
   sendPOST<T>(requestPath: string, body: unknown, tokenRequired: boolean): Observable<T> {
-    const options = this.generateOptions(tokenRequired);
+    const options = this.generateOptions();
 
     return this.http.post<T>(this.API_URL + requestPath, body, options);
   }
@@ -35,7 +35,7 @@ export class GenericAccessService {
   }
 
   sendPUT<T>(requestPath: string, body: unknown, tokenRequired: boolean): Observable<T> {
-    const options = this.generateOptions(tokenRequired);
+    const options = this.generateOptions();
 
     return this.http.put<T>(this.API_URL + requestPath, body, options);
   }
@@ -50,36 +50,27 @@ export class GenericAccessService {
     return this.http.delete<T>(this.API_URL + requestPath, options);
   }
 
-  private generateOptions(tokenRequired): { headers: HttpHeaders } {
-    const headers = new HttpHeaders();
-    const options = { headers };
-    // if (tokenRequired && this.dataStorageService.user.value.token !== null) {
-    if (tokenRequired) {
-      options.headers = options.headers
-        .set('Authorization', 'Bearer ' + this.fetchToken())
-        .set('Refresh', this.fetchRefreshToken());
-    }
-    return options;
+  private generateOptions(): { headers: HttpHeaders; withCredentials: boolean } {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return { headers, withCredentials: true };
   }
 
   private generateUserSpecificOptions(): { headers: HttpHeaders } {
-    const headers = new HttpHeaders();
-    const options = { headers };
-    if (this.fetchToken() !== null && this.fetchRefreshToken() !== null) {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const options = { headers, withCredentials: true };
+    if (this.dataStorageService.user.getValue().id) {
       options.headers = options.headers
-        .set('Authorization', 'Bearer ' + this.fetchToken())
-        .set('Refresh', this.fetchRefreshToken())
         .set('User', this.dataStorageService.user.getValue().id);
     }
     return options;
   }
 
-  fetchToken(): string {
-    return localStorage.getItem('token');
-  }
-
-  fetchRefreshToken(): string {
-    return localStorage.getItem('refresh-token');
-  }
+  // fetchToken(): string {
+  //   return localStorage.getItem('token');
+  // }
+  //
+  // fetchRefreshToken(): string {
+  //   return localStorage.getItem('refresh-token');
+  // }
 
 }
