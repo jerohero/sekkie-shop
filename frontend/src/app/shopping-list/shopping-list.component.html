@@ -3,9 +3,12 @@
     <h1>shopping cart</h1>
     <h4>{{shoppingCartItems.length}} item{{shoppingCartItems.length === 1 ? '' : 's'}}</h4>
   </header>
-  <div id="shopping-cart-items">
+  <div id="shopping-cart-items" *ngIf="shoppingCartItems.length > 0; else emptyCart">
     <app-shopping-cart-item *ngFor="let item of shoppingCartItems" [item]="item"></app-shopping-cart-item>
   </div>
+  <ng-template #emptyCart>
+    <p id="emptyCart" [routerLink]="['../']">Your shopping cart is empty!</p>
+  </ng-template>
   <div id="bottom-bar">
     <div class="bottom-bar-column">
       <button id="back" [routerLink]="['../']">go back</button>

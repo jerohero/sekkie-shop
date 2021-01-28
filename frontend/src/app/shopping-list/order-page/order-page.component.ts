@@ -91,6 +91,7 @@ export class OrderPageComponent implements OnInit, OnDestroy {
     this.orderAccessService.createOrder(this.order)
       .subscribe((newOrder) => {
         if (newOrder) {
+          localStorage.removeItem('cart');
           this.router.navigate(['/shipping']);
         }
       });

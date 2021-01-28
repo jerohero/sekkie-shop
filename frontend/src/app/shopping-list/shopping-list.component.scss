@@ -34,6 +34,17 @@
     row-gap: 47px;
   }
 
+  #emptyCart {
+    margin-top: 100px;
+    text-align: center;
+    font-size: 30px;
+    color: #c3c3c3;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
   #bottom-bar {
     position: fixed;
     right: 0;
