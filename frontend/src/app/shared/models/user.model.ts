@@ -16,16 +16,6 @@ export class User {
     public email: string,
     public name: UserName,
     public role: string,
-    public address: UserAddress,
-    private _token: string,
-    // private _expiresIn: Date
+    public address: UserAddress
   ) { }
-
-  get token() {
-    return this._token;
-  }
-
-  // get expiresIn() {
-  //   return this._expiresIn;
-  // }
 }

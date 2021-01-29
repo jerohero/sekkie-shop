@@ -50,8 +50,7 @@ export class AuthService {
       resData.user.email,
       resData.user.name,
       resData.user.role,
-      resData.user.address,
-      resData.token
+      resData.user.address
     );
     this.dataStorageService.user.next(user);
   }

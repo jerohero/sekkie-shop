@@ -30,7 +30,7 @@ export class OrderPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (this.dataStorageService.user.getValue()) {
-      this.user = this.dataStorageService.user.getValue();
+      this.user = JSON.parse(JSON.stringify(this.dataStorageService.user.getValue()));
     } else {
       const emptyName: UserName = {
         firstName: null,
@@ -42,7 +42,7 @@ export class OrderPageComponent implements OnInit, OnDestroy {
         city: null,
         country: null
       };
-      this.user = new User(null, null, emptyName, null, emptyAddress, null);
+      this.user = new User(null, null, emptyName, null, emptyAddress);
       // In case user logs in while checking out
       this.userSub = this.dataStorageService.user
         .subscribe((user) => {
@@ -93,7 +93,7 @@ export class OrderPageComponent implements OnInit, OnDestroy {
       .subscribe((newOrder) => {
         if (newOrder) {
           localStorage.removeItem('cart');
-          this.shoppingListService.shoppingCartChanged.next(null);
+          this.shoppingListService.shoppingCartChanged.next([]);
           this.router.navigate(['/shipping']);
         }
       });
