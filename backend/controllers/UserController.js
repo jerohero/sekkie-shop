@@ -5,20 +5,6 @@ const _ = require('lodash');
 const auth = require('../auth');
 require('dotenv').config()
 
-// Get one user by Id
-exports.getUserById = async (req, res) => {
-    try {
-        let user;
-        user = await User.findById(req.body.id);
-        if (user == null) {
-            return res.status(404).json({ message: 'Cannot find User' });
-        }
-        res.json(user);
-    } catch (err) {
-        return res.status(500).json({ message: err.message });
-    }
-}
-
 // Get one user by Email
 exports.getUserByEmail = async (req, res) => {
     try {
@@ -39,7 +25,6 @@ exports.getProfile = async (req, res) => {
     res.status(200).json({
         success: true,
         user: {
-            id: res.locals.user._id,
             email: res.locals.user.email,
             role: res.locals.user.role,
             name: res.locals.user.name,
@@ -66,7 +51,6 @@ exports.updateProfile = async (req, res) => {
             }
         });
     } catch (err) {
-        console.log(err);
         res.status(400).json({ message: err });
     }
 }
@@ -88,7 +72,6 @@ exports.authenticateUser = async (req, res) => {
             res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: true});
 
             const resUser = {
-                id: user._id,
                 email: user.email,
                 role: user.role,
                 name: user.name,
@@ -123,15 +106,18 @@ exports.createUser = async (req, res) => {
             user.password = hash;
 
             const [token, refreshToken] = await auth.createTokens(user, process.env.SECRET, process.env.SECRET_2 + user.password);
+            res.cookie('token', token, { maxAge: 60 * 60 * 24 * 7 * 1000 , httpOnly: true});
+            res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: true});
 
             try {
                 await user.save();
-                res.status(201).json({
-                    success: true,
-                    token: token,
-                    refreshToken: refreshToken,
-                    user: user
-                });
+                const resUser = {
+                    email: user.email,
+                    role: user.role,
+                    name: user.name,
+                    address: user.address
+                }
+                res.status(201).json({ success: true, user: resUser });
             } catch (err) {
                 res.status(400).json({ message: err.message });
             }

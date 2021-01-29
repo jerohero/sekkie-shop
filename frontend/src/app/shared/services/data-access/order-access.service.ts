@@ -13,9 +13,9 @@ export class OrderAccessService {
     private authService: AuthService, private genericAccessService: GenericAccessService
   ) { }
 
-  createOrder(order: Order): Observable<Order> {
+  createOrder(order: Order): Observable<{ date: number }> {
     const body = { order };
-    return this.genericAccessService.sendPOST<Order>('orders/', body);
+    return this.genericAccessService.sendPOST<{ date: number }>('orders/', body);
   }
 
   deleteOrder(orderId: string): Observable<Order> {

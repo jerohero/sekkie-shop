@@ -4,6 +4,11 @@ const Order = require('../models/Order');
 
 
 exports.createOrder = async (req, res) => {
+    let userId;
+    if (res.locals.user) {
+        userId = res.locals.user._id;
+    }
+
     const reqOrder = req.body.order;
     const order = new Order({
         items: reqOrder.items,
@@ -13,13 +18,12 @@ exports.createOrder = async (req, res) => {
         totalPrice: reqOrder.totalPrice,
         date: reqOrder.date,
         status: reqOrder.status,
-        userId: reqOrder.userId
+        userId: userId
     });
     try {
         const newOrder = await order.save();
-        res.status(201).json({ newOrder });
+        res.status(201).json({ date: newOrder.date });
     } catch (err) {
-        console.log(err);
         res.status(400).json({ message: err.message });
     }
 }

@@ -8,7 +8,7 @@ module.exports.createTokens = async (user, secret, secret2) => {
     user = JSON.parse(JSON.stringify(user));
     const createToken = jwt.sign(
         {
-            user: _.pick(user, ['id', 'role']),
+            user: _.pick(user, ['id']),
         },
         secret,
         {

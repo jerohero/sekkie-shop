@@ -41,7 +41,7 @@ exports.createItem = async (req, res) => {
 exports.deleteItemById = async (req, res) => {
     try {
         await res.locals.item.deleteOne();
-        res.json({ message: 'Item has been deleted' });
+        res.json({ message: 'Item has been deleted.' });
     } catch (err) {
         res.status(400).json({ message: err });
     }

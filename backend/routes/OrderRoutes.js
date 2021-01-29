@@ -5,7 +5,7 @@ const orderController = require('../controllers/OrderController');
 
 const router = express.Router();
 
-router.post('/', orderController.createOrder);
+router.post('/', addUser.allowTokenMissing, orderController.createOrder);
 
 router.get('/by-user', addUser, orderController.getOrdersByUserId);
 

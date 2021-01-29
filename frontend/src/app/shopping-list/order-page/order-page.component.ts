@@ -42,7 +42,7 @@ export class OrderPageComponent implements OnInit, OnDestroy {
         city: null,
         country: null
       };
-      this.user = new User(null, null, emptyName, null, emptyAddress);
+      this.user = new User(null,null, emptyName, null, emptyAddress);
       // In case user logs in while checking out
       this.userSub = this.dataStorageService.user
         .subscribe((user) => {
@@ -79,19 +79,13 @@ export class OrderPageComponent implements OnInit, OnDestroy {
       totalPrice = totalPrice + item.totalPrice;
     });
 
-    let userId;
-    if (this.dataStorageService.user.getValue()) {
-      userId = this.user.id;
-    } else {
-      userId = null;
-    }
     this.order = new Order(
-      null, userId, this.orderItems, this.user.name, this.user.email, this.user.address, totalPrice, Date.now(), 'ON_HOLD'
+      null, null, this.orderItems, this.user.name, this.user.email, this.user.address, totalPrice, Date.now(), 'ON_HOLD'
     );
 
     this.orderAccessService.createOrder(this.order)
-      .subscribe((newOrder) => {
-        if (newOrder) {
+      .subscribe((date) => {
+        if (date) {
           localStorage.removeItem('cart');
           this.shoppingListService.shoppingCartChanged.next([]);
           this.router.navigate(['/shipping']);

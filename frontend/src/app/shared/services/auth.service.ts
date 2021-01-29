@@ -42,11 +42,11 @@ export class AuthService {
   }
 
   handleAuthentication(resData: AuthResponseData) {
-    if (!resData.user || !resData.user.id) {
+    if (!resData.user) {
       return;
     }
     const user = new User(
-      resData.user.id,
+      null,
       resData.user.email,
       resData.user.name,
       resData.user.role,

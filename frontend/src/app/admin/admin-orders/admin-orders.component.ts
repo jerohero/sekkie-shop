@@ -49,7 +49,7 @@ export class AdminOrdersComponent implements OnInit {
     }
     this.orderAccessService.updateOrder(this.selectedOrder)
       .subscribe(() => {
-        alert('Order status has been updated');
+        alert('Order status has been updated.');
       });
   }
 
