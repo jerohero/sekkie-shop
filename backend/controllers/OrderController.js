@@ -56,7 +56,7 @@ exports.deleteOrder = async (req, res) => {
 exports.getOrdersByUserId = async (req, res) => {
     let orders;
     try {
-        orders = await Order.find({ userId: req.params.id });
+        orders = await Order.find({ userId: res.locals.user._id });
         if (orders == null) {
             return res.status(404).json({ message: 'Cannot find Order' });
         }

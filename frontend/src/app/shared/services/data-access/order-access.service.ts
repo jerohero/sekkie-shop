@@ -31,7 +31,7 @@ export class OrderAccessService {
     return this.genericAccessService.sendUserSpecificGET<Order[]>('orders/');
   }
 
-  fetchOrdersByUserId(userId: string): Observable<Order[]> {
-    return this.genericAccessService.sendGET<Order[]>('orders/' + userId);
+  fetchOrdersByUser(): Observable<Order[]> {
+    return this.genericAccessService.sendGET<Order[]>('orders/by-user');
   }
 }

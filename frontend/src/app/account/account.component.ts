@@ -25,7 +25,7 @@ export class AccountComponent implements OnInit {
     this.dataStorageService.user.pipe(skipWhile(user => !user), take(1))
       .subscribe(user => {
         this.user = user;
-        this.orderAccessService.fetchOrdersByUserId(user.id)
+        this.orderAccessService.fetchOrdersByUser()
           .subscribe((orders) => {
             this.orders = orders;
           });

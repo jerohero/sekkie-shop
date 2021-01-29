@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post('/', orderController.createOrder);
 
-router.get('/:id', orderController.getOrdersByUserId);
+router.get('/by-user', addUser, orderController.getOrdersByUserId);
 
 router.get('/', addUser, isAdmin, orderController.getOrders);
 
