@@ -18,7 +18,7 @@ export class GenericAccessService {
   }
 
   sendUserSpecificGET<T>(requestPath: string): Observable<T> {
-    const options = this.generateUserSpecificOptions();
+    const options = this.generateOptions();
 
     return this.http.get<T>(this.API_URL + requestPath, options);
   }
@@ -30,7 +30,7 @@ export class GenericAccessService {
   }
 
   sendUserSpecificPOST<T>(requestPath: string, body: unknown): Observable<T> {
-    const options = this.generateUserSpecificOptions();
+    const options = this.generateOptions();
     return this.http.post<T>(this.API_URL + requestPath, body, options);
   }
 
@@ -41,7 +41,7 @@ export class GenericAccessService {
   }
 
   sendUserSpecificPUT<T>(requestPath: string, body: unknown): Observable<T> {
-    const options = this.generateUserSpecificOptions();
+    const options = this.generateOptions();
     return this.http.put<T>(this.API_URL + requestPath, body, options);
   }
 
@@ -51,7 +51,7 @@ export class GenericAccessService {
   }
 
   sendUserSpecificDELETE<T>(requestPath: string): Observable<T> {
-    const options = this.generateUserSpecificOptions();
+    const options = this.generateOptions();
     return this.http.delete<T>(this.API_URL + requestPath, options);
   }
 
@@ -60,15 +60,5 @@ export class GenericAccessService {
       'Content-Type': 'application/json'
     });
     return { headers, withCredentials: true };
-  }
-
-  private generateUserSpecificOptions(): { headers: HttpHeaders } {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const options = { headers, withCredentials: true };
-    if (this.dataStorageService.user.getValue().id) {
-      options.headers = options.headers
-        .set('User', this.dataStorageService.user.getValue().id);
-    }
-    return options;
   }
 }

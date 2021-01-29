@@ -1,8 +1,7 @@
 const express = require('express');
 const isAdmin = require('../middleware/isAdmin');
-
+const addUser = require('../middleware/addUser');
 const orderController = require('../controllers/OrderController');
-const findUser = require('../middleware/findUser');
 
 const router = express.Router();
 
@@ -10,11 +9,10 @@ router.post('/', orderController.createOrder);
 
 router.get('/:id', orderController.getOrdersByUserId);
 
-router.get('/', isAdmin, orderController.getOrders);
+router.get('/', addUser, isAdmin, orderController.getOrders);
 
-router.delete('/:id', isAdmin, orderController.deleteOrder);
+router.delete('/:id', addUser, isAdmin, orderController.deleteOrder);
 
-router.put('/', isAdmin, orderController.updateOrder);
-
+router.put('/', addUser, isAdmin, orderController.updateOrder);
 
 module.exports = router;

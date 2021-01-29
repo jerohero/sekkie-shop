@@ -48,28 +48,25 @@ exports.getProfile = async (req, res) => {
     });
 }
 
-// Update user's data
+// Update user's data (done by user)
 exports.updateProfile = async (req, res) => {
     try {
-        if (res.locals.user.id !== req.body.id) {
-            res.status(400).json({ message: 'FAULTY_REQUEST' });
-        }
-        req.body.email = res.locals.user.email;
-        const updatedUser = await res.locals.user.set(req.body);
+        const user = res.locals.user;
+        user.address = req.body.address;
+        user.name = req.body.name;
+        const updatedUser = await res.locals.user.set(user);
         const result = await updatedUser.save();
-        result.password = undefined;
 
         res.status(200).json({
             success: true,
             user: {
-                id: result._id,
-                email: result.email,
                 role: result.role,
                 name: result.name,
                 address: result.address
             }
         });
     } catch (err) {
+        console.log(err);
         res.status(400).json({ message: err });
     }
 }

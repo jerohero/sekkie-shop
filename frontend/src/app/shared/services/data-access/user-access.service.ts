@@ -26,8 +26,6 @@ export class UserAccessService {
 
   updateUserDetails(user: User) {
     const body = {
-      id: user.id,
-      email: user.email,
       name: user.name,
       address: user.address
     };

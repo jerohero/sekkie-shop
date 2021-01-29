@@ -21,10 +21,6 @@ export class AppComponent implements OnInit {
       .subscribe((showLogin) => {
         this.showLogin = showLogin;
       });
-
-    console.log('Admin credentials:');
-    console.log('Email: admin@gmail.com');
-    console.log('Password: admin');
   }
 
   onNavigate(feature: string): void {

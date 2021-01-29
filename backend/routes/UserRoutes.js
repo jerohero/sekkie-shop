@@ -17,19 +17,19 @@ router.post('/authenticate', findUser.byEmail, userController.authenticateUser);
 router.get('/profile', addUser, userController.getProfile);
 
 // UPDATE Profile (done by users)
-router.put('/profile', addUser, findUser.byId, userController.updateProfile);
+router.put('/profile', addUser, userController.updateProfile);
 
 // Log out user
 router.delete('/logout', userController.logout);
 
 // GET Users
-router.get('/', isAdmin, userController.getUsers);
+router.get('/', addUser, isAdmin, userController.getUsers);
 
 // UPDATE User (done by admins)
-router.put('/', isAdmin, userController.updateUser);
+router.put('/', addUser, isAdmin, userController.updateUser);
 
 // DELETE User
-router.delete('/:id', isAdmin, userController.deleteUser);
+router.delete('/:id', addUser, isAdmin, userController.deleteUser);
 
 
 module.exports = router;
