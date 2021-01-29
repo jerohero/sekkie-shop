@@ -6,9 +6,7 @@ const orderRouter = require('./routes/OrderRoutes');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const cors = require('cors');
 const https = require('https');
-const http = require('http');
 const fs = require('fs');
 const PORT = 3000;
 require('dotenv').config()
@@ -16,11 +14,6 @@ require('dotenv').config()
 const app = express();
 
 app.use(cookieParser());
-
-// app.use(cors({
-//   origin: process.env.ORIGIN_URL,
-//   credentials: true
-// }));
 
 // body parser middleware
 app.use(bodyParser.json());
