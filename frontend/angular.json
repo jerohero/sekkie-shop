@@ -64,7 +64,7 @@
           "options": {
             "browserTarget": "sekkie:build",
             "ssl": true,
-            "sslCert": "ssl/server.srt",
+            "sslCert": "ssl/server.crt",
             "sslKey": "ssl/server.key"
           },
           "configurations": {

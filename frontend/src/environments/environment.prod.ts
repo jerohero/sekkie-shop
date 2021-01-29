@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: 'http://128.199.55.120:3000/',
+  API_URL: 'https://jeroenbol.com:3000/api/',
 };

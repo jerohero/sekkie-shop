@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {DataStorageService} from '../data-storage.service';
-import {environment} from '../../../../environments/environment';
+import {environment} from '../../../../environments/environment.prod';
 
 @Injectable({providedIn: 'root'})
 export class GenericAccessService {
@@ -56,7 +56,9 @@ export class GenericAccessService {
   }
 
   private generateOptions(): { headers: HttpHeaders; withCredentials: boolean } {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
     return { headers, withCredentials: true };
   }
 
@@ -69,12 +71,4 @@ export class GenericAccessService {
     }
     return options;
   }
-
-  // fetchToken(): string {
-  //   return localStorage.getItem('token');
-  // }
-  //
-  // fetchRefreshToken(): string {
-  //   return localStorage.getItem('refresh-token');
-  // }
 }

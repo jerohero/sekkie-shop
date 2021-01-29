@@ -8,18 +8,12 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const https = require('https');
+const http = require('http');
 const fs = require('fs');
 const PORT = 3000;
 require('dotenv').config()
 
 const app = express();
-
-const key = fs.readFileSync(__dirname + '/ssl/server.key');
-const cert = fs.readFileSync(__dirname + '/ssl/server.crt');
-const options = {
-  key: key,
-  cert: cert
-};
 
 app.use(cookieParser());
 
@@ -40,10 +34,10 @@ require('./config/passport')(passport);
 
 // // External access (CORS)
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', process.env.ORIGIN_URL); // Allow client to send requests from given origin, * serving as a wildcard
+  res.setHeader('Access-Control-Allow-Origin', process.env.ORIGIN_URL);
   res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE'); // Allow client to use given request methods
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, User');   // Allow client to send request headers
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, User');
   next();
 });
 
@@ -51,11 +45,14 @@ app.use('/api/items', itemsRouter);
 app.use('/api/users', userRouter);
 app.use('/api/orders', orderRouter);
 
-const server = https.createServer(options, app);
+const httpsServer = https.createServer({
+    key: fs.readFileSync('/etc/letsencrypt/live/jeroenbol.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/jeroenbol.com/fullchain.pem'),
+}, app);
 
 // mongoDB connection
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
     .then(() => {
-      server.listen(PORT);
+      httpsServer.listen(PORT);
     })
     .catch((err) => console.log(err));
