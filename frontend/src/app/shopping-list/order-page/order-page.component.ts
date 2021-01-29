@@ -10,6 +10,7 @@ import {Order} from '../../shared/models/order.model';
 import {DatePipe} from '@angular/common';
 import {OrderAccessService} from '../../shared/services/data-access/order-access.service';
 import {Router} from '@angular/router';
+import {ShoppingListService} from '../../shared/services/shopping-list.service';
 
 @Component({
   selector: 'app-order-page',
@@ -25,7 +26,7 @@ export class OrderPageComponent implements OnInit, OnDestroy {
 
   constructor(private dataStorageService: DataStorageService, private authService: AuthService,
               private orderService: OrderService, private datePipe: DatePipe, private orderAccessService: OrderAccessService,
-              private router: Router) { }
+              private shoppingListService: ShoppingListService, private router: Router) { }
 
   ngOnInit(): void {
     if (this.dataStorageService.user.getValue()) {
@@ -92,6 +93,7 @@ export class OrderPageComponent implements OnInit, OnDestroy {
       .subscribe((newOrder) => {
         if (newOrder) {
           localStorage.removeItem('cart');
+          this.shoppingListService.shoppingCartChanged.next(null);
           this.router.navigate(['/shipping']);
         }
       });

@@ -48,13 +48,10 @@ export class ItemDetailsComponent implements OnInit {
       this.dataAccessService.fetchItem(this.id).subscribe(item => {
         this.item = item;
         if (this.item === undefined) {
-          this.router.navigate(['404']);
+          this.router.navigate(['/']);
         } else {
           this.showcaseImage(this.item.primaryImagePath);
         }
-        // setTimeout(() => {
-        //   this.imageHeight = this.showcased.nativeElement.height;
-        // }, 500);
       });
     }
   }

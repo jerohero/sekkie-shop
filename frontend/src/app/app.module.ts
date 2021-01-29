@@ -9,7 +9,6 @@ import { ShopComponent } from './shop/shop.component';
 import { ItemListItemComponent } from './shop/item-list/item-list-item/item-list-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { AppRoutingModule } from './app-routing.module';
-import { UnknownPageComponent } from './unknown-page/unknown-page.component';
 import { ShoppingCartItemComponent } from './shopping-list/shopping-cart-item/shopping-cart-item.component';
 import { ItemDetailsComponent } from './shop/item-list/item-list-item/item-details/item-details.component';
 import { ItemListComponent } from './shop/item-list/item-list.component';
@@ -38,7 +37,6 @@ import {LoadingSpinnerComponent} from './shared/components/loading-spinner/loadi
     ItemListItemComponent,
     ShoppingListComponent,
     ItemDetailsComponent,
-    UnknownPageComponent,
     ShoppingCartItemComponent,
     LoginComponent,
     SidebarComponent,

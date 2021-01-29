@@ -54,15 +54,13 @@ exports.updateProfile = async (req, res) => {
         if (res.locals.user.id !== req.body.id) {
             res.status(400).json({ message: 'FAULTY_REQUEST' });
         }
+        req.body.email = res.locals.user.email;
         const updatedUser = await res.locals.user.set(req.body);
         const result = await updatedUser.save();
         result.password = undefined;
 
-        const token = auth.createTokens(result);
-
         res.status(200).json({
             success: true,
-            token: token,
             user: {
                 id: result._id,
                 email: result.email,

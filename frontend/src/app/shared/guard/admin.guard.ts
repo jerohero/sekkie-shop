@@ -4,29 +4,39 @@ import {Observable} from 'rxjs';
 import {DataStorageService} from '../services/data-storage.service';
 import {map} from 'rxjs/operators';
 import {AuthService} from '../services/auth.service';
+import {UserAccessService} from '../services/data-access/user-access.service';
 
 @Injectable({providedIn: 'root'})
 export class AdminGuard implements CanActivate {
-  constructor(private dataStorageService: DataStorageService, private router: Router, private authService: AuthService) {
+  constructor(private dataStorageService: DataStorageService, private router: Router, private authService: AuthService,
+              private userAccessService: UserAccessService) {
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     router: RouterStateSnapshot
   ): boolean | UrlTree | Promise<boolean | UrlTree> | Observable<boolean | UrlTree> {
-    return this.dataStorageService.user
-      .pipe(map((user) => {
-        if (user) {
-          const isAdmin = user.role === 'ROLE_ADMIN';
-          if (isAdmin) {
-            return true;
-          }
-        }
-        // User isn't logged in
-        if (!localStorage.getItem('token')) {
+    if (this.dataStorageService.user.getValue() !== null) {
+      if (this.dataStorageService.user.getValue().role === 'ROLE_ADMIN') {
+        return true;
+      }
+      this.router.navigate(['/']);
+      return false;
+    }
+    return new Observable<boolean>((obs) => {
+      this.userAccessService.verifyUser().subscribe((resData) => {
+        if (resData.user.role === 'ROLE_ADMIN') {
+          obs.next(true);
+        } else {
           this.authService.showLogin.next(true);
+          obs.next(false);
+          this.router.navigate(['/']);
         }
-        return this.router.createUrlTree(['/']);
-      }));
+      }, () => {
+        this.authService.showLogin.next(true);
+        obs.next(false);
+        this.router.navigate(['/']);
+      });
+    });
   }
 }

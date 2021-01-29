@@ -8,16 +8,16 @@ const addUser = require('../middleware/addUser');
 const router = express.Router();
 
 // Register
-router.post('/register', findUser, userController.createUser);
+router.post('/register', findUser.byEmail, userController.createUser);
 
 // Authenticate
-router.post('/authenticate', findUser, userController.authenticateUser);
+router.post('/authenticate', findUser.byEmail, userController.authenticateUser);
 
 // GET Profile
 router.get('/profile', addUser, userController.getProfile);
 
 // UPDATE Profile (done by users)
-router.put('/profile', addUser, findUser, userController.updateProfile);
+router.put('/profile', addUser, findUser.byId, userController.updateProfile);
 
 // Log out user
 router.delete('/logout', userController.logout);
