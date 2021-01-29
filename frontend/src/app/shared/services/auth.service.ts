@@ -31,8 +31,6 @@ export class AuthService {
     this.userAccessService.verifyUser()
       .subscribe((resData) => {
         this.handleAuthentication(resData);
-      }, () => {
-        this.userAccessService.logOut();
       });
   }
 

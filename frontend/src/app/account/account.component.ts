@@ -45,6 +45,7 @@ export class AccountComponent implements OnInit {
     };
 
     this.userAccessService.updateUserDetails(this.user).subscribe((res) => {
+      alert('Details have been updated.');
       this.dataStorageService.user.next(res.user);
     });
   }

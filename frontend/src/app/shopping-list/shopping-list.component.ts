@@ -30,6 +30,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   checkout() {
     if (this.shoppingCartItems.length < 1) {
+      alert('Please fill your shopping cart before placing an order.');
       return;
     }
     this.orderService.shoppingCartItems = this.shoppingCartItems;
