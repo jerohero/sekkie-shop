@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     return new Observable<boolean>(obs => {
-      this.userAccessService.verifyUser().subscribe((resData) => {
+      this.userAccessService.fetchUserProfile().subscribe((resData) => {
         if (resData.user !== null) {
           obs.next(true);
         } else {

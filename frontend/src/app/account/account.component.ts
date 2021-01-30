@@ -22,9 +22,9 @@ export class AccountComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dataStorageService.user.pipe(skipWhile(user => !user), take(1))
-      .subscribe(user => {
-        this.user = user;
+    this.userAccessService.fetchUserProfile()
+      .subscribe((resData) => {
+        this.user = resData.user;
         this.orderAccessService.fetchOrdersByUser()
           .subscribe((orders) => {
             this.orders = orders;
@@ -46,7 +46,10 @@ export class AccountComponent implements OnInit {
 
     this.userAccessService.updateUserDetails(this.user).subscribe((res) => {
       alert('Details have been updated.');
-      this.dataStorageService.user.next(res.user);
+      const newUser = JSON.parse(JSON.stringify(this.user));
+      newUser.name = res.user.name;
+      newUser.address = res.user.name;
+      this.dataStorageService.user.next(newUser);
     });
   }
 

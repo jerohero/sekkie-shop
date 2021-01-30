@@ -36,16 +36,14 @@ exports.getProfile = async (req, res) => {
 // Update user's data (done by user)
 exports.updateProfile = async (req, res) => {
     try {
-        const user = res.locals.user;
-        user.address = req.body.address;
-        user.name = req.body.name;
-        const updatedUser = await res.locals.user.set(user);
-        const result = await updatedUser.save();
+        const result = await User.findOneAndUpdate({ _id: res.locals.user._id }, {
+            name: req.body.name,
+            address: req.body.address,
+        });
 
         res.status(200).json({
             success: true,
             user: {
-                role: result.role,
                 name: result.name,
                 address: result.address
             }

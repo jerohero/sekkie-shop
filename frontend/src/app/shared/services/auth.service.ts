@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   autoLogin() {
-    this.userAccessService.verifyUser()
+    this.userAccessService.fetchUserProfile()
       .subscribe((resData) => {
         this.handleAuthentication(resData);
       });

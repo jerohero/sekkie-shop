@@ -24,7 +24,7 @@ export class AdminGuard implements CanActivate {
       return false;
     }
     return new Observable<boolean>((obs) => {
-      this.userAccessService.verifyUser().subscribe((resData) => {
+      this.userAccessService.fetchUserProfile().subscribe((resData) => {
         if (resData.user.role === 'ROLE_ADMIN') {
           obs.next(true);
         } else {
